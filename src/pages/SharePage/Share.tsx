@@ -3,7 +3,7 @@ import LinkSearchBar from "src/components/LinkSearchBar";
 import LinkCardCollection from "src/components/LinkCardCollection";
 import "pages/Share.css";
 import { useEffect, useState } from "react";
-import { acceptDataFromApi } from "src/Api";
+import { acceptDataFromApi } from "@src/Utils/Api";
 import HeadNav from "src/components/HeadNav";
 
 export default function Share() {

@@ -2,7 +2,7 @@ import "styles/reset.css";
 import "styles/defaultStyle.css";
 import "components/HeadNav.css";
 import { ReactNode, useEffect, useState } from "react";
-import { acceptDataFromApi } from "src/Api";
+import { acceptDataFromApi } from "@src/Utils/Api";
 
 interface Prop {
   children: ReactNode;

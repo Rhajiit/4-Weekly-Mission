@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import "components/LinkSubFolder.css";
 import { useEffect, useState } from "react";
-import { acceptDataFromApi } from "src/Api";
+import { acceptDataFromApi } from "@src/Utils/Api";
 import LinkSearchBar from "./LinkSearchBar";
 import LinkCardCollection from "./LinkCardCollection";
 

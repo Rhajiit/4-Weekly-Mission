@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Share from "./pages/Share";
+import Share from "./pages/SharePage/Share";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import App from "./components/App";
-import Folder from "./pages/Folder";
+import Folder from "./pages/FolderPage/Folder";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

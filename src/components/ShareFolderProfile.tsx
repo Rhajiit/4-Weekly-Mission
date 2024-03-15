@@ -1,5 +1,5 @@
 import "components/ShareFolderProfile.css";
-import { acceptDataFromApi } from "src/Api";
+import { acceptDataFromApi } from "@src/Utils/Api";
 import { useState, useEffect } from "react";
 
 const ShareFolderProfile = function () {
