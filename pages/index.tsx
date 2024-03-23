@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -9,7 +10,14 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <main></main>
+      <main>
+        <Link href={"/folder"}>
+          <h1>FolderPage로 이동</h1>
+        </Link>
+        <Link href={"/share"}>
+          <h1>SharePage로 이동</h1>
+        </Link>
+      </main>
     </>
   );
 }
