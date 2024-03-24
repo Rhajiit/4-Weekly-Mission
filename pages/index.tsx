@@ -12,10 +12,10 @@ export default function Home() {
       </Head>
       <main>
         <Link href={"/folder"}>
-          <h1>FolderPage로 이동</h1>
+          <h2 className="lb-h2-semibold">FolderPage로 이동</h2>
         </Link>
         <Link href={"/share"}>
-          <h1>SharePage로 이동</h1>
+          <h2 className="lb-h2-semibold">SharePage로 이동</h2>
         </Link>
       </main>
     </>
