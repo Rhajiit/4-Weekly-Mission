@@ -1,7 +1,7 @@
 import * as S from "../modalLoader.style";
 
 // Type
-import { ModalDataRemoveSubFolder } from "src/@types/ModalFunctionDataTypes";
+import { ModalDataRemoveSubFolder } from "@/src/types/ModalFunctionDataTypes";
 
 /**
  *

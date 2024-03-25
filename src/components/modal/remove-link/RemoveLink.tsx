@@ -1,7 +1,7 @@
 import * as S from "../modalLoader.style";
 
 // Type
-import { ModalDataRemoveLink } from "src/@types/ModalFunctionDataTypes";
+import { ModalDataRemoveLink } from "@/src/types/ModalFunctionDataTypes";
 
 /**
  *

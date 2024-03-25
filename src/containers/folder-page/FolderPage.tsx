@@ -1,27 +1,26 @@
 import { useEffect, useRef, useState } from "react";
-import { useSearchParams } from "react-router-dom";
-import useAsync from "src/Components/Hooks/useAsync";
-import { acceptDataFromApi } from "src/Utils/Api";
-import * as S from "../../../styles/pages/folder.style";
+import useFetch from "@/src/hooks/useFetch";
+import { acceptDataFromApi } from "@/src/utils/api";
+import * as S from "@/styles/pages/folder.style";
 
 // Components
-import FolderLinkAddBar from "src/pages/FolderPage/Components/FolderLInkAddBar/FolderLinkAddBar";
+import FolderLinkAddBar from "@/src/containers/folder-page/folder-link-add-form/FolderLinkAddBar";
 import {
   HandleCurrentSubFolder,
   SubFoldersList,
-} from "src/pages/FolderPage/Components/LinkSubFolder/LinkSubFolder";
-import LinkCardCollection from "src/Components/LinkCard/LinkCardCollection/LinkCardCollection";
-import LinkSearchBar from "src/Components/LinkCard/LInkSearchBar/LinkSearchBar";
-import ModalLoader from "src/Components/Modal/ModalLoader";
-import HeadNav from "src/Components/BasicLayout/HeadNav";
+} from "@/src/containers/folder-page/sub-folder-button-list-presenter/LinkSubFolder";
+import LinkCardCollection from "@/src/components/link-card/link-card-collection/LinkCardCollection";
+import LinkSearchBar from "@/src/components/link-card/link-search-form/LinkSearchBar";
+import ModalLoader from "@/src/components/modal/modalLoader";
+import HeadNav from "@/src/components/layout/HeadNav";
 
 // Types
-import UserLinkDataType from "src/@types/UserLinkDataType";
+import UserLinkDataType from "@/src/types/UserLinkDataType";
 import {
   LinkCardFunctionObjectType,
   LinkFolderFunctionObjectType,
-} from "src/@types/ModalFunctionDataTypes";
-import FolderListDataType from "src/@types/FolderListDataType";
+} from "@/src/types/ModalFunctionDataTypes";
+import FolderListDataType from "@/src/types/FolderListDataType";
 type handleCurrentFolderChangeType = (id: number, name: string) => void;
 
 /**
@@ -36,12 +35,11 @@ export default function FolderPage({ userId = 1 }) {
   const [subFolderList, setSubFolderList] = useState<FolderListDataType[]>([]);
   const [isEmptyResponse, setIsEmptyResponse] = useState(true);
   const [isLoading, error, acceptDataFromApiAsync] =
-    useAsync(acceptDataFromApi);
+    useFetch(acceptDataFromApi);
   const [currentFolderQuery, setCurrentFolderQuery] = useState(
     `users/${userId}/links`
   );
   const [currentFolderId, setCurrentFolderId] = useState(0);
-  const [searchParams, setSearchParams] = useSearchParams();
   const [originItems, setOriginItems] = useState<UserLinkDataType[]>([]);
   const [items, setItems] = useState<UserLinkDataType[]>([]);
   const [isModalOpened, setIsModalOpened] = useState(false);
@@ -116,11 +114,10 @@ export default function FolderPage({ userId = 1 }) {
     setCurrentFolderId(id);
 
     if (id === 0) {
-      setSearchParams("");
       setIsCurrentFolderAll(true);
       return;
     }
-    setSearchParams({ folderId: `${id}` });
+
     setIsCurrentFolderAll(false);
   };
 

@@ -2,7 +2,7 @@ import { useState } from "react";
 import * as S from "./KebabMenu.style";
 
 // Types
-import { LinkCardFunctionObjectType } from "src/@types/ModalFunctionDataTypes";
+import { LinkCardFunctionObjectType } from "@/src/types/ModalFunctionDataTypes";
 interface KebabMenuPropType {
   items: LinkCardFunctionObjectType[];
   data: string;

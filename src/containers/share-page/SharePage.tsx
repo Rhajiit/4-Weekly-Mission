@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import { acceptDataFromApi } from "src/Utils/Api";
+import { acceptDataFromApi } from "@/src/utils/api";
 import * as S from "../../../styles/pages/share.style";
 
 // Components
-import HeadNav from "src/Components/BasicLayout/HeadNav";
-import ShareFolderProfile from "src/pages/SharePage/Components/SharePageProfile";
-import LinkSearchBar from "src/Components/LinkCard/LInkSearchBar/LinkSearchBar";
-import LinkCardCollection from "src/Components/LinkCard/LinkCardCollection/LinkCardCollection";
+import HeadNav from "@/src/components/layout/HeadNav";
+import ShareFolderProfile from "@/src/containers/share-page/profile/SharePageProfile";
+import LinkSearchBar from "@/src/components/link-card/link-search-form/LinkSearchBar";
+import LinkCardCollection from "@/src/components/link-card/link-card-collection/LinkCardCollection";
 
 // Types
-import UserLinkDataType from "src/@types/UserLinkDataType";
+import UserLinkDataType from "@/src/types/UserLinkDataType";
 
 /**
  *

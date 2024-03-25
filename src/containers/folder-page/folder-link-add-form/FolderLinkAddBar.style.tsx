@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { PrimaryButton } from "../../../../Components/PrimaryButton";
+import { PrimaryButton } from "@/src/components/layout/PrimaryButton";
 
 export const FolderLinkAddBarWrapper = styled.div<{ $isHidden: boolean }>`
   position: ${({ $isHidden }) => ($isHidden ? "fixed" : "relative")};
@@ -81,7 +81,7 @@ export const Button = styled(PrimaryButton)`
   margin-left: calc(100% - 10.1rem);
   margin-right: 2rem;
   width: 8.1rem;
-  color: var(--lb-light-gray);
+
   font-size: 1.4rem;
   font-style: normal;
   font-weight: 600;
@@ -92,7 +92,7 @@ export const Button = styled(PrimaryButton)`
     margin-left: calc(100% - 9.1rem);
     margin-right: 2rem;
     width: 8.1rem;
-    color: var(--lb-light-gray);
+
     font-size: 1.4rem;
     font-style: normal;
     font-weight: 600;

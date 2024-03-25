@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
 import * as S from "./LinkCardCollection.style";
-import KebabMenu from "../../Kebab/KebabMenu";
-import timePassedFromCreate from "src/Utils/timePassedFromCreate";
-import UserLinkDataType from "src/@types/UserLinkDataType";
-import { LinkCardFunctionObjectType } from "src/@types/ModalFunctionDataTypes";
+import KebabMenu from "@/src/components/kebab/KebabMenu";
+import timePassedFromCreate from "@/src/utils/timePassedFromCreate";
+import UserLinkDataType from "@/src/types/UserLinkDataType";
+import { LinkCardFunctionObjectType } from "@/src/types/ModalFunctionDataTypes";
+import Link from "next/link";
 
 interface FolderCardDataPropType {
   contents: UserLinkDataType;
@@ -39,7 +39,7 @@ function FolderCard({ contents, favorite, kebab }: FolderCardDataPropType) {
   return (
     <S.CardBoxOriginPosition key={id}>
       <S.CardWrapper>
-        <Link to={url} target="_blank">
+        <Link href={url} target="_blank">
           <S.CardImageDiv $image={cardImage} />
 
           <S.TextSection>

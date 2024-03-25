@@ -2,7 +2,7 @@ import { FormEvent, useRef } from "react";
 import * as S from "./FolderLinkAddBar.style";
 
 // Type
-import { ModalDataAddLinkToSubFolder } from "src/@types/ModalFunctionDataTypes";
+import { ModalDataAddLinkToSubFolder } from "@/src/types/ModalFunctionDataTypes";
 interface FolderLinkAddBarPropType extends ModalDataAddLinkToSubFolder {
   isHidden: boolean;
 }

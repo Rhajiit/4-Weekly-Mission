@@ -1,9 +1,9 @@
 import * as S from "../modalLoader.style";
 import * as SS from "./ShareSubFolder.style";
-import shareKakao from "src/Utils/KakaoTalkShare";
+import shareKakao from "@/src/utils/kakaoTalkShare";
 
 // Types
-import { ModalDataShareSubFolder } from "src/@types/ModalFunctionDataTypes";
+import { ModalDataShareSubFolder } from "@/src/types/ModalFunctionDataTypes";
 
 /**
  *

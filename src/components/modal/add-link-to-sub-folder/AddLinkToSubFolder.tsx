@@ -3,7 +3,7 @@ import * as S from "../modalLoader.style";
 import * as SS from "./AddLinkToSubFolder.style";
 
 // Type
-import FolderListDataType from "src/@types/FolderListDataType";
+import FolderListDataType from "@/src/types/FolderListDataType";
 
 interface ModalAddLinkToSubFolderPropType {
   modalData: [string, FolderListDataType[]];

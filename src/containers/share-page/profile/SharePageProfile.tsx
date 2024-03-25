@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { acceptDataFromApi } from "src/Utils/Api";
-import * as S from "./share-page-profile.style";
+import { acceptDataFromApi } from "@/src/utils/api";
+import * as S from "./SharePageProfile.style";
 
 /**
  * @description SharePage에서 해당 폴더의 이름과 그 주인을 보여주는 컴포넌트 입니다.
