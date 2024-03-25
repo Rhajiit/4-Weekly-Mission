@@ -1,35 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import * as S from "./Footer.style";
-
-interface FooterSocialListType {
-  imgUrl: string;
-  imgAlt: string;
-  imgSrc: string;
-}
-
-const FooterSocialList: FooterSocialListType[] = [
-  {
-    imgUrl: "https://www.facebook.com/",
-    imgAlt: "to_Facebook",
-    imgSrc: "/assets/icons/png/footer_facebook.png",
-  },
-  {
-    imgUrl: "https://twitter.com/",
-    imgAlt: "to_X",
-    imgSrc: "/assets/icons/png/footer_X.png",
-  },
-  {
-    imgUrl: "https://www.youtube.com/",
-    imgAlt: "to_Youtube",
-    imgSrc: "/assets/icons/png/footer_youtube.png",
-  },
-  {
-    imgUrl: "https://www.instagram.com",
-    imgAlt: "to_Instagram",
-    imgSrc: "/assets/icons/png/footer_instagram.png",
-  },
-];
+import FooterSocialList from "@/src/constant/footer-social-section";
 
 /**
  *
