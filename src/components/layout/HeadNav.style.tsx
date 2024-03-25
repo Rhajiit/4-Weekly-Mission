@@ -25,7 +25,7 @@ export const NavWrapper = styled.div`
     margin: 0 auto;
     max-width: 86.4rem;
 
-    & img {
+    img {
       width: 8.86rem;
     }
   }

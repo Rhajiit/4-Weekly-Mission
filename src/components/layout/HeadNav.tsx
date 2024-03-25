@@ -30,7 +30,7 @@ const ProfileData = function () {
   return (
     <>
       {loginStatus && (
-        <S.NavProfileSection className="nav-profile">
+        <S.NavProfileSection>
           <Image src={profileImg} alt="loggedInProfileImg" />
           {accountEmail}
         </S.NavProfileSection>
@@ -50,7 +50,12 @@ export default function HeadNav({ isSticky = true }) {
     <S.Nav $isSticky={isSticky}>
       <S.NavWrapper>
         <Link href="/">
-          <Image src="logo.svg" alt="Linkbrary Logo" />
+          <Image
+            width={133}
+            height={24}
+            src="/assets/images/svg/logo.svg"
+            alt="Linkbrary Logo"
+          />
         </Link>
         <ProfileData />
       </S.NavWrapper>
