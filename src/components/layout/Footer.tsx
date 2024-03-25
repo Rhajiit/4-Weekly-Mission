@@ -12,22 +12,22 @@ const FooterSocialList: FooterSocialListType[] = [
   {
     imgUrl: "https://www.facebook.com/",
     imgAlt: "to_Facebook",
-    imgSrc: "footer_facebook.png",
+    imgSrc: "/assets/icons/png/footer_facebook.png",
   },
   {
     imgUrl: "https://twitter.com/",
     imgAlt: "to_X",
-    imgSrc: "footer_X.png",
+    imgSrc: "/assets/icons/png/footer_X.png",
   },
   {
     imgUrl: "https://www.youtube.com/",
     imgAlt: "to_Youtube",
-    imgSrc: "footer_youtube.png",
+    imgSrc: "/assets/icons/png/footer_youtube.png",
   },
   {
     imgUrl: "https://www.instagram.com",
     imgAlt: "to_Instagram",
-    imgSrc: "footer_instagram.png",
+    imgSrc: "/assets/icons/png/footer_instagram.png",
   },
 ];
 
@@ -46,7 +46,7 @@ export default function Footer() {
       <S.FooterSocialListSection>
         {FooterSocialList.map((item) => (
           <Link key={item.imgAlt} href={item.imgUrl}>
-            <Image src={item.imgSrc} alt={item.imgAlt} />
+            <Image width={20} height={20} src={item.imgSrc} alt={item.imgAlt} />
           </Link>
         ))}
       </S.FooterSocialListSection>
