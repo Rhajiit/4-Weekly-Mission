@@ -10,8 +10,8 @@ import FooterSocialList from "@/src/constant/footer-social-section";
 export default function Footer() {
   return (
     <S.Footer>
-      <p className="corporate-information">©codeIt - 2023</p>
-      <address className="footer-privacy">
+      <p>©codeIt - 2023</p>
+      <address>
         <Link href="/privacy.html">Privacy Policy</Link>
         <Link href="faq.html">FAQ</Link>
       </address>
