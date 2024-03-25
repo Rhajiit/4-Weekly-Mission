@@ -1,12 +1,5 @@
 import { useEffect, useState } from "react";
 import { acceptDataFromApi } from "@/src/utils/api";
-import * as S from "../../../styles/pages/share.style";
-
-// Components
-import HeadNav from "@/src/components/layout/HeadNav";
-import ShareFolderProfile from "@/src/containers/share-page/profile/SharePageProfile";
-import LinkSearchBar from "@/src/components/link-card/link-search-form/LinkSearchBar";
-import LinkCardCollection from "@/src/components/link-card/link-card-collection/LinkCardCollection";
 
 // Types
 import UserLinkDataType from "@/src/types/UserLinkDataType";
@@ -16,7 +9,7 @@ import UserLinkDataType from "@/src/types/UserLinkDataType";
  * @description /share 페이지를 구현하는 컴포넌트.
  * @returns
  */
-export default function SharePage() {
+export default function SharePageContainer() {
   const [originItems, setOriginItems] = useState<UserLinkDataType[]>([]);
   const [items, setItems] = useState<UserLinkDataType[]>([]);
   const [cardFilter, setCardFilter] = useState<string>("");
@@ -48,14 +41,5 @@ export default function SharePage() {
     );
   }, [cardFilter]);
 
-  return (
-    <>
-      <HeadNav />
-      <ShareFolderProfile />
-      <S.SharePageMain>
-        <LinkSearchBar cardFilter={cardFilter} setCardFilter={setCardFilter} />
-        <LinkCardCollection items={items} />
-      </S.SharePageMain>
-    </>
-  );
+  return { cardFilter, items, setCardFilter };
 }
