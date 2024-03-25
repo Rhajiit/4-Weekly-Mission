@@ -24,7 +24,7 @@ export default function KebabMenu({ items, data }: KebabMenuPropType) {
   return (
     <S.KebabMenuOriginPosition>
       <S.KebabToggleButton type="button" onClick={handleKebabToggle}>
-        <img src="kebab.svg" alt="kebabButton" />
+        <img src="/assets/icons/svg/kebab.svg" alt="kebabButton" />
       </S.KebabToggleButton>
       {kebabMenuPop && (
         <>

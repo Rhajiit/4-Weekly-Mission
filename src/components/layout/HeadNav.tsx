@@ -6,7 +6,9 @@ import Image from "next/image";
 const ProfileData = function () {
   const [loginStatus, setLoginStatus] = useState(false);
   const [accountEmail, setAccountEmail] = useState("");
-  const [profileImg, setProfileIMg] = useState("navProfileImg.png");
+  const [profileImg, setProfileIMg] = useState(
+    "/assets/cons/png/nav-profile-default.png"
+  );
 
   const USER = "users/1";
   // const accountVerification = async (user: string) => {

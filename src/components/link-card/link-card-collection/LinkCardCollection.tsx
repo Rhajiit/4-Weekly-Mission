@@ -58,7 +58,10 @@ function FolderCard({ contents, favorite, kebab }: FolderCardDataPropType) {
       {kebab && <KebabMenu items={kebab} data={url} />}
       {favorite && (
         <S.FavorStarButton type="button">
-          <img src="star.svg" alt="FavoriteButton" />
+          <img
+            src="/assets/icons/svg/favorite-star-blank.svg"
+            alt="FavoriteButton"
+          />
         </S.FavorStarButton>
       )}
     </S.CardBoxOriginPosition>

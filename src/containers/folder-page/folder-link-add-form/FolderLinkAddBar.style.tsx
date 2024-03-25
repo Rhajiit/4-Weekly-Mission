@@ -35,7 +35,7 @@ export const Form = styled.form`
 
 export const Label = styled.label`
   position: absolute;
-  background-image: url("link.svg");
+  background-image: url("/assets/icons/svg/link.svg");
   height: 2rem;
   width: 2rem;
   margin-left: 2rem;

@@ -81,7 +81,7 @@ export const CardImageDiv = styled.div<{ $image?: string }>`
   background-image: url(${({ $image }) =>
     $image
       ? `${$image}); background-size: cover`
-      : `${process.env.PUBLIC_URL}/no-img-card.svg)`};;;;;;
+      : `/assets/images/svg/no-img-card.svg)`};;;
 `;
 
 export const TextSection = styled.div`

@@ -70,12 +70,12 @@ export const AddFolderButton = styled.button`
 `;
 
 export const AddImage = styled.div`
-  background-image: url("add.svg");
+  background-image: url("/assets/icons/svg/add.svg");
   width: 1.6rem;
   height: 1.6rem;
 
   @media (max-width: 767px) {
-    background-image: url("addwhite.svg");
+    background-image: url("/assets/icons/svg/add-white.svg");
   }
 `;
 

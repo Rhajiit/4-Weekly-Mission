@@ -40,7 +40,7 @@ export default function LinkSearchBar({
         />
         {cardFilter && (
           <S.InputClearButton type="button" onClick={() => cardFilterClear()}>
-            <img src="modalClose.png" alt="InputClearButton" />
+            <img src="/assets/icons/png/close.png" alt="InputClearButton" />
           </S.InputClearButton>
         )}
       </S.SearchBarWrapper>

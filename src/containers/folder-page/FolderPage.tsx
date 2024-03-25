@@ -176,7 +176,7 @@ export default function FolderPageContainer({ userId = 1 }) {
   const subFolderAction: LinkFolderFunctionObjectType[] = [
     {
       buttonName: "공유",
-      imgUrl: "share.svg",
+      imgUrl: "/assets/icons/svg/share.svg",
       imgAlt: "shareButton",
       type: "shareFolder",
       data: [currentFolderName, currentFolderId],
@@ -185,7 +185,7 @@ export default function FolderPageContainer({ userId = 1 }) {
     },
     {
       buttonName: "이름 변경",
-      imgUrl: "pen.svg",
+      imgUrl: "/assets/icons/svg/pen.svg",
       imgAlt: "RenameButton",
       type: "nameChange",
       data: [],
@@ -194,7 +194,7 @@ export default function FolderPageContainer({ userId = 1 }) {
     },
     {
       buttonName: "삭제",
-      imgUrl: "Group 36.svg",
+      imgUrl: "/assets/icons/svg/trash-can.svg",
       imgAlt: "DeleteButton",
       type: "removeFolder",
       data: currentFolderName,

@@ -46,7 +46,7 @@ export default function ModalAddLinkToSubFolder({
                 }개 링크`}</span>
               </h2>
               {item.name === SelectedFolder && (
-                <img src="check.svg" alt="CheckedFolder" />
+                <img src="/assets/icons/svg/check.svg" alt="CheckedFolder" />
               )}
             </SS.SubFolderDesireToAddLinkButton>
           ))}
