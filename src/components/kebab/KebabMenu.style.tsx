@@ -20,6 +20,7 @@ export const KebabDiv = styled.div`
 `;
 
 export const KebabToggleButton = styled.button`
+  position: relative;
   padding: 0;
   background-color: transparent;
   border: none;

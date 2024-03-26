@@ -10,7 +10,7 @@ import {
 import LinkCardCollection from "@/src/components/link-card/link-card-collection/LinkCardCollection";
 import LinkSearchBar from "@/src/components/link-card/link-search-form/LinkSearchBar";
 import ModalLoader from "@/src/components/modal/modalLoader";
-import HeadNav from "@/src/components/layout/HeadNav";
+import HeadNav from "@/src/components/layout/HeadNav/HeadNav";
 
 export default function Folder({ userId = 1 }) {
   const {

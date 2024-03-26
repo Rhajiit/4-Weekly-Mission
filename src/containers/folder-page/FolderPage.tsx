@@ -117,10 +117,12 @@ export default function FolderPageContainer({ userId = 1 }) {
   useEffect(() => {
     acceptSubFolderList(`users/${userId}/folders`);
     handleShareLoad(`users/${userId}/links`);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId]);
 
   useEffect(() => {
     handleShareLoad(currentFolderQuery);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentFolderQuery]);
 
   useEffect(() => {
@@ -136,12 +138,14 @@ export default function FolderPageContainer({ userId = 1 }) {
           item.url.toLowerCase().includes(cardFilter.toLowerCase())
       )
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cardFilter]);
 
   // useEffect를 이용하여 IntersectionObserver을 등록
   useEffect(() => {
     addLinkBarObserver.observe(addLinkBarObserveRef.current!);
     addLinkBarObserver.observe(footerObserveRef.current!);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

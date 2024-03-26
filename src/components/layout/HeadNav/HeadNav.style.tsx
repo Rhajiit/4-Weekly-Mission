@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { PrimaryButton } from "./PrimaryButton";
+import { PrimaryButton } from "../PrimaryButton/PrimaryButton";
 
 export const Nav = styled.nav<{ $isSticky: boolean }>`
   background-color: var(--lb-background);

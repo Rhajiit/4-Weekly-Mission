@@ -19,6 +19,7 @@ export default function Home() {
 
   useEffect(() => {
     accountVerification(USER);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

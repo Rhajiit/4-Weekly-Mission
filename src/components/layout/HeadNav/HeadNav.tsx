@@ -18,6 +18,7 @@ const ProfileData = function () {
       setAccountEmail(userData.email);
       setProfileImg(userData.image_source);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

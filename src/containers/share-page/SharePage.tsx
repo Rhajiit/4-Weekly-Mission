@@ -39,6 +39,7 @@ export default function SharePageContainer() {
           item.url.includes(cardFilter)
       )
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cardFilter]);
 
   return { cardFilter, items, setCardFilter };
