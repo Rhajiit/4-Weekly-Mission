@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import * as S from "./LinkSubFolder.style";
 
 // Type
-import FolderListDataType from "src/@types/FolderListDataType";
-import { LinkFolderFunctionObjectType } from "src/@types/ModalFunctionDataTypes";
+import FolderListDataType from "@/src/types/FolderListDataType";
+import { LinkFolderFunctionObjectType } from "@/src/types/ModalFunctionDataTypes";
 type handleCurrentFolderChangeType = (id: number, name: string) => void;
 
 interface SubFolderListProp {
