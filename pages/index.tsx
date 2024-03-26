@@ -1,7 +1,26 @@
 import Head from "next/head";
 import Link from "next/link";
+import { useEffect } from "react";
+import { acceptDataFromApi } from "@/src/utils/api";
+import { useSetCurrentUser } from "@/src/context/UserContext";
+
+const USER = "users/1";
 
 export default function Home() {
+  const setCurrentUser = useSetCurrentUser();
+
+  const accountVerification = async (user: string) => {
+    const receivedData = await acceptDataFromApi(user);
+    if (!receivedData) return;
+
+    const { data } = receivedData;
+    setCurrentUser(...data);
+  };
+
+  useEffect(() => {
+    accountVerification(USER);
+  }, []);
+
   return (
     <>
       <Head>

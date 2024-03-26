@@ -2,38 +2,34 @@ import { useEffect, useState } from "react";
 import * as S from "./HeadNav.style";
 import Link from "next/link";
 import Image from "next/image";
+import { useCurrentUser } from "@/src/context/UserContext";
 
 const ProfileData = function () {
-  const [loginStatus, setLoginStatus] = useState(false);
+  const userData = useCurrentUser();
+  const loginStatus = !!userData;
+
   const [accountEmail, setAccountEmail] = useState("");
-  const [profileImg, setProfileIMg] = useState(
-    "/assets/cons/svg/nav-profile-default.svg"
+  const [profileImg, setProfileImg] = useState(
+    "/assets/icons/svg/nav-profile-default.svg"
   );
 
-  const USER = "users/1";
-  // const accountVerification = async (user: string) => {
-  //   const receivedData = await acceptDataFromApi(user);
-  //   if (!receivedData) return;
-  //   const {
-  //     data: [{ email, image_source }],
-  //   } = receivedData;
-
-  //   setAccountEmail(email);
-  //   if (image_source) {
-  //     setProfileIMg(image_source);
-  //   }
-  //   setLoginStatus(true);
-  // };
-
-  // useEffect(() => {
-  //   accountVerification(USER);
-  // }, [loginStatus]);
+  useEffect(() => {
+    if (loginStatus) {
+      setAccountEmail(userData.email);
+      setProfileImg(userData.image_source);
+    }
+  }, []);
 
   return (
     <>
       {loginStatus && (
         <S.NavProfileSection>
-          <Image src={profileImg} alt="loggedInProfileImg" />
+          <Image
+            width={28}
+            height={28}
+            src={profileImg}
+            alt="loggedInProfileImg"
+          />
           {accountEmail}
         </S.NavProfileSection>
       )}
