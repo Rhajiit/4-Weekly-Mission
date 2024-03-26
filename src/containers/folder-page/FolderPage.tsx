@@ -49,7 +49,6 @@ export default function FolderPageContainer({ userId = 1 }) {
     if (modalData) {
       setModalData(modalData);
     }
-    console.log(modalData);
     setIsModalOpened(!isModalOpened);
   };
 

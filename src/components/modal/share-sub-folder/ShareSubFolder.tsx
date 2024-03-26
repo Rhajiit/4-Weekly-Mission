@@ -1,6 +1,6 @@
 import * as S from "../modalLoader.style";
 import * as SS from "./ShareSubFolder.style";
-import shareKakao from "@/src/utils/kakaoTalkShare";
+import KakaoTalkShare from "@/src/utils/KakaoTalkShare";
 
 // Types
 import { ModalDataShareSubFolder } from "@/src/types/ModalFunctionDataTypes";
@@ -16,6 +16,8 @@ export default function ModalShareSubFolder({
 }: ModalDataShareSubFolder) {
   const BASE_URL = "https://animated-kitten-84730c.netlify.app";
   const query = `/shared/${modalData[1]}`;
+
+  const kakaoShare = KakaoTalkShare();
 
   const onClickFacebook = () => {
     window.open(
@@ -43,7 +45,9 @@ export default function ModalShareSubFolder({
         <SS.ShareButtonWrapper>
           <SS.ShareTypeButton
             onClick={() => {
-              shareKakao(BASE_URL, query);
+              if (window) {
+                kakaoShare!(BASE_URL, query);
+              }
             }}
             $shareType={"kakao"}
           >
