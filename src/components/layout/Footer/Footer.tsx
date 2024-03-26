@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import * as S from "./Footer.style";
-import FooterSocialList from "@/src/constant/footer-social-section";
+import FOOTER_SOCIAL_LIST from "@/src/constant/FOOTER_SOCIAL_LIST";
 
 /**
  *
@@ -16,7 +16,7 @@ export default function Footer() {
         <Link href="faq.html">FAQ</Link>
       </address>
       <S.FooterSocialListSection>
-        {FooterSocialList.map((item) => (
+        {FOOTER_SOCIAL_LIST.map((item) => (
           <Link key={item.imgAlt} href={item.imgUrl}>
             <Image width={20} height={20} src={item.imgSrc} alt={item.imgAlt} />
           </Link>

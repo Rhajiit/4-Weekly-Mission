@@ -1,4 +1,4 @@
-const FooterSocialList = [
+const FOOTER_SOCIAL_LIST = [
   {
     imgUrl: "https://www.facebook.com/",
     imgAlt: "to_Facebook",
@@ -21,4 +21,4 @@ const FooterSocialList = [
   },
 ];
 
-export default FooterSocialList;
+export default FOOTER_SOCIAL_LIST;
