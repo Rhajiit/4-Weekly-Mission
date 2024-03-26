@@ -7,7 +7,7 @@ const ProfileData = function () {
   const [loginStatus, setLoginStatus] = useState(false);
   const [accountEmail, setAccountEmail] = useState("");
   const [profileImg, setProfileIMg] = useState(
-    "/assets/cons/png/nav-profile-default.png"
+    "/assets/cons/svg/nav-profile-default.svg"
   );
 
   const USER = "users/1";

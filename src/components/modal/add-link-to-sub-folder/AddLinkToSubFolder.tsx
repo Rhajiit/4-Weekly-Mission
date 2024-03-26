@@ -4,6 +4,7 @@ import * as SS from "./AddLinkToSubFolder.style";
 
 // Type
 import FolderListDataType from "@/src/types/FolderListDataType";
+import Image from "next/image";
 
 interface ModalAddLinkToSubFolderPropType {
   modalData: [string, FolderListDataType[]];
@@ -46,7 +47,12 @@ export default function ModalAddLinkToSubFolder({
                 }개 링크`}</span>
               </h2>
               {item.name === SelectedFolder && (
-                <img src="/assets/icons/svg/check.svg" alt="CheckedFolder" />
+                <Image
+                  width={14}
+                  height={14}
+                  src="/assets/icons/svg/check.svg"
+                  alt="CheckedFolder"
+                />
               )}
             </SS.SubFolderDesireToAddLinkButton>
           ))}

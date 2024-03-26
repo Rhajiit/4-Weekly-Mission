@@ -15,6 +15,7 @@ import {
   ModalDataRemoveSubFolder,
   ModalDataShareSubFolder,
 } from "@/src/types/ModalFunctionDataTypes";
+import Image from "next/image";
 
 interface ModalLoaderPropType {
   modalType: string;
@@ -66,7 +67,12 @@ const ModalLoader = ({
     <S.ModalBackground>
       <S.ModalWrapper>
         <S.ModalCloseButton type="button" onClick={() => setIsOpened()}>
-          <img src="/assets/icons/png/close.png" alt="closeModal" />
+          <Image
+            width={24}
+            height={24}
+            src="/assets/icons/svg/close.svg"
+            alt="closeModal"
+          />
         </S.ModalCloseButton>
         {renderModal()}
       </S.ModalWrapper>

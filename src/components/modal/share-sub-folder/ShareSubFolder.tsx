@@ -4,6 +4,7 @@ import shareKakao from "@/src/utils/kakaoTalkShare";
 
 // Types
 import { ModalDataShareSubFolder } from "@/src/types/ModalFunctionDataTypes";
+import Image from "next/image";
 
 /**
  *
@@ -46,7 +47,12 @@ export default function ModalShareSubFolder({
             }}
             $shareType={"kakao"}
           >
-            <img src="Kakao.svg" alt={"linkToKakao"} />
+            <Image
+              width={18}
+              height={18}
+              src="/assets/icons/svg/Kakao.svg"
+              alt={"linkToKakao"}
+            />
           </SS.ShareTypeButton>
           카카오톡
         </SS.ShareButtonWrapper>
@@ -55,7 +61,12 @@ export default function ModalShareSubFolder({
             onClick={() => onClickFacebook()}
             $shareType="facebook"
           >
-            <img src="Facebook.svg" alt={"linkToFacebook"} />
+            <Image
+              width={18}
+              height={18}
+              src="/assets/icons/svg/facebook.svg"
+              alt={"linkToFacebook"}
+            />
           </SS.ShareTypeButton>
           페이스북
         </SS.ShareButtonWrapper>
@@ -64,7 +75,12 @@ export default function ModalShareSubFolder({
             onClick={() => handleCopyToClipboard()}
             $shareType="link"
           >
-            <img src="link.svg" alt={"linkCopy"} />
+            <Image
+              width={20}
+              height={21}
+              src="/assets/icons/svg/link.svg"
+              alt={"linkCopy"}
+            />
           </SS.ShareTypeButton>
           링크 복사
         </SS.ShareButtonWrapper>

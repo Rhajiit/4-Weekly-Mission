@@ -3,6 +3,7 @@ import * as S from "./KebabMenu.style";
 
 // Types
 import { LinkCardFunctionObjectType } from "@/src/types/ModalFunctionDataTypes";
+import Image from "next/image";
 interface KebabMenuPropType {
   items: LinkCardFunctionObjectType[];
   data: string;
@@ -24,7 +25,7 @@ export default function KebabMenu({ items, data }: KebabMenuPropType) {
   return (
     <S.KebabMenuOriginPosition>
       <S.KebabToggleButton type="button" onClick={handleKebabToggle}>
-        <img src="/assets/icons/svg/kebab.svg" alt="kebabButton" />
+        <Image fill src="/assets/icons/svg/kebab.svg" alt="kebabButton" />
       </S.KebabToggleButton>
       {kebabMenuPop && (
         <>

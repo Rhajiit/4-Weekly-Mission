@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import * as S from "./LinkSearchBar.style";
+import Image from "next/image";
 
 // Type
 interface LinkSearchBarPropType {
@@ -40,7 +41,11 @@ export default function LinkSearchBar({
         />
         {cardFilter && (
           <S.InputClearButton type="button" onClick={() => cardFilterClear()}>
-            <img src="/assets/icons/png/close.png" alt="InputClearButton" />
+            <Image
+              fill
+              src="/assets/icons/svg/close.svg"
+              alt="InputClearButton"
+            />
           </S.InputClearButton>
         )}
       </S.SearchBarWrapper>

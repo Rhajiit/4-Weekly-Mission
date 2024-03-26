@@ -4,6 +4,7 @@ import * as S from "./LinkSubFolder.style";
 // Type
 import FolderListDataType from "@/src/types/FolderListDataType";
 import { LinkFolderFunctionObjectType } from "@/src/types/ModalFunctionDataTypes";
+import Image from "next/image";
 type handleCurrentFolderChangeType = (id: number, name: string) => void;
 
 interface SubFolderListProp {
@@ -76,8 +77,8 @@ function HandleCurrentSubFolder({
           type="button"
           onClick={() => item.modalHandle(item.type, item.data)}
         >
+          <Image width={18} height={18} src={item.imgUrl} alt={item.imgAlt} />
           {item.buttonName}
-          <img src={item.imgUrl} alt={item.imgAlt} />
         </S.Button>
       ))}
     </S.SubFolderUtilList>
