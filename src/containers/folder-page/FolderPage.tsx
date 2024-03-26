@@ -42,28 +42,6 @@ export default function FolderPageContainer({ userId = 1 }) {
   const addLinkBarObserveRef = useRef<HTMLDivElement>(null);
   const footerObserveRef = useRef<HTMLDivElement>(null);
 
-  const addLinkBarObserver = new IntersectionObserver((entries: any) => {
-    entries.map((entry: any) => {
-      if (entry.target === addLinkBarObserveRef.current) {
-        if (entry.isIntersecting) {
-          setIsLinkAddBarVisible(true);
-        } else {
-          setIsLinkAddBarVisible(false);
-        }
-        return 0;
-      }
-
-      if (entry.target === footerObserveRef.current) {
-        if (entry.isIntersecting) {
-          setIsFooterVisible(true);
-        } else {
-          setIsFooterVisible(false);
-        }
-      }
-      return 0;
-    });
-  });
-
   const handleModalOpen = (modalType: string, modalData: any) => {
     // ModalData의 형식 통일 필요
     setModalData("");
@@ -143,6 +121,27 @@ export default function FolderPageContainer({ userId = 1 }) {
 
   // useEffect를 이용하여 IntersectionObserver을 등록
   useEffect(() => {
+    const addLinkBarObserver = new IntersectionObserver((entries: any) => {
+      entries.map((entry: any) => {
+        if (entry.target === addLinkBarObserveRef.current) {
+          if (entry.isIntersecting) {
+            setIsLinkAddBarVisible(true);
+          } else {
+            setIsLinkAddBarVisible(false);
+          }
+          return 0;
+        }
+
+        if (entry.target === footerObserveRef.current) {
+          if (entry.isIntersecting) {
+            setIsFooterVisible(true);
+          } else {
+            setIsFooterVisible(false);
+          }
+        }
+        return 0;
+      });
+    });
     addLinkBarObserver.observe(addLinkBarObserveRef.current!);
     addLinkBarObserver.observe(footerObserveRef.current!);
     // eslint-disable-next-line react-hooks/exhaustive-deps
