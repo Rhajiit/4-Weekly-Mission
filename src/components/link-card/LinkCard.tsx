@@ -1,11 +1,13 @@
-import * as S from "./LinkCardCollection.style";
+import * as S from "./LinkCard.style";
+
+import Link from "next/link";
+import Image from "next/image";
 import KebabMenu from "@/src/components/kebab/KebabMenu";
 import timePassedFromCreate from "@/src/utils/timePassedFromCreate";
+
 import UserLinkDataType from "@/src/types/UserLinkDataType";
 import { LinkCardFunctionObjectType } from "@/src/types/ModalFunctionDataTypes";
-import Link from "next/link";
-
-interface FolderCardDataPropType {
+interface LinkCardDataPropType {
   contents: UserLinkDataType;
   favorite: boolean;
   kebab?: LinkCardFunctionObjectType[];
@@ -18,7 +20,11 @@ interface FolderCardDataPropType {
  * @param { FolderKebabActionArray } kebab 케밥 메뉴에 대한 동작들이 포함된 컴포넌트입니다.
  * @returns 링크 카드의 세부 사항을 표현하는 컴포넌트입니다.
  */
-function FolderCard({ contents, favorite, kebab }: FolderCardDataPropType) {
+export default function LinkCard({
+  contents,
+  favorite,
+  kebab,
+}: LinkCardDataPropType) {
   const {
     id,
     created_at,
@@ -58,44 +64,14 @@ function FolderCard({ contents, favorite, kebab }: FolderCardDataPropType) {
       {kebab && <KebabMenu items={kebab} data={url} />}
       {favorite && (
         <S.FavorStarButton type="button">
-          <img
+          <Image
+            width={34}
+            height={34}
             src="/assets/icons/svg/favorite-star-blank.svg"
             alt="FavoriteButton"
           />
         </S.FavorStarButton>
       )}
     </S.CardBoxOriginPosition>
-  );
-}
-
-interface LinkCardCollectionPropType {
-  items: UserLinkDataType[];
-  favorite?: boolean;
-  kebab?: LinkCardFunctionObjectType[];
-}
-
-/**
- *
- * @param { FolderCardData } items 카드에 대한 전반적인 내용이 담긴 요소입니다.
- * @param { boolean } favorite 현재 카드의 즐겨찾기 여부를 표시하는 요소입니다.
- * @param { FolderKebabActionArray } kebab 케밥 메뉴에 대한 동작들이 포함된 컴포넌트입니다.
- * @returns 링크 카드의 그리드 배열을 구현하는 단순 ui 배치형 컴포넌트입니다.
- */
-export default function LinkCardCollection({
-  items,
-  favorite = false,
-  kebab,
-}: LinkCardCollectionPropType) {
-  return (
-    <S.CardGridLayout>
-      {items.map((item) => (
-        <FolderCard
-          key={item.id}
-          contents={item}
-          favorite={favorite}
-          kebab={kebab}
-        />
-      ))}
-    </S.CardGridLayout>
   );
 }

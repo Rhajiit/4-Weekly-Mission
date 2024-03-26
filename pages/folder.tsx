@@ -7,8 +7,8 @@ import {
   HandleCurrentSubFolder,
   SubFoldersList,
 } from "@/src/containers/folder-page/sub-folder-button-list-presenter/LinkSubFolder";
-import LinkCardCollection from "@/src/components/link-card/link-card-collection/LinkCardCollection";
-import LinkSearchBar from "@/src/components/link-card/link-search-form/LinkSearchBar";
+import LinkCardListLayout from "@/src/components/link-card/link-card-layout/LinkCardListLayout";
+import LinkSearchBar from "@/src/components/link-card/link-card-search-form/LinkSearchBar";
 import ModalLoader from "@/src/components/modal/modalLoader";
 import HeadNav from "@/src/components/layout/HeadNav/HeadNav";
 
@@ -84,7 +84,7 @@ export default function Folder({ userId = 1 }) {
           </S.EmptySpace>
         ) : (
           <>
-            <LinkCardCollection
+            <LinkCardListLayout
               items={items}
               favorite={true}
               kebab={kebabActions}

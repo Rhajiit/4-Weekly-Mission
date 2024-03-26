@@ -3,8 +3,8 @@ import * as S from "@/styles/pages/share.style";
 // Components
 import HeadNav from "@/src/components/layout/HeadNav/HeadNav";
 import ShareFolderProfile from "@/src/containers/share-page/profile/SharePageProfile";
-import LinkSearchBar from "@/src/components/link-card/link-search-form/LinkSearchBar";
-import LinkCardCollection from "@/src/components/link-card/link-card-collection/LinkCardCollection";
+import LinkSearchBar from "@/src/components/link-card/link-card-search-form/LinkSearchBar";
+import LinkCardListLayout from "@/src/components/link-card/link-card-layout/LinkCardListLayout";
 import SharePageContainer from "@/src/containers/share-page/SharePage";
 
 export default function Share() {
@@ -16,7 +16,7 @@ export default function Share() {
       <ShareFolderProfile />
       <S.SharePageMain>
         <LinkSearchBar cardFilter={cardFilter} setCardFilter={setCardFilter} />
-        <LinkCardCollection items={items} />
+        <LinkCardListLayout items={items} />
       </S.SharePageMain>
     </>
   );
