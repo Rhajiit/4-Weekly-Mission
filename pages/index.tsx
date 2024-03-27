@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { acceptDataFromApi } from "@/src/utils/api";
 import { useSetCurrentUser } from "@/src/context/UserContext";
 import HeadNav from "@/src/components/layout/HeadNav/HeadNav";
+import * as S from "@/styles/pages/index.style";
 
 const USER = "users/1";
 
@@ -35,23 +36,21 @@ export default function Home() {
         <HeadNav />
         {/* 여기서부터 레거시 코드입니다.*/}
 
-        <header>
-          <div>
-            <h1>
-              <span className="purplePinkGradation">세상의 모든 정보</span>를
-              <br />
-              쉽게 저장하고 관리해 보세요
-            </h1>
-            <Link href={"/folder"}>
-              <h2 className="lb-h2-semibold">FolderPage로 이동</h2>
-            </Link>
-            <Link href={"/share"}>
-              <h2 className="lb-h2-semibold">SharePage로 이동</h2>
-            </Link>
-          </div>
-        </header>
+        <S.Header>
+          <h1>
+            <span className="purplePinkGradation">세상의 모든 정보</span>를
+            <br />
+            쉽게 저장하고 관리해 보세요
+          </h1>
+          <Link href={"/folder"}>
+            <h2 className="lb-h2-semibold">FolderPage로 이동</h2>
+          </Link>
+          <Link href={"/share"}>
+            <h2 className="lb-h2-semibold">SharePage로 이동</h2>
+          </Link>
+        </S.Header>
 
-        <div className="landingArticleBackgroundDecoration">
+        <S.SectionWrapper>
           <article>
             <h2>
               <span className="redBlueGradation">원하는 링크</span>를 저장하세요
@@ -85,7 +84,7 @@ export default function Home() {
             </h2>
             <p>중요한 정보들을 검색으로 쉽게 찾아보세요.</p>
           </article>
-        </div>
+        </S.SectionWrapper>
       </main>
     </>
   );

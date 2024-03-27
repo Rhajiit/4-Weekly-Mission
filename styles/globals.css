@@ -29,6 +29,44 @@ html {
   );
 }
 
+/* 랜딩페이지 텍스트 그라데이션 */
+
+.purplePinkGradation {
+  background: linear-gradient(91deg, #6d6afe 17.28%, #ff9f9f 74.98%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+} /*세상의 모든 정보*/
+
+.redBlueGradation {
+  background: linear-gradient(96deg, #fe8a8a 1.72%, #a4ceff 74.97%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+} /*원하는 링크*/
+
+.orangeBlueGradation {
+  background: linear-gradient(277deg, #6fbaff 59.22%, #ffd88b 93.66%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+} /*관리*/
+
+.blueWhiteGradation {
+  background: linear-gradient(
+    99deg,
+    #6d7ccd 19.76%,
+    rgba(82, 136, 133, 0.22) 52.69%
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+} /*공유*/
+
+.bluePinkGradation {
+  background: linear-gradient(271deg, #fe578f -9.84%, #68e8f9 107.18%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+} /*검색*/
+
+/*랜딩 페이지 색상 팔레트 끝*/
+
 body {
   background-color: var(--lb-background);
 }
