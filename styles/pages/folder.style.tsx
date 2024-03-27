@@ -1,10 +1,15 @@
 import styled from "styled-components";
 
-export const FolderPageMain = styled.main`
+export const MainWrapper = styled.main`
+  background-color: var(--lb-white);
+  padding: 4rem 0 6rem;
+`;
+
+export const FolderPageSection = styled.section`
   position: relative;
   max-width: 106rem;
-  margin: 0 auto 6rem;
-  padding-top: 4rem;
+  margin : 0 auto;
+  
   
 
   @media (max-width: 1124px) {

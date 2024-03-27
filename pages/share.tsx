@@ -14,10 +14,15 @@ export default function Share() {
     <>
       <HeadNav />
       <ShareFolderProfile />
-      <S.SharePageMain>
-        <LinkSearchBar cardFilter={cardFilter} setCardFilter={setCardFilter} />
-        <LinkCardListLayout items={items} />
-      </S.SharePageMain>
+      <S.MainWrapper>
+        <S.SharePageSection>
+          <LinkSearchBar
+            cardFilter={cardFilter}
+            setCardFilter={setCardFilter}
+          />
+          <LinkCardListLayout items={items} />
+        </S.SharePageSection>
+      </S.MainWrapper>
     </>
   );
 }

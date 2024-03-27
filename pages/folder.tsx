@@ -56,42 +56,47 @@ export default function Folder({ userId = 1 }) {
         $linkAddBarMargin={isLinkAddBarHidden}
         ref={addLinkBarObserveRef}
       />
-      <S.FolderPageMain>
-        <S.SubFolderUtil>
-          <SubFoldersList
-            subFolderData={subFolderList}
-            handleCurrentFolderChange={handleCurrentFolderChange}
-          />
-          <S.AddFolderButton
-            className="add-sub-folder"
-            onClick={() => handleModalOpen("addSubFolder", "")}
-          >
-            폴더 추가 <S.AddImage />
-          </S.AddFolderButton>
-        </S.SubFolderUtil>
-        <S.SubFolderUtil>
-          <S.CurrentSubFolder className="lb-h3-semibold">
-            {currentFolderName}
-          </S.CurrentSubFolder>
-          {!isCurrentFolderAll && (
-            <HandleCurrentSubFolder subFolderUtils={subFolderAction} />
-          )}
-        </S.SubFolderUtil>
-        <LinkSearchBar cardFilter={cardFilter} setCardFilter={setCardFilter} />
-        {isEmptyResponse || isLoading ? (
-          <S.EmptySpace className="lb-body1-regular">
-            {isLoading ? "불러오는 중입니다..." : "저장된 링크가 없습니다."}
-          </S.EmptySpace>
-        ) : (
-          <>
-            <LinkCardListLayout
-              items={items}
-              favorite={true}
-              kebab={kebabActions}
+      <S.MainWrapper>
+        <S.FolderPageSection>
+          <S.SubFolderUtil>
+            <SubFoldersList
+              subFolderData={subFolderList}
+              handleCurrentFolderChange={handleCurrentFolderChange}
             />
-          </>
-        )}
-      </S.FolderPageMain>
+            <S.AddFolderButton
+              className="add-sub-folder"
+              onClick={() => handleModalOpen("addSubFolder", "")}
+            >
+              폴더 추가 <S.AddImage />
+            </S.AddFolderButton>
+          </S.SubFolderUtil>
+          <S.SubFolderUtil>
+            <S.CurrentSubFolder className="lb-h3-semibold">
+              {currentFolderName}
+            </S.CurrentSubFolder>
+            {!isCurrentFolderAll && (
+              <HandleCurrentSubFolder subFolderUtils={subFolderAction} />
+            )}
+          </S.SubFolderUtil>
+          <LinkSearchBar
+            cardFilter={cardFilter}
+            setCardFilter={setCardFilter}
+          />
+          {isEmptyResponse || isLoading ? (
+            <S.EmptySpace className="lb-body1-regular">
+              {isLoading ? "불러오는 중입니다..." : "저장된 링크가 없습니다."}
+            </S.EmptySpace>
+          ) : (
+            <>
+              <LinkCardListLayout
+                items={items}
+                favorite={true}
+                kebab={kebabActions}
+              />
+            </>
+          )}
+        </S.FolderPageSection>
+      </S.MainWrapper>
       <S.FooterStartPoint ref={footerObserveRef} />
     </>
   );

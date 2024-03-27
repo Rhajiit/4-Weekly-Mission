@@ -32,13 +32,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.png" />
       </Head>
       <main>
-        <Link href={"/folder"}>
-          <h2 className="lb-h2-semibold">FolderPage로 이동</h2>
-        </Link>
-        <Link href={"/share"}>
-          <h2 className="lb-h2-semibold">SharePage로 이동</h2>
-        </Link>
-
         <HeadNav />
 
         <header>
@@ -48,9 +41,12 @@ export default function Home() {
               <br />
               쉽게 저장하고 관리해 보세요
             </h1>
-            <a href="html/signup.html" className="buttonBasic">
-              링크 추가하기
-            </a>
+            <Link href={"/folder"}>
+              <h2 className="lb-h2-semibold">FolderPage로 이동</h2>
+            </Link>
+            <Link href={"/share"}>
+              <h2 className="lb-h2-semibold">SharePage로 이동</h2>
+            </Link>
           </div>
         </header>
 
