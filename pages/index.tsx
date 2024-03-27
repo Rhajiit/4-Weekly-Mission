@@ -33,6 +33,7 @@ export default function Home() {
       </Head>
       <main>
         <HeadNav />
+        {/* 여기서부터 레거시 코드입니다.*/}
 
         <header>
           <div>
