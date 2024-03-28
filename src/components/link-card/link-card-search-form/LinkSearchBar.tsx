@@ -5,7 +5,7 @@ import Image from "next/image";
 // Type
 interface LinkSearchBarPropType {
   cardFilter: string;
-  setCardFilter: (arg: string) => void;
+  setCardFilter: (filter: string) => void;
 }
 
 /**
