@@ -1,7 +1,6 @@
 import * as S from "../modalLoader.style";
 import * as SS from "./ShareSubFolder.style";
-import KakaoTalkShare from "@/src/utils/KakaoTalkShare";
-
+import kakaoTalkShare from "@/src/utils/KakaoTalkShare";
 // Types
 import { ModalDataShareSubFolder } from "@/src/types/ModalFunctionDataTypes";
 import Image from "next/image";
@@ -17,7 +16,7 @@ export default function ModalShareSubFolder({
   const BASE_URL = "https://animated-kitten-84730c.netlify.app";
   const query = `/shared/${modalData[1]}`;
 
-  const kakaoShare = KakaoTalkShare();
+  const kakaoShare = kakaoTalkShare();
 
   const onClickFacebook = () => {
     window.open(

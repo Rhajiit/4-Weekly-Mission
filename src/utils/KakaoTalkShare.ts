@@ -1,4 +1,4 @@
-export default function KakaoTalkShare() {
+export default function kakaoTalkShare() {
   if (typeof window !== undefined) {
     // 배포한 자신의 사이트
     const { Kakao }: any = window as any;
