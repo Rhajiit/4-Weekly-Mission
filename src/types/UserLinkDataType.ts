@@ -1,4 +1,4 @@
-interface UserLinkDataType {
+export interface UserLinkRawDataType {
   id: number;
   created_at?: string;
   createdAt?: string;
@@ -11,4 +11,13 @@ interface UserLinkDataType {
   folder_id?: number;
 }
 
-export default UserLinkDataType;
+export interface UserLinkDataType {
+  id: number;
+  createdAt: string;
+  updatedAt: string;
+  url: string;
+  title: string;
+  description: string;
+  imageSource: string;
+  folder_id: number;
+}

@@ -5,10 +5,10 @@ import Image from "next/image";
 import KebabMenu from "@/src/components/kebab/KebabMenu";
 import timePassedFromCreate from "@/src/utils/timePassedFromCreate";
 
-import UserLinkDataType from "@/src/types/UserLinkDataType";
+import UserLinkRawDataType from "@/src/types/UserLinkDataType";
 import { LinkCardFunctionObjectType } from "@/src/types/ModalFunctionDataTypes";
 interface LinkCardDataPropType {
-  contents: UserLinkDataType;
+  contents: UserLinkRawDataType;
   favorite: boolean;
   kebab?: LinkCardFunctionObjectType[];
 }

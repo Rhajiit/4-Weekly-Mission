@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { acceptDataFromApi } from "@/src/utils/api";
 
 // Types
-import UserLinkDataType from "@/src/types/UserLinkDataType";
+import UserLinkRawDataType from "@/src/types/UserLinkDataType";
 
 /**
  *
@@ -10,8 +10,8 @@ import UserLinkDataType from "@/src/types/UserLinkDataType";
  * @returns
  */
 export default function SharePageContainer() {
-  const [originItems, setOriginItems] = useState<UserLinkDataType[]>([]);
-  const [items, setItems] = useState<UserLinkDataType[]>([]);
+  const [originItems, setOriginItems] = useState<UserLinkRawDataType[]>([]);
+  const [items, setItems] = useState<UserLinkRawDataType[]>([]);
   const [cardFilter, setCardFilter] = useState<string>("");
 
   const handleShareLoad = async () => {
@@ -33,7 +33,7 @@ export default function SharePageContainer() {
     }
     setItems(
       originItems.filter(
-        (item: UserLinkDataType) =>
+        (item: UserLinkRawDataType) =>
           item.title.includes(cardFilter) ||
           item.description.includes(cardFilter) ||
           item.url.includes(cardFilter)

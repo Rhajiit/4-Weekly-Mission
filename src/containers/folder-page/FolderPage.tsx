@@ -3,7 +3,7 @@ import useFetch from "@/src/hooks/useFetch";
 import { acceptDataFromApi } from "@/src/utils/api";
 
 // Types
-import UserLinkDataType from "@/src/types/UserLinkDataType";
+import UserLinkRawDataType from "@/src/types/UserLinkDataType";
 import {
   LinkCardFunctionObjectType,
   LinkFolderFunctionObjectType,
@@ -28,8 +28,8 @@ export default function FolderPageContainer(id: number) {
     `users/${id}/links`
   );
   const [currentFolderId, setCurrentFolderId] = useState(0);
-  const [originItems, setOriginItems] = useState<UserLinkDataType[]>([]);
-  const [items, setItems] = useState<UserLinkDataType[]>([]);
+  const [originItems, setOriginItems] = useState<UserLinkRawDataType[]>([]);
+  const [items, setItems] = useState<UserLinkRawDataType[]>([]);
   const [isModalOpened, setIsModalOpened] = useState(false);
   const [currentModalType, setCurrentModalType] = useState("removeLink");
   const [modalData, setModalData] = useState("");
@@ -59,7 +59,7 @@ export default function FolderPageContainer(id: number) {
     if (data.length === 0) {
       setIsEmptyResponse(true);
     }
-    data.map((items: UserLinkDataType) => {
+    data.map((items: UserLinkRawDataType) => {
       items.description = items.description ? items.description : "";
       items.title = items.title ? items.title : "";
     });
@@ -109,7 +109,7 @@ export default function FolderPageContainer(id: number) {
     }
     setItems(
       originItems.filter(
-        (item: UserLinkDataType) =>
+        (item: UserLinkRawDataType) =>
           item.title.toLowerCase().includes(cardFilter.toLowerCase()) ||
           item.description.toLowerCase().includes(cardFilter.toLowerCase()) ||
           item.url.toLowerCase().includes(cardFilter.toLowerCase())
