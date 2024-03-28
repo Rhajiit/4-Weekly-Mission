@@ -22,7 +22,7 @@ export default function FolderLinkAddBar({
 }: FolderLinkAddBarPropType) {
   const addLinkInputRef = useRef<HTMLInputElement>(null);
 
-  const handleLinkAdd: HandleLinkAddType = (e) => {
+  const handleLinkAdd: HandleLinkAddType = (e: FormEvent) => {
     e.preventDefault();
     if (addLinkInputRef.current!.value === "") return;
     handleSubmit("addLinkToFolder", [
