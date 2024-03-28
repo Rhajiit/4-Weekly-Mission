@@ -19,6 +19,6 @@ const FOOTER_SOCIAL_LIST = [
     imgAlt: "to_Instagram",
     imgSrc: "/assets/icons/png/footer_instagram.png",
   },
-];
+] as const;
 
 export default FOOTER_SOCIAL_LIST;
