@@ -13,6 +13,7 @@ import ModalLoader from "@/src/components/modal/modalLoader";
 import HeadNav from "@/src/components/layout/HeadNav/HeadNav";
 
 export default function Folder() {
+  const id = 1;
   const {
     isModalOpened,
     currentModalType,
@@ -33,7 +34,7 @@ export default function Folder() {
     kebabActions,
     footerObserveRef,
     subFolderAction,
-  } = FolderPageContainer();
+  } = FolderPageContainer(id);
 
   return (
     <>

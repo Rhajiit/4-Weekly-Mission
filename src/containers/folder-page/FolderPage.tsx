@@ -17,9 +17,7 @@ type handleCurrentFolderChangeType = (id: number, name: string) => void;
  * @reminder handleModalOpen의 타입에 일관성이 없어 any타입을 지정해 두었음. 나중에 수정 필요.
  * @returns
  */
-export default function FolderPageContainer() {
-  const { id } = useCurrentUser();
-
+export default function FolderPageContainer(id: number) {
   const [isCurrentFolderAll, setIsCurrentFolderAll] = useState(true);
   const [currentFolderName, setCurrentFolderName] = useState("전체");
   const [subFolderList, setSubFolderList] = useState<FolderListDataType[]>([]);
