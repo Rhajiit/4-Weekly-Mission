@@ -9,15 +9,17 @@ import {
   LinkFolderFunctionObjectType,
 } from "@/src/types/ModalFunctionDataTypes";
 import FolderListDataType from "@/src/types/FolderListDataType";
+import { useCurrentUser } from "@/src/context/UserContext";
 type handleCurrentFolderChangeType = (id: number, name: string) => void;
 
 /**
- * @param userId 상위 페이지로부터 전달 받을 userId 정보
  * @description 폴더 페이지 컴포넌트
  * @reminder handleModalOpen의 타입에 일관성이 없어 any타입을 지정해 두었음. 나중에 수정 필요.
  * @returns
  */
-export default function FolderPageContainer({ userId = 1 }) {
+export default function FolderPageContainer() {
+  const { id } = useCurrentUser();
+
   const [isCurrentFolderAll, setIsCurrentFolderAll] = useState(true);
   const [currentFolderName, setCurrentFolderName] = useState("전체");
   const [subFolderList, setSubFolderList] = useState<FolderListDataType[]>([]);
@@ -25,7 +27,7 @@ export default function FolderPageContainer({ userId = 1 }) {
   const [isLoading, error, acceptDataFromApiAsync] =
     useFetch(acceptDataFromApi);
   const [currentFolderQuery, setCurrentFolderQuery] = useState(
-    `users/${userId}/links`
+    `users/${id}/links`
   );
   const [currentFolderId, setCurrentFolderId] = useState(0);
   const [originItems, setOriginItems] = useState<UserLinkDataType[]>([]);
@@ -74,7 +76,7 @@ export default function FolderPageContainer({ userId = 1 }) {
   ) => {
     setCurrentFolderName(name);
     setCurrentFolderQuery(
-      `users/${userId}/links${id !== 0 ? `?folderId=${id}` : ""}`
+      `users/${id}/links${id !== 0 ? `?folderId=${id}` : ""}`
     );
     setCurrentFolderId(id);
 
@@ -92,10 +94,10 @@ export default function FolderPageContainer({ userId = 1 }) {
   };
 
   useEffect(() => {
-    acceptSubFolderList(`users/${userId}/folders`);
-    handleShareLoad(`users/${userId}/links`);
+    acceptSubFolderList(`users/${id}/folders`);
+    handleShareLoad(`users/${id}/links`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userId]);
+  }, [id]);
 
   useEffect(() => {
     handleShareLoad(currentFolderQuery);

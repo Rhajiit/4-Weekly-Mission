@@ -12,7 +12,7 @@ import LinkSearchBar from "@/src/components/link-card/link-card-search-form/Link
 import ModalLoader from "@/src/components/modal/modalLoader";
 import HeadNav from "@/src/components/layout/HeadNav/HeadNav";
 
-export default function Folder({ userId = 1 }) {
+export default function Folder() {
   const {
     isModalOpened,
     currentModalType,
@@ -33,7 +33,7 @@ export default function Folder({ userId = 1 }) {
     kebabActions,
     footerObserveRef,
     subFolderAction,
-  } = FolderPageContainer({ userId: userId });
+  } = FolderPageContainer();
 
   return (
     <>
