@@ -1,6 +1,7 @@
 import * as S from "../modalLoader.style";
 import * as SS from "./ShareSubFolder.style";
 import kakaoTalkShare from "@/src/utils/kakaoTalkShare";
+
 // Types
 import { ModalDataShareSubFolder } from "@/src/types/ModalFunctionDataTypes";
 import Image from "next/image";
