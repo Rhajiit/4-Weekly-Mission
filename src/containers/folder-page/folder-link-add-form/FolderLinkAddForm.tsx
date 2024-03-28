@@ -1,5 +1,5 @@
 import { FormEvent, useRef } from "react";
-import * as S from "./FolderLinkAddBar.style";
+import * as S from "./FolderLinkAddForm.style";
 
 // Type
 import { ModalDataAddLinkToSubFolder } from "@/src/types/ModalFunctionDataTypes";

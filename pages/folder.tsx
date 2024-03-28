@@ -2,7 +2,7 @@ import FolderPageContainer from "@/src/containers/folder-page/FolderPage";
 import * as S from "@/styles/pages/folder.style";
 
 // Components
-import FolderLinkAddBar from "@/src/containers/folder-page/folder-link-add-form/FolderLinkAddBar";
+import FolderLinkAddForm from "@/src/containers/folder-page/folder-link-add-form/FolderLinkAddForm";
 import {
   HandleCurrentSubFolder,
   SubFoldersList,
@@ -48,7 +48,7 @@ export default function Folder() {
         />
       )}
       <HeadNav isSticky={false} />
-      <FolderLinkAddBar
+      <FolderLinkAddForm
         handleSubmit={handleModalOpen}
         subFolderList={subFolderList}
         isHidden={isLinkAddBarHidden}
