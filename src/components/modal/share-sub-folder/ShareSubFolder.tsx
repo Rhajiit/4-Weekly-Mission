@@ -1,6 +1,6 @@
 import * as S from "../modalLoader.style";
 import * as SS from "./ShareSubFolder.style";
-import kakaoTalkShare from "@/src/utils/KakaoTalkShare";
+import kakaoTalkShare from "@/src/utils/kakaoTalkShare";
 // Types
 import { ModalDataShareSubFolder } from "@/src/types/ModalFunctionDataTypes";
 import Image from "next/image";
@@ -53,7 +53,7 @@ export default function ModalShareSubFolder({
             <Image
               width={18}
               height={18}
-              src="/assets/icons/svg/Kakao.svg"
+              src="/assets/icons/svg/kakao.svg"
               alt={"linkToKakao"}
             />
           </SS.ShareTypeButton>
