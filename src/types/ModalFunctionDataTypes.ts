@@ -1,3 +1,5 @@
+import FolderListDataType from "./FolderListDataType";
+
 export interface LinkCardFunctionObjectType {
   buttonName: string;
   type: string;
