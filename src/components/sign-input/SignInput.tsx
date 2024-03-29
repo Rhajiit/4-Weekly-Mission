@@ -1,5 +1,5 @@
 import Image from "next/image";
-import * as S from "@/src/components/input/Input.style";
+import * as S from "@/src/components/sign-input/SignInput.style";
 import { RefObject, useState } from "react";
 import {
   INPUT_TYPE,
