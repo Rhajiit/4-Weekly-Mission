@@ -14,6 +14,7 @@ export default function SharePageContainer() {
   const [originItems, setOriginItems] = useState<UserLinkDataType[]>([]);
   const [items, setItems] = useState<UserLinkDataType[]>([]);
   const [cardFilter, setCardFilter] = useState<string>("");
+  const [isEmptyResponse, setIsEmptyResponse] = useState(false);
 
   const handleShareLoad = async () => {
     const {
@@ -21,6 +22,9 @@ export default function SharePageContainer() {
     } = await acceptDataFromApi("sample/folder");
     setOriginItems(refineLinkData(links));
     setItems(refineLinkData(links));
+    if (links.length === 0) {
+      setIsEmptyResponse(true);
+    }
   };
 
   useEffect(() => {
@@ -43,5 +47,5 @@ export default function SharePageContainer() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cardFilter]);
 
-  return { cardFilter, items, setCardFilter };
+  return { cardFilter, items, isEmptyResponse, setCardFilter };
 }

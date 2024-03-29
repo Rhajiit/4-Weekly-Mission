@@ -8,7 +8,8 @@ import LinkCardListLayout from "@/src/components/link-card/link-card-layout/Link
 import SharePageContainer from "@/src/containers/share-page/SharePage";
 
 export default function Share() {
-  const { cardFilter, items, setCardFilter } = SharePageContainer();
+  const { cardFilter, items, isEmptyResponse, setCardFilter } =
+    SharePageContainer();
 
   return (
     <>
@@ -20,7 +21,7 @@ export default function Share() {
             cardFilter={cardFilter}
             setCardFilter={setCardFilter}
           />
-          <LinkCardListLayout items={items} />
+          <LinkCardListLayout items={items} isEmptyResponse={isEmptyResponse} />
         </S.SharePageSection>
       </S.MainWrapper>
     </>

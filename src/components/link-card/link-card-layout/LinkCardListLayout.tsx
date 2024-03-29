@@ -10,7 +10,7 @@ interface LinkCardListLayoutPropType {
   favorite?: boolean;
   kebab?: LinkCardFunctionObjectType[];
   isEmptyResponse: boolean;
-  isLoading: boolean;
+  isLoading?: boolean;
 }
 
 /**
