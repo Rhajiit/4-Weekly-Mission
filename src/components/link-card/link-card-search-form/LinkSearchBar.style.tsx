@@ -22,7 +22,7 @@ export const Input = styled.input`
 
 export const Label = styled.label`
   position: absolute;
-  background-image: url("assets/icons/svg/Search.svg");
+  background-image: url("assets/icons/svg/search.svg");
   width: 1.6rem;
   height: 1.6rem;
   margin-left: 1.6rem;
