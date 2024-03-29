@@ -9,6 +9,8 @@ interface LinkCardListLayoutPropType {
   items: UserLinkDataType[];
   favorite?: boolean;
   kebab?: LinkCardFunctionObjectType[];
+  isEmptyResponse: boolean;
+  isLoading: boolean;
 }
 
 /**
@@ -22,17 +24,26 @@ export default function LinkCardListLayout({
   items,
   favorite = false,
   kebab,
+  isEmptyResponse,
+  isLoading,
 }: LinkCardListLayoutPropType) {
   return (
-    <S.CardGridLayout>
-      {items.map((item) => (
-        <LinkCard
-          key={item.id}
-          contents={item}
-          favorite={favorite}
-          kebab={kebab}
-        />
-      ))}
-    </S.CardGridLayout>
+    <>
+      {(isEmptyResponse || isLoading) && (
+        <S.EmptySpace className="lb-body1-regular">
+          {isLoading ? "불러오는 중입니다..." : "저장된 링크가 없습니다."}
+        </S.EmptySpace>
+      )}
+      <S.CardGridLayout>
+        {items.map((item) => (
+          <LinkCard
+            key={item.id}
+            contents={item}
+            favorite={favorite}
+            kebab={kebab}
+          />
+        ))}
+      </S.CardGridLayout>
+    </>
   );
 }

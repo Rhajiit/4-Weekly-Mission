@@ -68,10 +68,19 @@ export default function FolderPageContainer(id: number) {
     setItems(refineLinkData(data));
   };
 
-  const handleCurrentFolderChange: handleCurrentFolderChangeType = (
+  const emptyResponseRecognize = (items: UserLinkDataType[]) => {
+    if (items.length === 0) {
+      setIsEmptyResponse(true);
+    } else {
+      setIsEmptyResponse(false);
+    }
+  };
+
+  const handleCurrentFolderChange: handleCurrentFolderChangeType = async (
     id,
     name
   ) => {
+    setIsEmptyResponse(false);
     setCurrentFolderName(name);
     setCurrentFolderQuery(
       `users/${id}/links${id !== 0 ? `?folderId=${id}` : ""}`
@@ -80,11 +89,16 @@ export default function FolderPageContainer(id: number) {
 
     if (id === 0) {
       setIsCurrentFolderAll(true);
+      setItems(originItems);
       return;
     }
-
+    setItems(originItems.filter((link) => link.id === id));
     setIsCurrentFolderAll(false);
   };
+
+  useEffect(() => {
+    emptyResponseRecognize(items);
+  }, [items]);
 
   const acceptSubFolderList = async (requestQuery: string) => {
     const { data } = await acceptDataFromApi(requestQuery);
@@ -96,11 +110,6 @@ export default function FolderPageContainer(id: number) {
     handleShareLoad(`users/${id}/links`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
-
-  useEffect(() => {
-    handleShareLoad(currentFolderQuery);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentFolderQuery]);
 
   useEffect(() => {
     if (cardFilter === "") {
@@ -120,8 +129,8 @@ export default function FolderPageContainer(id: number) {
 
   // useEffect를 이용하여 IntersectionObserver을 등록
   useEffect(() => {
-    const addLinkBarObserver = new IntersectionObserver((entries: any) => {
-      entries.map((entry: any) => {
+    const addLinkBarObserver = new IntersectionObserver((entries) => {
+      entries.map((entry) => {
         if (entry.target === addLinkBarObserveRef.current) {
           if (entry.isIntersecting) {
             setIsLinkAddBarVisible(true);

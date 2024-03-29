@@ -83,19 +83,17 @@ export default function Folder() {
             cardFilter={cardFilter}
             setCardFilter={setCardFilter}
           />
-          {isEmptyResponse || isLoading ? (
-            <S.EmptySpace className="lb-body1-regular">
-              {isLoading ? "불러오는 중입니다..." : "저장된 링크가 없습니다."}
-            </S.EmptySpace>
-          ) : (
+          {
             <>
               <LinkCardListLayout
                 items={items}
                 favorite={true}
                 kebab={kebabActions}
+                isEmptyResponse={isEmptyResponse}
+                isLoading={isLoading}
               />
             </>
-          )}
+          }
         </S.FolderPageSection>
       </S.MainWrapper>
       <S.FooterStartPoint ref={footerObserveRef} />
