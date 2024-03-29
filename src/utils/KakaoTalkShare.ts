@@ -6,9 +6,8 @@ export default function kakaoTalkShare() {
     Kakao.cleanup();
     // 자신의 js 키를 넣어준다.
     Kakao.init(process.env.NEXT_PUBLIC_KAKAO_API_KEY);
-    // 잘 적용되면 true 를 뱉는다.
-    // console.log(Kakao.isInitialized());
-    const kakaoShare = (url: any, query = "") => {
+
+    const kakaoShare = (url: string, query = "") => {
       Kakao.Share.sendDefault({
         objectType: "feed",
         content: {
