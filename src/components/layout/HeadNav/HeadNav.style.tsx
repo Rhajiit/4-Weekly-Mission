@@ -18,6 +18,10 @@ export const NavWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
 
+  a {
+    text-decoration: none;
+  }
+
   @media (max-width: 1199px) {
     width: 100%;
     padding: 2rem 3.2rem;

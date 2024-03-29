@@ -14,6 +14,5 @@ export const PrimaryButton = styled.button`
   background: var(--gra-primary-to-sky-blue);
   justify-content: center;
   align-items: center;
-  text-decoration: none;
   line-height: 100%;
 `;
