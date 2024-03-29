@@ -25,15 +25,8 @@ export default function LinkCard({
   favorite,
   kebab,
 }: LinkCardDataPropType) {
-  const {
-    id,
-
-    createdAt,
-    description,
-    imageSource,
-
-    url,
-  } = contents;
+  const { id, createdAt, description, imageSource, url } = contents;
+  if (kebab) kebab.map((item) => (item.data!.target = url));
 
   const cardImage = imageSource;
   const timeConversion = new Date(createdAt); // sampleApi와 userApi의 양식이 달라 호환시키기 위함

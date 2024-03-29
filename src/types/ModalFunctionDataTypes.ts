@@ -22,9 +22,6 @@ export interface LinkFolderFunctionObjectType
 
 // ModalFunction
 export interface ModalDataAddLinkToSubFolder {
-  handleSubmit: (
-    type: string,
-    modalData: [string, FolderListDataType[]]
-  ) => void;
+  handleSubmit: (type: string, modalData: LinkCardFunctionDataType) => void;
   subFolderList: FolderListDataType[];
 }

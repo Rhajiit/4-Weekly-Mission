@@ -22,6 +22,7 @@ export const ModalTitle = styled.h1`
 `;
 
 export const ModalCaption = styled.span`
+  display: block;
   color: var(--lb-gray60);
   margin-top: 0.8rem;
   text-align: center;
@@ -30,6 +31,9 @@ export const ModalCaption = styled.span`
   font-style: normal;
   font-weight: 400;
   line-height: 2.2rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 `;
 
 export const ModalWrapper = styled.section`

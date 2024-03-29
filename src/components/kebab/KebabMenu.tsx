@@ -15,7 +15,7 @@ interface KebabMenuPropType {
  * @param {string} data 모달 상단에 현재 선택된 링크나 폴더 등을 받아 caption으로 추가할 데이터입니다.
  * @returns 케밥 메뉴 종합 데이터를 받아 케밥 클릭시 소메뉴를 표시하고, 각 메뉴에 따른 기능을 전달하는 컴포넌트입니다.
  */
-export default function KebabMenu({ items, data }: KebabMenuPropType) {
+export default function KebabMenu({ items }: KebabMenuPropType) {
   const [kebabMenuPop, setKebabMenuPop] = useState(false);
 
   const handleKebabToggle = () => {
@@ -34,9 +34,7 @@ export default function KebabMenu({ items, data }: KebabMenuPropType) {
               <S.KebabMenuButton
                 className="lb-body2-regular"
                 key={item.buttonName}
-                onClick={() =>
-                  item.modalHandle(item.type, [data, ...item.data])
-                }
+                onClick={() => item.modalHandle(item.type, item.data)}
               >
                 {item.buttonName}
               </S.KebabMenuButton>

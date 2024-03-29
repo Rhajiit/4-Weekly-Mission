@@ -11,11 +11,12 @@ import ModalAddLinkToSubFolder from "./add-link-to-sub-folder/AddLinkToSubFolder
 // Types
 
 import Image from "next/image";
+import { LinkCardFunctionDataType } from "@/src/types/ModalFunctionDataTypes";
 
 interface ModalLoaderPropType {
   modalType: string;
-  modalFunc?: any;
-  modalData: any;
+  modalFunc?: () => void;
+  modalData?: LinkCardFunctionDataType;
   setIsOpened: () => void;
 }
 
@@ -42,16 +43,16 @@ const ModalLoader = ({
         return <ModalAddSubFolder />;
 
       case "shareFolder":
-        return <ModalShareSubFolder modalData={modalData} />;
+        return <ModalShareSubFolder modalData={modalData!} />;
 
       case "removeFolder":
-        return <ModalRemoveSubFolder modalData={modalData} />;
+        return <ModalRemoveSubFolder modalData={modalData!} />;
 
       case "removeLink":
-        return <ModalRemoveLink modalData={modalData} />;
+        return <ModalRemoveLink modalData={modalData!} />;
 
       case "addLinkToFolder":
-        return <ModalAddLinkToSubFolder modalData={modalData} />;
+        return <ModalAddLinkToSubFolder modalData={modalData!} />;
 
       default:
         throw new Error("검증되지 않은 Modal");

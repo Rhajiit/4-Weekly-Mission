@@ -25,10 +25,10 @@ export default function FolderLinkAddBar({
   const handleLinkAdd: HandleLinkAddType = (e: FormEvent) => {
     e.preventDefault();
     if (addLinkInputRef.current!.value === "") return;
-    handleSubmit("addLinkToFolder", [
-      addLinkInputRef.current!.value,
-      subFolderList,
-    ]);
+    handleSubmit("addLinkToFolder", {
+      subfolderList: subFolderList,
+      target: addLinkInputRef.current!.value,
+    });
   };
 
   return (
