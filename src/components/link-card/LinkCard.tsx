@@ -5,10 +5,10 @@ import Image from "next/image";
 import KebabMenu from "@/src/components/kebab/KebabMenu";
 import timePassedFromCreate from "@/src/utils/timePassedFromCreate";
 
-import UserLinkRawDataType from "@/src/types/UserLinkDataType";
+import { UserLinkDataType } from "@/src/types/UserLinkDataType";
 import { LinkCardFunctionObjectType } from "@/src/types/ModalFunctionDataTypes";
 interface LinkCardDataPropType {
-  contents: UserLinkRawDataType;
+  contents: UserLinkDataType;
   favorite: boolean;
   kebab?: LinkCardFunctionObjectType[];
 }
@@ -27,16 +27,16 @@ export default function LinkCard({
 }: LinkCardDataPropType) {
   const {
     id,
-    created_at,
+
     createdAt,
     description,
     imageSource,
-    image_source,
+
     url,
   } = contents;
 
-  const cardImage = imageSource || image_source;
-  const timeConversion = new Date(created_at || createdAt!); // sampleApi와 userApi의 양식이 달라 호환시키기 위함
+  const cardImage = imageSource;
+  const timeConversion = new Date(createdAt); // sampleApi와 userApi의 양식이 달라 호환시키기 위함
   const passedTime = timePassedFromCreate(timeConversion);
   const editedTime = `${timeConversion.getFullYear()}. ${
     timeConversion.getMonth() + 1

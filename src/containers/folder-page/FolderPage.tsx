@@ -3,13 +3,14 @@ import useFetch from "@/src/hooks/useFetch";
 import { acceptDataFromApi } from "@/src/utils/api";
 
 // Types
-import UserLinkRawDataType from "@/src/types/UserLinkDataType";
+import { UserLinkDataType } from "@/src/types/UserLinkDataType";
 import {
   LinkCardFunctionObjectType,
   LinkFolderFunctionObjectType,
 } from "@/src/types/ModalFunctionDataTypes";
 import FolderListDataType from "@/src/types/FolderListDataType";
 import { useCurrentUser } from "@/src/context/UserContext";
+import refineLinkData from "@/src/utils/refine-link-data/refineLinkData";
 type handleCurrentFolderChangeType = (id: number, name: string) => void;
 
 /**
@@ -28,8 +29,8 @@ export default function FolderPageContainer(id: number) {
     `users/${id}/links`
   );
   const [currentFolderId, setCurrentFolderId] = useState(0);
-  const [originItems, setOriginItems] = useState<UserLinkRawDataType[]>([]);
-  const [items, setItems] = useState<UserLinkRawDataType[]>([]);
+  const [originItems, setOriginItems] = useState<UserLinkDataType[]>([]);
+  const [items, setItems] = useState<UserLinkDataType[]>([]);
   const [isModalOpened, setIsModalOpened] = useState(false);
   const [currentModalType, setCurrentModalType] = useState("removeLink");
   const [modalData, setModalData] = useState("");
@@ -59,13 +60,9 @@ export default function FolderPageContainer(id: number) {
     if (data.length === 0) {
       setIsEmptyResponse(true);
     }
-    data.map((items: UserLinkRawDataType) => {
-      items.description = items.description ? items.description : "";
-      items.title = items.title ? items.title : "";
-    });
 
-    setOriginItems(data);
-    setItems(data);
+    setOriginItems(refineLinkData(data));
+    setItems(refineLinkData(data));
   };
 
   const handleCurrentFolderChange: handleCurrentFolderChangeType = (
@@ -109,7 +106,7 @@ export default function FolderPageContainer(id: number) {
     }
     setItems(
       originItems.filter(
-        (item: UserLinkRawDataType) =>
+        (item) =>
           item.title.toLowerCase().includes(cardFilter.toLowerCase()) ||
           item.description.toLowerCase().includes(cardFilter.toLowerCase()) ||
           item.url.toLowerCase().includes(cardFilter.toLowerCase())

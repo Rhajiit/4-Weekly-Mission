@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { acceptDataFromApi } from "@/src/utils/api";
 
 // Types
-import { UserLinkRawDataType } from "@/src/types/UserLinkDataType";
+import refineLinkData from "@/src/utils/refine-link-data/refineLinkData";
+import { UserLinkDataType } from "@/src/types/UserLinkDataType";
 
 /**
  *
@@ -10,16 +11,16 @@ import { UserLinkRawDataType } from "@/src/types/UserLinkDataType";
  * @returns
  */
 export default function SharePageContainer() {
-  const [originItems, setOriginItems] = useState<UserLinkRawDataType[]>([]);
-  const [items, setItems] = useState<UserLinkRawDataType[]>([]);
+  const [originItems, setOriginItems] = useState<UserLinkDataType[]>([]);
+  const [items, setItems] = useState<UserLinkDataType[]>([]);
   const [cardFilter, setCardFilter] = useState<string>("");
 
   const handleShareLoad = async () => {
     const {
       folder: { links },
     } = await acceptDataFromApi("sample/folder");
-    setOriginItems(links);
-    setItems(links);
+    setOriginItems(refineLinkData(links));
+    setItems(refineLinkData(links));
   };
 
   useEffect(() => {
@@ -33,7 +34,7 @@ export default function SharePageContainer() {
     }
     setItems(
       originItems.filter(
-        (item: UserLinkRawDataType) =>
+        (item: UserLinkDataType) =>
           item.title.includes(cardFilter) ||
           item.description.includes(cardFilter) ||
           item.url.includes(cardFilter)

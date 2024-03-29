@@ -1,12 +1,12 @@
 import * as S from "./LinkCardListLayout.style";
 
-import UserLinkRawDataType from "@/src/types/UserLinkDataType";
+import { UserLinkDataType } from "@/src/types/UserLinkDataType";
 import { LinkCardFunctionObjectType } from "@/src/types/ModalFunctionDataTypes";
 
 import LinkCard from "../LinkCard";
 
 interface LinkCardListLayoutPropType {
-  items: UserLinkRawDataType[];
+  items: UserLinkDataType[];
   favorite?: boolean;
   kebab?: LinkCardFunctionObjectType[];
 }
