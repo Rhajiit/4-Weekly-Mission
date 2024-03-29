@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const MainWrapper = styled.main`
   background-color: var(--lb-white);
   padding: 4rem 0 6rem;
+  min-height: calc(100vh - 43.6rem);
 `;
 
 export const FolderPageSection = styled.section`
