@@ -10,7 +10,6 @@ import {
   LinkFolderFunctionObjectType,
 } from "@/src/types/ModalFunctionDataTypes";
 import FolderListDataType from "@/src/types/FolderListDataType";
-import { useCurrentUser } from "@/src/context/UserContext";
 import refineLinkData from "@/src/utils/refine-link-data/refineLinkData";
 type handleCurrentFolderChangeType = (id: number, name: string) => void;
 
@@ -47,7 +46,6 @@ export default function FolderPageContainer(id: number) {
     modalType: string,
     modalData: LinkCardFunctionDataType
   ) => {
-    // ModalData의 형식 통일 필요
     setModalData({});
     setCurrentModalType(modalType);
     if (modalData) {

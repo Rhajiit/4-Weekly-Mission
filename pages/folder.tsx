@@ -3,14 +3,12 @@ import * as S from "@/styles/pages/folder.style";
 
 // Components
 import FolderLinkAddForm from "@/src/containers/folder-page/folder-link-add-form/FolderLinkAddForm";
-import {
-  HandleCurrentSubFolder,
-  SubFoldersList,
-} from "@/src/containers/folder-page/sub-folder-button-list-presenter/LinkSubFolder";
+import LinkSubFolderUtils from "@/src/containers/folder-page/sub-folder-util/LinkSubFolderUtils";
 import LinkCardListLayout from "@/src/components/link-card/link-card-layout/LinkCardListLayout";
 import LinkSearchBar from "@/src/components/link-card/link-card-search-form/LinkSearchBar";
 import ModalLoader from "@/src/components/modal/modalLoader";
 import HeadNav from "@/src/components/layout/HeadNav/HeadNav";
+import LinkSubFolderList from "@/src/containers/folder-page/sub-folder-list/LinkSubFolderList";
 
 export default function Folder() {
   const id = 1;
@@ -60,7 +58,7 @@ export default function Folder() {
       <S.MainWrapper>
         <S.FolderPageSection>
           <S.SubFolderUtil>
-            <SubFoldersList
+            <LinkSubFolderList
               subFolderData={subFolderList}
               handleCurrentFolderChange={handleCurrentFolderChange}
             />
@@ -76,7 +74,7 @@ export default function Folder() {
               {currentFolderName}
             </S.CurrentSubFolder>
             {!isCurrentFolderAll && (
-              <HandleCurrentSubFolder subFolderUtils={subFolderAction} />
+              <LinkSubFolderUtils subFolderUtils={subFolderAction} />
             )}
           </S.SubFolderUtil>
           <LinkSearchBar

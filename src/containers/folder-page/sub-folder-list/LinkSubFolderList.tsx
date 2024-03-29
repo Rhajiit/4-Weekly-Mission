@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react";
-import * as S from "./LinkSubFolder.style";
+import * as S from "./LinkSubFolderList.style";
 
-// Type
+//Types
 import FolderListDataType from "@/src/types/FolderListDataType";
-import { LinkFolderFunctionObjectType } from "@/src/types/ModalFunctionDataTypes";
-import Image from "next/image";
 type handleCurrentFolderChangeType = (id: number, name: string) => void;
-
 interface SubFolderListProp {
   subFolderData: FolderListDataType[];
   handleCurrentFolderChange: handleCurrentFolderChangeType;
@@ -18,7 +15,7 @@ interface SubFolderListProp {
  * @param handleCurrentFolderChange 폴더 선택에 따라 해당 폴더의 고유번호로 query를 갱신하고, 새롭게 fetch를 받아올 수 있게 하는 함수.
  * @returns
  */
-function SubFoldersList({
+export default function LinkSubFolderList({
   subFolderData,
   handleCurrentFolderChange,
 }: SubFolderListProp) {
@@ -55,34 +52,3 @@ function SubFoldersList({
     </S.SubFolderBtnList>
   );
 }
-
-interface HandleCurrentSubFolderPropType {
-  subFolderUtils: LinkFolderFunctionObjectType[];
-}
-
-/**
- * @description 현재 폴더에 관한 동작을 수행하는 버튼들을 구현하는 컴포넌트.
- * @param subFolderUtils 버튼 관련 정보와 폴더 관련 함수가 담긴 객체가 담긴 배열.
- * @returns
- */
-function HandleCurrentSubFolder({
-  subFolderUtils,
-}: HandleCurrentSubFolderPropType) {
-  return (
-    <S.SubFolderUtilList>
-      {subFolderUtils.map((item) => (
-        <S.Button
-          className="lb-body2-semibold"
-          key={item.buttonName}
-          type="button"
-          onClick={() => item.modalHandle(item.type, item.data)}
-        >
-          <Image width={18} height={18} src={item.imgUrl} alt={item.imgAlt} />
-          {item.buttonName}
-        </S.Button>
-      ))}
-    </S.SubFolderUtilList>
-  );
-}
-
-export { HandleCurrentSubFolder, SubFoldersList };
