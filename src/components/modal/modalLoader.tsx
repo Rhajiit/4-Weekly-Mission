@@ -9,12 +9,7 @@ import ModalRemoveLink from "./remove-link/RemoveLink";
 import ModalAddLinkToSubFolder from "./add-link-to-sub-folder/AddLinkToSubFolder";
 
 // Types
-import {
-  ModalDataAddLinkToSubFolder,
-  ModalDataRemoveLink,
-  ModalDataRemoveSubFolder,
-  ModalDataShareSubFolder,
-} from "@/src/types/ModalFunctionDataTypes";
+
 import Image from "next/image";
 
 interface ModalLoaderPropType {

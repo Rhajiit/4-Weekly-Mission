@@ -5,10 +5,7 @@ import * as SS from "./AddLinkToSubFolder.style";
 // Type
 import FolderListDataType from "@/src/types/FolderListDataType";
 import Image from "next/image";
-
-interface ModalAddLinkToSubFolderPropType {
-  modalData: [string, FolderListDataType[]];
-}
+import { LinkCardFunctionDataType } from "@/src/types/ModalFunctionDataTypes";
 
 /**
  *
@@ -17,8 +14,10 @@ interface ModalAddLinkToSubFolderPropType {
  */
 export default function ModalAddLinkToSubFolder({
   modalData,
-}: ModalAddLinkToSubFolderPropType) {
-  const [targetLink, [...folderList]] = [...modalData];
+}: {
+  modalData: LinkCardFunctionDataType;
+}) {
+  const { target, subfolderList } = modalData;
   const [SelectedFolder, setSelectedFolder] = useState("");
 
   const handleSelectFolder = (key: string) => {
@@ -29,10 +28,10 @@ export default function ModalAddLinkToSubFolder({
     <>
       <S.ModalTitle>
         폴더에 추가 <br />
-        <S.ModalCaption>{targetLink}</S.ModalCaption>
+        <S.ModalCaption>{target}</S.ModalCaption>
       </S.ModalTitle>
       <S.ShareButtonLayout>
-        {folderList
+        {subfolderList!
           .filter((item) => item.favorite !== true)
           .map((item) => (
             <SS.SubFolderDesireToAddLinkButton

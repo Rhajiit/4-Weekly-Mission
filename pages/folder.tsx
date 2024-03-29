@@ -66,7 +66,7 @@ export default function Folder() {
             />
             <S.AddFolderButton
               className="add-sub-folder"
-              onClick={() => handleModalOpen("addSubFolder", "")}
+              onClick={() => handleModalOpen("addSubFolder", {})}
             >
               폴더 추가 <S.AddImage />
             </S.AddFolderButton>

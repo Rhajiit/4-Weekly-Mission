@@ -1,7 +1,7 @@
+import { LinkCardFunctionDataType } from "@/src/types/ModalFunctionDataTypes";
 import * as S from "../modalLoader.style";
 
 // Type
-import { ModalDataRemoveSubFolder } from "@/src/types/ModalFunctionDataTypes";
 
 /**
  *
@@ -10,12 +10,14 @@ import { ModalDataRemoveSubFolder } from "@/src/types/ModalFunctionDataTypes";
  */
 export default function ModalRemoveSubFolder({
   modalData,
-}: ModalDataRemoveSubFolder) {
+}: {
+  modalData: LinkCardFunctionDataType;
+}) {
   return (
     <>
       <S.ModalTitle>
         폴더 삭제 <br />
-        <S.ModalCaption>{modalData}</S.ModalCaption>
+        <S.ModalCaption>{modalData.target}</S.ModalCaption>
       </S.ModalTitle>
       <S.ModalButton $errored={true}>삭제하기</S.ModalButton>
     </>

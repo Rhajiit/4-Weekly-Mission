@@ -1,10 +1,10 @@
+import { LinkCardFunctionDataType } from "@/src/types/ModalFunctionDataTypes";
 import * as S from "../modalLoader.style";
 import * as SS from "./ShareSubFolder.style";
 import kakaoTalkShare from "@/src/utils/kakaoTalkShare";
+import Image from "next/image";
 
 // Types
-import { ModalDataShareSubFolder } from "@/src/types/ModalFunctionDataTypes";
-import Image from "next/image";
 
 /**
  *
@@ -13,9 +13,11 @@ import Image from "next/image";
  */
 export default function ModalShareSubFolder({
   modalData,
-}: ModalDataShareSubFolder) {
+}: {
+  modalData: LinkCardFunctionDataType;
+}) {
   const BASE_URL = "https://animated-kitten-84730c.netlify.app";
-  const query = `/shared/${modalData[1]}`;
+  const query = `/shared/${modalData.targetId}`;
 
   const kakaoShare = kakaoTalkShare();
 
@@ -39,7 +41,7 @@ export default function ModalShareSubFolder({
       <S.ModalTitle>
         폴더 공유
         <br />
-        <S.ModalCaption>{modalData[0]}</S.ModalCaption>
+        <S.ModalCaption>{modalData.target}</S.ModalCaption>
       </S.ModalTitle>
       <SS.ModalBox>
         <SS.ShareButtonWrapper>

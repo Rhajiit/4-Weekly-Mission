@@ -5,6 +5,7 @@ import { acceptDataFromApi } from "@/src/utils/api";
 // Types
 import { UserLinkDataType } from "@/src/types/UserLinkDataType";
 import {
+  LinkCardFunctionDataType,
   LinkCardFunctionObjectType,
   LinkFolderFunctionObjectType,
 } from "@/src/types/ModalFunctionDataTypes";
@@ -15,7 +16,6 @@ type handleCurrentFolderChangeType = (id: number, name: string) => void;
 
 /**
  * @description 폴더 페이지 컴포넌트
- * @reminder handleModalOpen의 타입에 일관성이 없어 any타입을 지정해 두었음. 나중에 수정 필요.
  * @returns
  */
 export default function FolderPageContainer(id: number) {
@@ -33,7 +33,7 @@ export default function FolderPageContainer(id: number) {
   const [items, setItems] = useState<UserLinkDataType[]>([]);
   const [isModalOpened, setIsModalOpened] = useState(false);
   const [currentModalType, setCurrentModalType] = useState("removeLink");
-  const [modalData, setModalData] = useState("");
+  const [modalData, setModalData] = useState<LinkCardFunctionDataType>();
   const [cardFilter, setCardFilter] = useState<string>("");
   const [isLinkAddBarHidden, setIsLinkAddBarHidden] = useState<boolean>(false);
   const [isFooterVisible, setIsFooterVisible] = useState<boolean>(false);
@@ -43,9 +43,12 @@ export default function FolderPageContainer(id: number) {
   const addLinkBarObserveRef = useRef<HTMLDivElement>(null);
   const footerObserveRef = useRef<HTMLDivElement>(null);
 
-  const handleModalOpen = (modalType: string, modalData: any) => {
+  const handleModalOpen = (
+    modalType: string,
+    modalData: LinkCardFunctionDataType
+  ) => {
     // ModalData의 형식 통일 필요
-    setModalData("");
+    setModalData({});
     setCurrentModalType(modalType);
     if (modalData) {
       setModalData(modalData);
@@ -158,14 +161,14 @@ export default function FolderPageContainer(id: number) {
     {
       buttonName: "삭제하기",
       type: "removeLink",
-      data: [],
+      data: { target: "" },
       modalHandle: handleModalOpen,
       modalButtonAction: handleKebabAction,
     },
     {
       buttonName: "폴더에 추가",
       type: "addLinkToFolder",
-      data: [subFolderList],
+      data: { subfolderList: subFolderList },
       modalHandle: handleModalOpen,
       modalButtonAction: handleKebabAction,
     },
@@ -178,7 +181,7 @@ export default function FolderPageContainer(id: number) {
       imgUrl: "/assets/icons/svg/share.svg",
       imgAlt: "shareButton",
       type: "shareFolder",
-      data: [currentFolderName, currentFolderId],
+      data: { target: currentFolderName, targetId: currentFolderId },
       modalHandle: handleModalOpen,
       modalButtonAction: handleKebabAction,
     },
@@ -187,7 +190,6 @@ export default function FolderPageContainer(id: number) {
       imgUrl: "/assets/icons/svg/pen.svg",
       imgAlt: "RenameButton",
       type: "nameChange",
-      data: [],
       modalHandle: handleModalOpen,
       modalButtonAction: handleKebabAction,
     },
@@ -196,7 +198,7 @@ export default function FolderPageContainer(id: number) {
       imgUrl: "/assets/icons/svg/trash-can.svg",
       imgAlt: "DeleteButton",
       type: "removeFolder",
-      data: currentFolderName,
+      data: { target: currentFolderName },
       modalHandle: handleModalOpen,
       modalButtonAction: handleKebabAction,
     },
