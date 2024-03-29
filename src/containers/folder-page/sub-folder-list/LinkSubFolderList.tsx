@@ -3,11 +3,11 @@ import * as S from "./LinkSubFolderList.style";
 
 //Types
 import FolderListDataType from "@/src/types/FolderListDataType";
-type handleCurrentFolderChangeType = (id: number, name: string) => void;
 interface SubFolderListProp {
   subFolderData: FolderListDataType[];
   handleCurrentFolderChange: handleCurrentFolderChangeType;
 }
+type handleCurrentFolderChangeType = (id: number, name: string) => void;
 
 /**
  * @description fetch로 받아온 subFolderData 배열에서 폴더 이름을 map으로 뽑아내어 선택 가능한 버튼으로 배치하는 컴포넌트

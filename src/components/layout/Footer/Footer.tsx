@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import * as S from "./Footer.style";
 import FOOTER_SOCIAL_LIST from "@/src/constant/FOOTER_SOCIAL_LIST";
+import * as S from "./Footer.style";
 
 /**
  *

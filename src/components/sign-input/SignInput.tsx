@@ -1,6 +1,6 @@
+import { RefObject, useState } from "react";
 import Image from "next/image";
 import * as S from "@/src/components/sign-input/SignInput.style";
-import { RefObject, useState } from "react";
 import {
   INPUT_TYPE,
   INPUT_PLACEHOLDER,

@@ -3,13 +3,12 @@ import * as S from "../modalLoader.style";
 import * as SS from "./AddLinkToSubFolder.style";
 
 // Type
-import FolderListDataType from "@/src/types/FolderListDataType";
 import Image from "next/image";
 import { LinkCardFunctionDataType } from "@/src/types/ModalFunctionDataTypes";
 
 /**
  *
- * @param {[string, folderListType]} modalData 현재 선택된 링크와 폴더 리스트
+ * @param {subFolderList, target} modalData target : 현재 선택된 링크, subFolderList : 현재 유저의 subFolderList
  * @returns 현재 선택된 링크와 폴더 리스트를 데이터로 받아 선택한 폴더에 추가하는 기능을 가질 모달입니다.
  */
 export default function ModalAddLinkToSubFolder({

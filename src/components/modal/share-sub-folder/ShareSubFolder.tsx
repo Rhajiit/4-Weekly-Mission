@@ -1,11 +1,10 @@
-import { LinkCardFunctionDataType } from "@/src/types/ModalFunctionDataTypes";
+import Image from "next/image";
+import kakaoTalkShare from "@/src/utils/kakaoTalkShare";
 import * as S from "../modalLoader.style";
 import * as SS from "./ShareSubFolder.style";
-import kakaoTalkShare from "@/src/utils/kakaoTalkShare";
-import Image from "next/image";
 
-// Types
-
+//Types
+import { LinkCardFunctionDataType } from "@/src/types/ModalFunctionDataTypes";
 /**
  *
  * @param {string} modalData 링크 string을 받아 모달에 표시해줌과 동시에 공유 링크를 생성하는 모달입니다.

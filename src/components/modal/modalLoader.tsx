@@ -9,7 +9,6 @@ import ModalRemoveLink from "./remove-link/RemoveLink";
 import ModalAddLinkToSubFolder from "./add-link-to-sub-folder/AddLinkToSubFolder";
 
 // Types
-
 import Image from "next/image";
 import { LinkCardFunctionDataType } from "@/src/types/ModalFunctionDataTypes";
 

@@ -1,10 +1,10 @@
-import * as S from "./LinkCard.style";
-
 import Link from "next/link";
 import Image from "next/image";
 import KebabMenu from "@/src/components/kebab/KebabMenu";
 import timePassedFromCreate from "@/src/utils/timePassedFromCreate";
+import * as S from "./LinkCard.style";
 
+//Types
 import { UserLinkDataType } from "@/src/types/UserLinkDataType";
 import { LinkCardFunctionObjectType } from "@/src/types/ModalFunctionDataTypes";
 interface LinkCardDataPropType {

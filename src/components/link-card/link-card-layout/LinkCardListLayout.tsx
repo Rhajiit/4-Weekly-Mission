@@ -1,9 +1,9 @@
+import LinkCard from "../LinkCard";
 import * as S from "./LinkCardListLayout.style";
 
+//Types
 import { UserLinkDataType } from "@/src/types/UserLinkDataType";
 import { LinkCardFunctionObjectType } from "@/src/types/ModalFunctionDataTypes";
-
-import LinkCard from "../LinkCard";
 
 interface LinkCardListLayoutPropType {
   items: UserLinkDataType[];

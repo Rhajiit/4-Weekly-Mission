@@ -1,6 +1,6 @@
-import * as S from "./HeadNav.style";
 import Link from "next/link";
 import Image from "next/image";
+import * as S from "./HeadNav.style";
 
 import HeadNavProfile from "./Profile/Profile";
 

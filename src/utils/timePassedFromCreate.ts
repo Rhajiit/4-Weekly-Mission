@@ -1,3 +1,8 @@
+/**
+ * @description LinkCard에 포함된 createdTime을 웹 페이지 카드 형식에 맞게 변환한 문자열을 반환해주는 함수입니다.
+ * @param { Date }time 문자열을 Date형식으로 변환한 값입니다.
+ * @returns
+ */
 const timePassedFromCreate = (time: Date) => {
   const currentTime = new Date().getTime();
   if (!time) {

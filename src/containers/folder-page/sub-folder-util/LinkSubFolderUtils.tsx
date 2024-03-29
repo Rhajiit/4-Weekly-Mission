@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import * as S from "./LinkSubFolderUtils.style";
 
 // Type

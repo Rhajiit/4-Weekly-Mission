@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import * as S from "./Profile.style";
+import { useCurrentUser } from "@/src/context/UserContext";
 import Link from "next/link";
 import Image from "next/image";
-import { useCurrentUser } from "@/src/context/UserContext";
+import * as S from "./Profile.style";
 
 export default function HeadNavProfile() {
   const userData = useCurrentUser();

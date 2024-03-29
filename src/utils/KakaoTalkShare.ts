@@ -1,3 +1,8 @@
+/**
+ * @description 호출받을 경우, 현재 페이지에 대한 카카오톡 공유를 수행할 함수입니다.
+ * @returns
+ */
+
 export default function kakaoTalkShare() {
   if (typeof window !== undefined) {
     // 배포한 자신의 사이트

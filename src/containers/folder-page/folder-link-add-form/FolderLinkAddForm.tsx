@@ -6,7 +6,6 @@ import { ModalDataAddLinkToSubFolder } from "@/src/types/ModalFunctionDataTypes"
 interface FolderLinkAddBarPropType extends ModalDataAddLinkToSubFolder {
   isHidden: boolean;
 }
-
 type HandleLinkAddType = (e: FormEvent) => void;
 
 /**
