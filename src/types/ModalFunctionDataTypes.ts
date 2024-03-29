@@ -3,7 +3,10 @@ import FolderListDataType from "./FolderListDataType";
 export interface LinkCardFunctionObjectType {
   buttonName: string;
   type: string;
-  data: any;
+  data:
+    | ModalDataRemoveLink
+    | ModalDataRemoveSubFolder
+    | ModalDataShareSubFolder;
   modalHandle: (modalType: string, modalData: any) => void;
   modalButtonAction: () => void;
 }
@@ -23,14 +26,8 @@ export interface ModalDataAddLinkToSubFolder {
   subFolderList: FolderListDataType[];
 }
 
-export interface ModalDataRemoveLink {
-  modalData: string;
-}
+export type ModalDataRemoveLink = string;
 
-export interface ModalDataRemoveSubFolder {
-  modalData: string;
-}
+export type ModalDataRemoveSubFolder = string;
 
-export interface ModalDataShareSubFolder {
-  modalData: [string, string];
-}
+export type ModalDataShareSubFolder = [string, string];
