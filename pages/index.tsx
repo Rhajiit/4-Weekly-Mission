@@ -48,6 +48,9 @@ export default function Home() {
           <Link href={"/share"}>
             <h2 className="lb-h2-semibold">SharePage로 이동</h2>
           </Link>
+          <Link href={"/input"}>
+            <h2 className="lb-h2-semibold">InputPlayground로 이동</h2>
+          </Link>
         </S.Header>
 
         <S.SectionWrapper>

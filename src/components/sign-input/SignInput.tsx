@@ -1,4 +1,4 @@
-import { RefObject, useState } from "react";
+import { RefObject, useEffect, useState } from "react";
 import Image from "next/image";
 import * as S from "@/src/components/sign-input/SignInput.style";
 import {
@@ -28,11 +28,20 @@ export default function Input({
   const [currentInputType, setCurrentInputType] = useState(
     INPUT_TYPE[inputType]
   );
+  const [isError, setIsError] = useState(false);
   const isTypePassword = INPUT_TYPE[inputType] === "password";
+
+  useEffect(() => {
+    if (errorMessage) {
+      setIsError(true);
+    } else {
+      setIsError(false);
+    }
+  }, [errorMessage]);
 
   return (
     <S.InputSectionWrapper>
-      <S.InputSelectLabel htmlFor={inputType} $errorMessage="">
+      <S.InputSelectLabel htmlFor={inputType} $isError={isError}>
         <S.Input
           id={inputType}
           type={currentInputType}

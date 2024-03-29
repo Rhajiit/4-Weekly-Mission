@@ -6,7 +6,7 @@ export const InputSectionWrapper = styled.div`
   gap: 0.6rem;
 `;
 
-export const InputSelectLabel = styled.label<{ $errorMessage: string }>`
+export const InputSelectLabel = styled.label<{ $isError: boolean }>`
   width: 100%;
   display: flex;
   align-items: center;
@@ -15,10 +15,8 @@ export const InputSelectLabel = styled.label<{ $errorMessage: string }>`
   background-color: var(--lb-white);
   cursor: text;
 
-  border: ${({ $errorMessage }) =>
-    !!$errorMessage
-      ? "0.1rem solid var(--lb-red)"
-      : "0.1rem solid var(--lb-gray20)"};
+  border: ${({ $isError }) =>
+    $isError ? "0.1rem solid var(--lb-red)" : "0.1rem solid var(--lb-gray20)"};
   border-radius: 0.8rem;
 
   &:focus-within {
