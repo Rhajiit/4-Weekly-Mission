@@ -2,6 +2,7 @@ export interface UserLinkRawDataType {
   id: number;
   created_at?: string;
   createdAt?: string;
+  updatedAt?: string;
   updated_at?: string;
   url: string;
   title: string;

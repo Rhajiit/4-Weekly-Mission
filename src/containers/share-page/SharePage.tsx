@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { acceptDataFromApi } from "@/src/utils/api";
 
 // Types
-import UserLinkRawDataType from "@/src/types/UserLinkDataType";
+import { UserLinkRawDataType } from "@/src/types/UserLinkDataType";
 
 /**
  *
