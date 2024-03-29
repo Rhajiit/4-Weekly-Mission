@@ -1,10 +1,6 @@
-const BASE_API_URL = "https://bootcamp-api.codeit.kr/api/";
+import { RequestInit } from "next/dist/server/web/spec-extension/request";
 
-interface RequestMethodType {
-  method: string;
-  headers?: { accept: string; "Content-Type": string };
-  body?: JSON;
-}
+const BASE_API_URL = "https://bootcamp-api.codeit.kr/api/";
 
 /**
  * @param query baseURL 에서 추가로 요청할 정보의 경로를 적습니다.
@@ -12,7 +8,10 @@ interface RequestMethodType {
  * @description 서버에 대한 Request 전반을 다루는 함수입니다.
  * @returns
  */
-const acceptDataFromApi = async function (query: string, requestMethod?: any) {
+const acceptDataFromApi = async function (
+  query: string,
+  requestMethod?: RequestInit
+) {
   try {
     const response = await fetch(BASE_API_URL + query, requestMethod);
     if (!response.ok) {
