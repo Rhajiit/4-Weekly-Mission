@@ -1,11 +1,22 @@
 import Image from "next/image";
 import * as S from "@/src/components/input/Input.style";
 import { RefObject, useState } from "react";
-import INPUT_TYPE_PLACEHOLDER from "@/src/constant/INPUT_TYPE_PLACEHOLDER";
+import {
+  INPUT_TYPE,
+  INPUT_PLACEHOLDER,
+} from "@/src/constant/SIGN_INPUT_TYPE_TRANSLATOR";
 
+/**
+ * @description 로그인 등에서 사용할 입력 컴포넌트입니다.
+ * @param {RefObject} inputRef 이 입력의 연결할 ref값을 지정합니다. submit이벤트 동작 시 값을 불러올 때에 사용할 것입니다.
+ * @param {string} inputType 이 입력의 유형을 설정합니다. 이 유형은 HTML의 유형이 아니더라도, 이미 지정된 상수값과 비교하여 적절한 type을 불러올 것입니다.
+ * @param {string} errorMessage 이 input 컴포넌트에서 useState등을 이용하여 에러 메시지가 변동되었을 때 표시할 내용을 받는 인자입니다.
+ * @param {BlurFunction} blurEvent 이 input컴포넌트에서 blur가 일어났을 때, 작동할 function을 받는 인자입니다.
+ * @returns
+ */
 export default function Input({
   inputRef,
-  inputType = "password",
+  inputType,
   errorMessage,
   blurEvent,
 }: {
@@ -14,16 +25,18 @@ export default function Input({
   errorMessage: string;
   blurEvent: () => void;
 }) {
-  const [currentInputType, setCurrentInputType] = useState(inputType);
-  const isTypePassword =
-    inputType === "password" || inputType === "passwordCheck";
+  const [currentInputType, setCurrentInputType] = useState(
+    INPUT_TYPE[inputType]
+  );
+  const isTypePassword = INPUT_TYPE[inputType] === "password";
 
   return (
     <S.InputSectionWrapper>
-      <S.InputSelectLabel $errorMessage="">
+      <S.InputSelectLabel htmlFor={inputType} $errorMessage="">
         <S.Input
+          id={inputType}
           type={currentInputType}
-          placeholder={`${INPUT_TYPE_PLACEHOLDER[inputType]}을 입력해주세요.`}
+          placeholder={`${INPUT_PLACEHOLDER[inputType]}을 입력해주세요.`}
           onBlur={blurEvent}
           ref={inputRef}
         />
@@ -32,7 +45,7 @@ export default function Input({
             type="button"
             onClick={() =>
               setCurrentInputType((prev) =>
-                prev !== inputType ? inputType : "text"
+                prev !== "password" ? "password" : "text"
               )
             }
           >

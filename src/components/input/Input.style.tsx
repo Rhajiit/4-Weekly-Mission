@@ -7,12 +7,13 @@ export const InputSectionWrapper = styled.div`
 `;
 
 export const InputSelectLabel = styled.label<{ $errorMessage: string }>`
-  cursor: text;
+  width: 100%;
   display: flex;
   align-items: center;
-  width: 100%;
   padding: 1.8rem 1.5rem;
   gap: 0.3rem;
+  background-color: var(--lb-white);
+  cursor: text;
 
   border: ${({ $errorMessage }) =>
     !!$errorMessage
