@@ -55,4 +55,8 @@ export const SubFolderBtn = styled.button<{ $state: boolean }>`
     font-size: 1.6rem;
     font-weight: 400;
   }
+
+  &:hover {
+    ${({ $state }) => ($state ? "" : "background-color: var(--lb-gray10)")};
+  }
 `;

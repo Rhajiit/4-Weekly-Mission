@@ -13,7 +13,7 @@ export const ModalBox = styled.div`
   line-height: 1.5rem; /* 115.385% */
 `;
 
-const BackgroundColorList: any = {
+const BackgroundColorList: { [key: string]: string } = {
   kakao: "#fee500",
   facebook: "#1877f2",
   link: "rgba(157, 157, 157, 0.04)",

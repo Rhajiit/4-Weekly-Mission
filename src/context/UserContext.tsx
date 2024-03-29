@@ -16,7 +16,7 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
 export function useCurrentUser() {
   const context: any = useContext(UserContext);
 
-  if (context === undefined) {
+  if (!context) {
     throw new Error("context 에러");
   }
   const { currentUser } = context;
@@ -26,10 +26,9 @@ export function useCurrentUser() {
 export function useSetCurrentUser() {
   const context: any = useContext(UserContext);
 
-  if (context === undefined) {
+  if (!context) {
     throw new Error("context 에러");
   }
-
   const { setCurrentUser } = context;
   return setCurrentUser;
 }
