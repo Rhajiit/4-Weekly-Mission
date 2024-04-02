@@ -23,7 +23,7 @@ export default function SignUp() {
           linkText="로그인 하기"
           linkTo="/signup"
         />
-        <S.SignFormWrapper>
+        <S.SignFormWrapper id="sign">
           <SignInput
             inputRef={emailRef}
             inputType="email"
@@ -43,6 +43,7 @@ export default function SignUp() {
             blurEvent={() => blurEvent("passCheck", passCheckRef)}
           />
         </S.SignFormWrapper>
+        <S.SignSubmitButton form="sign">회원가입</S.SignSubmitButton>
       </S.SignPageWrapper>
     </>
   );

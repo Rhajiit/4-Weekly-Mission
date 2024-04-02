@@ -15,7 +15,7 @@ export default function SignUp() {
           linkText="회원 가입하기"
           linkTo="/signin"
         />
-        <S.SignFormWrapper>
+        <S.SignFormWrapper id="sign">
           <SignInput
             inputRef={emailRef}
             inputType="email"
@@ -29,6 +29,9 @@ export default function SignUp() {
             blurEvent={() => blurEvent("password", passwordRef)}
           />
         </S.SignFormWrapper>
+        <S.SignSubmitButton onSubmit={() => console.log("asdf")} form="sign">
+          로그인
+        </S.SignSubmitButton>
       </S.SignPageWrapper>
     </>
   );
