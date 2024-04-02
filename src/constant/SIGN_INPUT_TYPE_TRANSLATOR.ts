@@ -14,4 +14,5 @@ export const INPUT_TYPE: placeholderTypeText = {
   password: "password",
   passCheck: "password",
   id: "id",
+  email: "email",
 } as const;
