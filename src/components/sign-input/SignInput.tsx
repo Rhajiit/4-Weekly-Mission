@@ -41,6 +41,9 @@ export default function Input({
 
   return (
     <S.InputSectionWrapper>
+      <S.InputTitleLabel htmlFor={inputType} className="lb-body2-regular">
+        {INPUT_TYPE[inputType]}
+      </S.InputTitleLabel>
       <S.InputSelectLabel htmlFor={inputType} $isError={isError}>
         <S.Input
           id={inputType}
