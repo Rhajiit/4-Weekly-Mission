@@ -6,6 +6,7 @@ import ShareFolderProfile from "@/src/containers/share-page/profile/SharePagePro
 import LinkSearchBar from "@/src/components/link-card/link-card-search-form/LinkSearchBar";
 import LinkCardListLayout from "@/src/components/link-card/link-card-layout/LinkCardListLayout";
 import SharePageContainer from "@/src/containers/share-page/SharePage";
+import Footer from "@/src/components/layout/Footer/Footer";
 
 export default function Share() {
   const { cardFilter, items, isEmptyResponse, setCardFilter } =
@@ -24,6 +25,7 @@ export default function Share() {
           <LinkCardListLayout items={items} isEmptyResponse={isEmptyResponse} />
         </S.SharePageSection>
       </S.MainWrapper>
+      <Footer />
     </>
   );
 }

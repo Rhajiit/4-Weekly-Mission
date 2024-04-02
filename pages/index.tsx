@@ -5,6 +5,7 @@ import { acceptDataFromApi } from "@/src/utils/api";
 import { useSetCurrentUser } from "@/src/context/UserContext";
 import HeadNav from "@/src/components/layout/HeadNav/HeadNav";
 import * as S from "@/styles/pages/index.style";
+import Footer from "@/src/components/layout/Footer/Footer";
 
 const USER = "users/1";
 
@@ -86,6 +87,7 @@ export default function Home() {
           </article>
         </S.SectionWrapper>
       </main>
+      <Footer />
     </>
   );
 }

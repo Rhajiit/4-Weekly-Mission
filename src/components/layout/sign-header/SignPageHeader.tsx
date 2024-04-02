@@ -22,9 +22,9 @@ export default function SignPageHeader({
         />
       </Link>
       <p className="lb-body1-regular">
-        {text}
+        {text + " "}
         <Link href={linkTo}>
-          <span> {linkText}</span>
+          <span>{linkText}</span>
         </Link>
       </p>
     </S.SignPageHeadWrapper>

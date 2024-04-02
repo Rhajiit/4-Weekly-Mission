@@ -9,6 +9,7 @@ import LinkSearchBar from "@/src/components/link-card/link-card-search-form/Link
 import ModalLoader from "@/src/components/modal/modalLoader";
 import HeadNav from "@/src/components/layout/HeadNav/HeadNav";
 import LinkSubFolderList from "@/src/containers/folder-page/sub-folder-list/LinkSubFolderList";
+import Footer from "@/src/components/layout/Footer/Footer";
 
 export default function Folder() {
   const id = 1;
@@ -95,6 +96,7 @@ export default function Folder() {
         </S.FolderPageSection>
       </S.MainWrapper>
       <S.FooterStartPoint ref={footerObserveRef} />
+      <Footer />
     </>
   );
 }
