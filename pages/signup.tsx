@@ -1,4 +1,4 @@
-import SignPageHeader from "@/src/components/layout/sign-header/SignPageHeader";
+import SignPageHeader from "@/src/components/layout/sign-page/header/SignPageHeader";
 import SignInput from "@/src/components/sign-input/SignInput";
 import SignUpPageContainer from "@/src/containers/signup-page/SignUpPage";
 import * as S from "@/styles/pages/sign-page.style";
