@@ -1,3 +1,4 @@
+import SignPageHeader from "@/src/components/layout/sign-header/SignPageHeader";
 import SignInput from "@/src/components/sign-input/SignInput";
 import SignUpPageContainer from "@/src/containers/signup-page/SignUpPage";
 import * as S from "@/styles/pages/sign-page.style";
@@ -9,6 +10,7 @@ export default function SignUp() {
   return (
     <>
       <S.SignPageWrapper>
+        <SignPageHeader text="테스트중" linkText="테스트중" linkTo="/signin" />
         <S.SignFormWrapper>
           <SignInput
             inputRef={emailRef}
