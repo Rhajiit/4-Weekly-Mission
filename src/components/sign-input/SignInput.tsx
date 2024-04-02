@@ -14,7 +14,7 @@ import {
  * @param {BlurFunction} blurEvent 이 input컴포넌트에서 blur가 일어났을 때, 작동할 function을 받는 인자입니다.
  * @returns
  */
-export default function Input({
+export default function SignInput({
   inputRef,
   inputType,
   errorMessage,

@@ -1,8 +1,8 @@
-import HeadNav from "@/src/components/layout/HeadNav/HeadNav";
-import Input from "@/src/components/sign-input/SignInput";
+import SignInput from "@/src/components/sign-input/SignInput";
+import * as S from "@/styles/pages/sign.style";
 import { useRef, useState } from "react";
 
-export default function InputPage() {
+export default function SignUp() {
   const [errorMessage, setErrorMessage] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -16,8 +16,7 @@ export default function InputPage() {
 
   return (
     <>
-      <HeadNav />
-      <Input
+      <SignInput
         inputRef={inputRef}
         inputType="password"
         errorMessage={errorMessage}

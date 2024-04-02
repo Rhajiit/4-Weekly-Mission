@@ -37,7 +37,7 @@ export default function HeadNavProfile() {
       )}
 
       {!isLoggedIn && (
-        <Link href={"/login"}>
+        <Link href={"/signup"}>
           <S.NavLoginButton>로그인</S.NavLoginButton>
         </Link>
       )}
