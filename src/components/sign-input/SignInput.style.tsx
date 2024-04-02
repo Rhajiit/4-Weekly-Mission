@@ -8,7 +8,7 @@ export const InputSectionWrapper = styled.div`
 
 export const InputTitleLabel = styled.label`
   color: var(--lb-black);
-  margin-bottom: 1.2rem;
+  margin-bottom: 0.6rem;
 `;
 
 export const InputSelectLabel = styled.label<{ $isError: boolean }>`

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const SignPageWrapper = styled.section`
+  min-width: 40rem;
   display: flex;
   flex-direction: column;
   width: 4rem;
