@@ -1,11 +1,13 @@
 import { INPUT_PLACEHOLDER } from "@/src/constant/SIGN_INPUT_TYPE_TRANSLATOR";
 import { RefObject, useRef, useState } from "react";
 
-export default function SignUpPageContainer() {
+export default function SignInPageContainer() {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [passCheckError, setPassCheckError] = useState("");
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
+  const passCheckRef = useRef<HTMLInputElement>(null);
 
   const blurEvent = (type: string, ref: RefObject<HTMLInputElement>) => {
     const errorInputType = INPUT_PLACEHOLDER[type];
@@ -18,6 +20,10 @@ export default function SignUpPageContainer() {
 
       case "password":
         setFunction = setPasswordError;
+        break;
+
+      case "passCheck":
+        setFunction = setPassCheckError;
         break;
 
       default:
@@ -35,8 +41,10 @@ export default function SignUpPageContainer() {
   return {
     emailError,
     passwordError,
+    passCheckError,
     emailRef,
     passwordRef,
+    passCheckRef,
     blurEvent,
   };
 }

@@ -1,17 +1,10 @@
 import SignInput from "@/src/components/sign-input/SignInput";
-import SignUpPageContainer from "@/src/containers/signup-page/signUpPage";
+import SignUpPageContainer from "@/src/containers/signup-page/SignUpPage";
 import * as S from "@/styles/pages/sign-page.style";
 
 export default function SignUp() {
-  const {
-    emailError,
-    passwordError,
-    passCheckError,
-    emailRef,
-    passwordRef,
-    passCheckRef,
-    blurEvent,
-  } = SignUpPageContainer();
+  const { emailError, passwordError, emailRef, passwordRef, blurEvent } =
+    SignUpPageContainer();
 
   return (
     <>
@@ -28,12 +21,6 @@ export default function SignUp() {
             inputType="password"
             errorMessage={passwordError}
             blurEvent={() => blurEvent("password", passwordRef)}
-          />
-          <SignInput
-            inputRef={passCheckRef}
-            inputType="passCheck"
-            errorMessage={passCheckError}
-            blurEvent={() => blurEvent("passCheck", passCheckRef)}
           />
         </S.SignFormWrapper>
       </S.SignPageWrapper>
