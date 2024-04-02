@@ -42,14 +42,14 @@ export default function SignInput({
   return (
     <S.InputSectionWrapper>
       <S.InputTitleLabel htmlFor={inputType} className="lb-body2-regular">
-        {INPUT_TYPE[inputType]}
+        {INPUT_PLACEHOLDER[inputType]}
       </S.InputTitleLabel>
       <S.InputSelectLabel htmlFor={inputType} $isError={isError}>
         <S.Input
           id={inputType}
           type={currentInputType}
           placeholder={`${INPUT_PLACEHOLDER[inputType]}을 입력해주세요.`}
-          onBlur={blurEvent}
+          onBlur={() => blurEvent()}
           ref={inputRef}
         />
         {isTypePassword && (
