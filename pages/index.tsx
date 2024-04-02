@@ -3,8 +3,10 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { acceptDataFromApi } from "@/src/utils/api";
 import { useSetCurrentUser } from "@/src/context/UserContext";
-import HeadNav from "@/src/components/layout/HeadNav/HeadNav";
 import * as S from "@/styles/pages/index.style";
+
+// Components
+import HeadNav from "@/src/components/layout/HeadNav/HeadNav";
 import Footer from "@/src/components/layout/Footer/Footer";
 
 const USER = "users/1";

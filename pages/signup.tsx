@@ -1,7 +1,10 @@
+import * as S from "@/styles/pages/sign-page.style";
+
+// Components
+import SignUpPageContainer from "@/src/containers/signup-page/SignUpPage";
 import SignPageHeader from "@/src/components/layout/sign-page/header/SignPageHeader";
 import SignInput from "@/src/components/sign-input/SignInput";
-import SignUpPageContainer from "@/src/containers/signup-page/SignUpPage";
-import * as S from "@/styles/pages/sign-page.style";
+import SocialSign from "@/src/components/layout/sign-page/social/SocialSign";
 
 export default function SignUp() {
   const { emailError, passwordError, emailRef, passwordRef, blurEvent } =
@@ -32,6 +35,7 @@ export default function SignUp() {
         <S.SignSubmitButton onSubmit={() => console.log("asdf")} form="sign">
           로그인
         </S.SignSubmitButton>
+        <SocialSign />
       </S.SignPageWrapper>
     </>
   );

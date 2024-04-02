@@ -1,8 +1,10 @@
+import * as S from "@/styles/pages/sign-page.style";
+
+// Components
+import SignInPageContainer from "@/src/containers/signin-page/SignInPage";
 import SignPageHeader from "@/src/components/layout/sign-page/header/SignPageHeader";
 import SignInput from "@/src/components/sign-input/SignInput";
-import SignInPageContainer from "@/src/containers/signin-page/SignInPage";
-
-import * as S from "@/styles/pages/sign-page.style";
+import SocialSign from "@/src/components/layout/sign-page/social/SocialSign";
 
 export default function SignUp() {
   const {
@@ -44,6 +46,7 @@ export default function SignUp() {
           />
         </S.SignFormWrapper>
         <S.SignSubmitButton form="sign">회원가입</S.SignSubmitButton>
+        <SocialSign />
       </S.SignPageWrapper>
     </>
   );
