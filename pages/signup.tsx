@@ -10,7 +10,11 @@ export default function SignUp() {
   return (
     <>
       <S.SignPageWrapper>
-        <SignPageHeader text="테스트중" linkText="테스트중" linkTo="/signin" />
+        <SignPageHeader
+          text="회원이 아니신가요?"
+          linkText="회원 가입하기"
+          linkTo="/signin"
+        />
         <S.SignFormWrapper>
           <SignInput
             inputRef={emailRef}

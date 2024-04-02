@@ -1,3 +1,4 @@
+import SignPageHeader from "@/src/components/layout/sign-header/SignPageHeader";
 import SignInput from "@/src/components/sign-input/SignInput";
 import SignInPageContainer from "@/src/containers/signin-page/SignInPage";
 
@@ -17,6 +18,11 @@ export default function SignUp() {
   return (
     <>
       <S.SignPageWrapper>
+        <SignPageHeader
+          text="이미 회원이신가요?"
+          linkText="로그인 하기"
+          linkTo="/signup"
+        />
         <S.SignFormWrapper>
           <SignInput
             inputRef={emailRef}
