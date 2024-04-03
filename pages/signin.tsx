@@ -1,3 +1,4 @@
+import router from "next/router";
 import * as S from "@/styles/pages/sign-page.style";
 
 // Components
@@ -15,6 +16,10 @@ export default function SignUp() {
     blurEvent,
     submitEvent,
   } = SignUpPageContainer();
+
+  if (localStorage.getItem("accessToken")) {
+    router.push("/folder");
+  }
 
   return (
     <>
