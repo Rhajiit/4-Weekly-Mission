@@ -40,10 +40,12 @@ export default function SignInPageContainer() {
     const passwordInput = passwordRef.current!.value;
 
     try {
-      const response = await axios.post(
-        "https://bootcamp-api.codeit.kr/api/sign-in",
-        { email: emailInput, password: passwordInput }
-      );
+      const { data }: { data: { accessToken: string; refreshToken: string } } =
+        await axios.post("https://bootcamp-api.codeit.kr/api/sign-in", {
+          email: emailInput,
+          password: passwordInput,
+        });
+      localStorage.setItem("accessToken", data.accessToken);
       router.push("/folder");
     } catch {
       setEmailError(SIGN_INPUT_ERROR_MESSAGES.NOT_CORRECT_EMAIL);
