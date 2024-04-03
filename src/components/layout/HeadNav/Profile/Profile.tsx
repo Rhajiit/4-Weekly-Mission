@@ -14,7 +14,8 @@ export default function HeadNavProfile() {
   );
 
   useEffect(() => {
-    if (!!userData) {
+    const hasAccessToken = Boolean(localStorage.getItem("accessToken"));
+    if (hasAccessToken && userData) {
       setIsLoggedIn(true);
       setAccountEmail(userData.email);
       setProfileImg(userData.image_source);

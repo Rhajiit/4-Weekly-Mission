@@ -8,6 +8,7 @@ import * as S from "@/styles/pages/index.style";
 // Components
 import HeadNav from "@/src/components/layout/HeadNav/HeadNav";
 import Footer from "@/src/components/layout/Footer/Footer";
+import router from "next/router";
 
 const USER = "users/1";
 
@@ -51,6 +52,15 @@ export default function Home() {
           <Link href={"/share"}>
             <h2 className="lb-h2-semibold">SharePage로 이동</h2>
           </Link>
+          <button
+            type="button"
+            onClick={() => {
+              localStorage.removeItem("accessToken");
+              router.reload();
+            }}
+          >
+            로그 아웃
+          </button>
         </S.Header>
 
         <S.SectionWrapper>
