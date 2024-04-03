@@ -7,8 +7,14 @@ import SignInput from "@/src/components/sign-input/SignInput";
 import SocialSign from "@/src/components/layout/sign-page/social/SocialSign";
 
 export default function SignUp() {
-  const { emailError, passwordError, emailRef, passwordRef, blurEvent } =
-    SignUpPageContainer();
+  const {
+    emailError,
+    passwordError,
+    emailRef,
+    passwordRef,
+    blurEvent,
+    submitEvent,
+  } = SignUpPageContainer();
 
   return (
     <>
@@ -18,7 +24,7 @@ export default function SignUp() {
           linkText="회원 가입하기"
           linkTo="/signup"
         />
-        <S.SignFormWrapper id="sign">
+        <S.SignFormWrapper id="sign" onSubmit={(e) => submitEvent(e)}>
           <SignInput
             inputRef={emailRef}
             inputType="email"
@@ -32,9 +38,7 @@ export default function SignUp() {
             blurEvent={() => blurEvent("passwordLogin", passwordRef)}
           />
         </S.SignFormWrapper>
-        <S.SignSubmitButton onSubmit={() => console.log("asdf")} form="sign">
-          로그인
-        </S.SignSubmitButton>
+        <S.SignSubmitButton form="sign">로그인</S.SignSubmitButton>
         <SocialSign />
       </S.SignPageWrapper>
     </>

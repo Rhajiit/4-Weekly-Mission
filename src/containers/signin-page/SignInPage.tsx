@@ -1,6 +1,11 @@
-import { INPUT_NAME } from "@/src/constant/SIGN_INPUT_TEXTS";
+import {
+  INPUT_NAME,
+  SIGN_INPUT_ERROR_MESSAGES,
+} from "@/src/constant/SIGN_INPUT_TEXTS";
 import signBlurError from "@/src/utils/sign-blur-error-message/signBlurError";
-import { RefObject, useRef, useState } from "react";
+import axios from "axios";
+import router from "next/router";
+import { FormEvent, RefObject, useRef, useState } from "react";
 
 export default function SignInPageContainer() {
   const [emailError, setEmailError] = useState("");
@@ -29,11 +34,31 @@ export default function SignInPageContainer() {
     signBlurError(userInput, type, setFunction);
   };
 
+  const submitEvent = async (e: FormEvent) => {
+    e.preventDefault();
+    const emailInput = emailRef.current!.value;
+    const passwordInput = passwordRef.current!.value;
+
+    try {
+      const response = await axios.post(
+        "https://bootcamp-api.codeit.kr/api/sign-in",
+        { email: emailInput, password: passwordInput }
+      );
+      router.push("/folder");
+    } catch {
+      setEmailError(SIGN_INPUT_ERROR_MESSAGES.NOT_CORRECT_EMAIL);
+      setPasswordError(SIGN_INPUT_ERROR_MESSAGES.NOT_CORRECT_PASSWORD);
+      signBlurError(emailInput, "email", setEmailError);
+      signBlurError(passwordInput, "passwordLogin", setPasswordError);
+    }
+  };
+
   return {
     emailError,
     passwordError,
     emailRef,
     passwordRef,
     blurEvent,
+    submitEvent,
   };
 }
