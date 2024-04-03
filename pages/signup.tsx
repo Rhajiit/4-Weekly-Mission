@@ -29,7 +29,7 @@ export default function SignUp() {
             inputRef={passwordRef}
             inputType="passwordLogin"
             errorMessage={passwordError}
-            blurEvent={() => blurEvent("password", passwordRef)}
+            blurEvent={() => blurEvent("passwordLogin", passwordRef)}
           />
         </S.SignFormWrapper>
         <S.SignSubmitButton onSubmit={() => console.log("asdf")} form="sign">

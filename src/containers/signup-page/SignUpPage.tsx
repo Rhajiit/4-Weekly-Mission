@@ -1,4 +1,5 @@
 import { INPUT_NAME } from "@/src/constant/SIGN_INPUT_TEXTS";
+import signBlurError from "@/src/utils/sign-blur-error-message/signBlurError";
 import { RefObject, useRef, useState } from "react";
 
 export default function SignUpPageContainer() {
@@ -9,6 +10,7 @@ export default function SignUpPageContainer() {
 
   const blurEvent = (type: string, ref: RefObject<HTMLInputElement>) => {
     const errorInputType = INPUT_NAME[type];
+    const userInput = ref.current!.value;
     let setFunction;
 
     switch (type) {
@@ -16,7 +18,7 @@ export default function SignUpPageContainer() {
         setFunction = setEmailError;
         break;
 
-      case "password":
+      case "passwordLogin":
         setFunction = setPasswordError;
         break;
 
@@ -24,12 +26,7 @@ export default function SignUpPageContainer() {
         console.error("input의 타입 지정이 올바르지 않음");
         return;
     }
-    setFunction("");
-
-    if (ref.current!.value === "") {
-      const connector = type === "password" ? "를" : "을";
-      setFunction(`${errorInputType}${connector} 입력해주세요.`);
-    }
+    signBlurError(userInput, type, setFunction);
   };
 
   return {

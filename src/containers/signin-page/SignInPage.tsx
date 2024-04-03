@@ -1,5 +1,4 @@
-import { INPUT_PLACEHOLDER } from "@/src/constant/SIGN_INPUT_TEXTS";
-import defaultBlurMessage from "@/src/utils/sign-blur-error-message/defaultBlurMessage";
+import signBlurError from "@/src/utils/sign-blur-error-message/signBlurError";
 import { RefObject, useRef, useState } from "react";
 
 export default function SignInPageContainer() {
@@ -12,6 +11,8 @@ export default function SignInPageContainer() {
 
   const blurEvent = (type: string, ref: RefObject<HTMLInputElement>) => {
     const userInput = ref.current!.value;
+    const comparePassword =
+      type === "passCheck" ? passwordRef.current!.value : undefined;
     let setFunction;
 
     switch (type) {
@@ -31,10 +32,7 @@ export default function SignInPageContainer() {
         console.error("input의 타입 지정이 올바르지 않음");
         return;
     }
-
-    defaultBlurMessage(type);
-
-    setFunction("");
+    signBlurError(userInput, type, setFunction, comparePassword);
   };
 
   return {
