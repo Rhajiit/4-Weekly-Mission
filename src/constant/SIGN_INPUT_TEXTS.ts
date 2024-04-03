@@ -23,3 +23,13 @@ export const INPUT_NAME: textConstantObjectType = {
   password: "비밀번호",
   passwordLogin: "비밀번호",
 } as const;
+
+export const SIGN_INPUT_ERROR_MESSAGES = {
+  BLANK_INPUT: " 입력해주세요.",
+  NOT_VALID_FORMAT_EMAIL: "올바른 이메일 주소가 아닙니다.",
+  NOT_VALID_FORMAT_PASSWORD:
+    "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.",
+  NOT_MATCH_PASS_CHECK: "비밀번호가 일치하지 않아요.",
+  NOT_CORRECT_EMAIL: "이메일을 확인해주세요.",
+  NOT_CORRECT_PASSWORD: "비밀번호를 확인해주세요.",
+} as const;
