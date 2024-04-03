@@ -1,4 +1,4 @@
-import { INPUT_PLACEHOLDER } from "@/src/constant/SIGN_INPUT_TYPE_TRANSLATOR";
+import { INPUT_NAME } from "@/src/constant/SIGN_INPUT_TEXTS";
 import { RefObject, useRef, useState } from "react";
 
 export default function SignUpPageContainer() {
@@ -8,7 +8,7 @@ export default function SignUpPageContainer() {
   const passwordRef = useRef<HTMLInputElement>(null);
 
   const blurEvent = (type: string, ref: RefObject<HTMLInputElement>) => {
-    const errorInputType = INPUT_PLACEHOLDER[type];
+    const errorInputType = INPUT_NAME[type];
     let setFunction;
 
     switch (type) {

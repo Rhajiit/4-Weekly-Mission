@@ -27,7 +27,7 @@ export default function SignUp() {
           />
           <SignInput
             inputRef={passwordRef}
-            inputType="password"
+            inputType="passwordLogin"
             errorMessage={passwordError}
             blurEvent={() => blurEvent("password", passwordRef)}
           />
