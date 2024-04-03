@@ -6,6 +6,7 @@ import SignInPageContainer from "@/src/containers/signup-pagea/SignUpPage";
 import SignPageHeader from "@/src/components/layout/sign-page/header/SignPageHeader";
 import SignInput from "@/src/components/sign-input/SignInput";
 import SocialSign from "@/src/components/layout/sign-page/social/SocialSign";
+import { useEffect } from "react";
 
 export default function SignUp() {
   const {
@@ -18,9 +19,11 @@ export default function SignUp() {
     blurEvent,
   } = SignInPageContainer();
 
-  if (localStorage.getItem("accessToken")) {
-    router.push("/folder");
-  }
+  useEffect(() => {
+    if (localStorage.getItem("accessToken")) {
+      router.push("/folder");
+    }
+  });
 
   return (
     <>
