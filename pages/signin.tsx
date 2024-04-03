@@ -1,28 +1,21 @@
 import * as S from "@/styles/pages/sign-page.style";
 
 // Components
-import SignInPageContainer from "@/src/containers/signin-page/SignInPage";
+import SignUpPageContainer from "@/src/containers/signin-page/SignInPage";
 import SignPageHeader from "@/src/components/layout/sign-page/header/SignPageHeader";
 import SignInput from "@/src/components/sign-input/SignInput";
 import SocialSign from "@/src/components/layout/sign-page/social/SocialSign";
 
 export default function SignUp() {
-  const {
-    emailError,
-    passwordError,
-    passCheckError,
-    emailRef,
-    passwordRef,
-    passCheckRef,
-    blurEvent,
-  } = SignInPageContainer();
+  const { emailError, passwordError, emailRef, passwordRef, blurEvent } =
+    SignUpPageContainer();
 
   return (
     <>
       <S.SignPageWrapper>
         <SignPageHeader
-          text="이미 회원이신가요?"
-          linkText="로그인 하기"
+          text="회원이 아니신가요?"
+          linkText="회원 가입하기"
           linkTo="/signup"
         />
         <S.SignFormWrapper id="sign">
@@ -34,18 +27,14 @@ export default function SignUp() {
           />
           <SignInput
             inputRef={passwordRef}
-            inputType="password"
+            inputType="passwordLogin"
             errorMessage={passwordError}
-            blurEvent={() => blurEvent("password", passwordRef)}
-          />
-          <SignInput
-            inputRef={passCheckRef}
-            inputType="passCheck"
-            errorMessage={passCheckError}
-            blurEvent={() => blurEvent("passCheck", passCheckRef)}
+            blurEvent={() => blurEvent("passwordLogin", passwordRef)}
           />
         </S.SignFormWrapper>
-        <S.SignSubmitButton form="sign">회원가입</S.SignSubmitButton>
+        <S.SignSubmitButton onSubmit={() => console.log("asdf")} form="sign">
+          로그인
+        </S.SignSubmitButton>
         <SocialSign />
       </S.SignPageWrapper>
     </>
