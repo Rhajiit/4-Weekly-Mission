@@ -13,7 +13,6 @@ export const INPUT_TYPE: textConstantObjectType = {
   "password-sign-up": "password",
   "password-login": "password",
   "password-check": "password",
-  id: "id",
   email: "email",
 } as const;
 
