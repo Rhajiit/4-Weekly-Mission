@@ -3,6 +3,9 @@ import { FormEvent, RefObject, useRef, useState } from "react";
 import router from "next/router";
 import axios from "axios";
 import { SIGN_INPUT_ERROR_MESSAGES } from "@/src/constant/SIGN_INPUT_TEXTS";
+import emailBlur from "@/src/utils/sign-blur-error-message/input-blur-types/emailBlur";
+import passwordBlur from "@/src/utils/sign-blur-error-message/input-blur-types/passwordBlur";
+import passCheckBlur from "@/src/utils/sign-blur-error-message/input-blur-types/passCheckBlur";
 
 export default function SignUpPageContainer() {
   const [emailError, setEmailError] = useState("");
@@ -43,28 +46,39 @@ export default function SignUpPageContainer() {
     const emailInput = emailRef.current!.value;
     const passwordInput = passwordRef.current!.value;
     const passCheckInput = passCheckRef.current!.value;
+    setEmailError("");
+    setPasswordError("");
+    setPassCheckError("");
 
     try {
-      console.log(emailInput);
       await axios.post("https://bootcamp-api.codeit.kr/api/check-email", {
         email: emailInput,
       });
 
-      // const { data }: { data: { accessToken: string; refreshToken: string } } =
-      //   await axios.post("https://bootcamp-api.codeit.kr/api/sign-in", {
-      //     email: emailInput,
-      //     password: passwordInput,
-      //   });
-      // localStorage.setItem("accessToken", data.accessToken);
-      // router.push("/folder");
+      if (
+        emailBlur(emailInput) ||
+        passwordBlur(passwordInput, "password") ||
+        passCheckBlur(passCheckInput, passwordInput)
+      ) {
+        throw new Error("유효하지 않은 회원가입 시도");
+      }
+
+      const { data }: { data: { accessToken: string; refreshToken: string } } =
+        await axios.post("https://bootcamp-api.codeit.kr/api/sign-up", {
+          email: emailInput,
+          password: passwordInput,
+        });
+      localStorage.setItem("accessToken", data.accessToken);
+      router.push("/folder");
     } catch (e: any) {
       setEmailError(SIGN_INPUT_ERROR_MESSAGES.NOT_CORRECT_EMAIL);
       setPasswordError(SIGN_INPUT_ERROR_MESSAGES.NOT_CORRECT_PASSWORD);
+
       signBlurError(emailInput, "email", setEmailError);
-      signBlurError(passwordInput, "passwordLogin", setPasswordError);
-      signBlurError(passCheckInput, "passwordLogin", setPasswordError);
-      if (e.status === 409) {
-        setEmailError(e.message);
+      signBlurError(passwordInput, "password", setPasswordError);
+      signBlurError(passCheckInput, "passCheck", setPassCheckError);
+      if (e.response?.status === 409) {
+        setEmailError(SIGN_INPUT_ERROR_MESSAGES.DUPLICATE_EMAIL);
       }
     }
   };
