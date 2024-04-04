@@ -41,9 +41,9 @@ export default function SignUp() {
           />
           <SignInput
             inputRef={passwordRef}
-            inputType="passwordLogin"
+            inputType="password-login"
             errorMessage={passwordError}
-            blurEvent={() => blurEvent("passwordLogin", passwordRef)}
+            blurEvent={() => blurEvent("password-login", passwordRef)}
           />
         </S.SignFormWrapper>
         <S.SignSubmitButton form="sign">로그인</S.SignSubmitButton>

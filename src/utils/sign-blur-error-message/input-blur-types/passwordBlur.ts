@@ -8,7 +8,7 @@ const passFormatCheck = (password: string) => {
 
 export default function passwordBlur(signInput: string, inputType: string) {
   if (signInput === "") return SIGN_INPUT_ERROR_MESSAGES.BLANK_PASSWORD;
-  if (inputType === "password" && !passFormatCheck(signInput))
+  if (inputType === "password-sign-up" && !passFormatCheck(signInput))
     return SIGN_INPUT_ERROR_MESSAGES.NOT_VALID_FORMAT_PASSWORD;
   return "";
 }

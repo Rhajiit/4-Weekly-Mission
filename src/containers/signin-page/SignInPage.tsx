@@ -23,7 +23,7 @@ export default function SignInPageContainer() {
         setFunction = setEmailError;
         break;
 
-      case "passwordLogin":
+      case "password-login":
         setFunction = setPasswordError;
         break;
 
@@ -48,10 +48,10 @@ export default function SignInPageContainer() {
       localStorage.setItem("accessToken", data.accessToken);
       router.push("/folder");
     } catch {
+      signBlurError(emailInput, "email", setEmailError);
+      signBlurError(passwordInput, "password-login", setPasswordError);
       setEmailError(SIGN_INPUT_ERROR_MESSAGES.NOT_CORRECT_EMAIL);
       setPasswordError(SIGN_INPUT_ERROR_MESSAGES.NOT_CORRECT_PASSWORD);
-      signBlurError(emailInput, "email", setEmailError);
-      signBlurError(passwordInput, "passwordLogin", setPasswordError);
     }
   };
 

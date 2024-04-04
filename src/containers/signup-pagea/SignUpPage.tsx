@@ -18,7 +18,7 @@ export default function SignUpPageContainer() {
   const blurEvent = (type: string, ref: RefObject<HTMLInputElement>) => {
     const userInput = ref.current!.value;
     const comparePassword =
-      type === "passCheck" ? passwordRef.current!.value : undefined;
+      type === "password-check" ? passwordRef.current!.value : undefined;
     let setFunction;
 
     switch (type) {
@@ -26,11 +26,11 @@ export default function SignUpPageContainer() {
         setFunction = setEmailError;
         break;
 
-      case "password":
+      case "password-sign-up":
         setFunction = setPasswordError;
         break;
 
-      case "passCheck":
+      case "password-check":
         setFunction = setPassCheckError;
         break;
 
@@ -57,7 +57,7 @@ export default function SignUpPageContainer() {
 
       if (
         emailBlur(emailInput) ||
-        passwordBlur(passwordInput, "password") ||
+        passwordBlur(passwordInput, "password-sign-up") ||
         passCheckBlur(passCheckInput, passwordInput)
       ) {
         throw new Error("유효하지 않은 회원가입 시도");
@@ -75,8 +75,8 @@ export default function SignUpPageContainer() {
       setPasswordError(SIGN_INPUT_ERROR_MESSAGES.NOT_CORRECT_PASSWORD);
 
       signBlurError(emailInput, "email", setEmailError);
-      signBlurError(passwordInput, "password", setPasswordError);
-      signBlurError(passCheckInput, "passCheck", setPassCheckError);
+      signBlurError(passwordInput, "password-sign-up", setPasswordError);
+      signBlurError(passCheckInput, "password-check", setPassCheckError);
       if (e.response?.status === 409) {
         setEmailError(SIGN_INPUT_ERROR_MESSAGES.DUPLICATE_EMAIL);
       }

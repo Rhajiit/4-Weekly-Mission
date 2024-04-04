@@ -16,12 +16,12 @@ export default function signBlurError(
       errorMessage = emailBlur(userInput);
       break;
 
-    case "passwordLogin":
-    case "password":
+    case "password-login":
+    case "password-sign-up":
       errorMessage = passwordBlur(userInput, inputType);
       break;
 
-    case "passCheck":
+    case "password-check":
       errorMessage = passCheckBlur(userInput, compareInput!);
       break;
   }
