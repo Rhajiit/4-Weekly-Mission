@@ -45,19 +45,27 @@ export default function SignUpPageContainer() {
     const passCheckInput = passCheckRef.current!.value;
 
     try {
-      const { data }: { data: { accessToken: string; refreshToken: string } } =
-        await axios.post("https://bootcamp-api.codeit.kr/api/sign-in", {
-          email: emailInput,
-          password: passwordInput,
-        });
-      localStorage.setItem("accessToken", data.accessToken);
-      router.push("/folder");
-    } catch {
+      console.log(emailInput);
+      await axios.post("https://bootcamp-api.codeit.kr/api/check-email", {
+        email: emailInput,
+      });
+
+      // const { data }: { data: { accessToken: string; refreshToken: string } } =
+      //   await axios.post("https://bootcamp-api.codeit.kr/api/sign-in", {
+      //     email: emailInput,
+      //     password: passwordInput,
+      //   });
+      // localStorage.setItem("accessToken", data.accessToken);
+      // router.push("/folder");
+    } catch (e: any) {
       setEmailError(SIGN_INPUT_ERROR_MESSAGES.NOT_CORRECT_EMAIL);
       setPasswordError(SIGN_INPUT_ERROR_MESSAGES.NOT_CORRECT_PASSWORD);
       signBlurError(emailInput, "email", setEmailError);
       signBlurError(passwordInput, "passwordLogin", setPasswordError);
       signBlurError(passCheckInput, "passwordLogin", setPasswordError);
+      if (e.status === 409) {
+        setEmailError(e.message);
+      }
     }
   };
 
@@ -69,5 +77,6 @@ export default function SignUpPageContainer() {
     passwordRef,
     passCheckRef,
     blurEvent,
+    submitEvent,
   };
 }

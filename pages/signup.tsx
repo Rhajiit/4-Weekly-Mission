@@ -17,6 +17,7 @@ export default function SignUp() {
     passwordRef,
     passCheckRef,
     blurEvent,
+    submitEvent,
   } = SignInPageContainer();
 
   useEffect(() => {
@@ -33,7 +34,7 @@ export default function SignUp() {
           linkText="로그인 하기"
           linkTo="/signin"
         />
-        <S.SignFormWrapper id="sign">
+        <S.SignFormWrapper id="sign" onSubmit={(e) => submitEvent(e)}>
           <SignInput
             inputRef={emailRef}
             inputType="email"
