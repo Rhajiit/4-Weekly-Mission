@@ -33,11 +33,11 @@ export default function Home() {
             <h2 className="lb-h2-semibold">SharePage로 이동</h2>
           </Link>
 
-          <Link href={"/share"}>
+          <Link href={"/signin"}>
             <h2 className="lb-h2-semibold">login으로 이동</h2>
           </Link>
 
-          <Link href={"/share"}>
+          <Link href={"/signup"}>
             <h2 className="lb-h2-semibold">signup으로 이동</h2>
           </Link>
           <button
