@@ -1,8 +1,5 @@
 import Head from "next/head";
 import Link from "next/link";
-import { useEffect } from "react";
-import { acceptDataFromApi } from "@/src/utils/api";
-import { useSetCurrentUser } from "@/src/context/UserContext";
 import * as S from "@/styles/pages/index.style";
 
 // Components
@@ -10,24 +7,7 @@ import HeadNav from "@/src/components/layout/HeadNav/HeadNav";
 import Footer from "@/src/components/layout/Footer/Footer";
 import router from "next/router";
 
-const USER = "users/1";
-
 export default function Home() {
-  const setCurrentUser = useSetCurrentUser();
-
-  const accountVerification = async (user: string) => {
-    const receivedData = await acceptDataFromApi(user);
-    if (!receivedData) return;
-
-    const { data } = receivedData;
-    setCurrentUser(...data);
-  };
-
-  useEffect(() => {
-    accountVerification(USER);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   return (
     <>
       <Head>
@@ -51,6 +31,14 @@ export default function Home() {
           </Link>
           <Link href={"/share"}>
             <h2 className="lb-h2-semibold">SharePage로 이동</h2>
+          </Link>
+
+          <Link href={"/share"}>
+            <h2 className="lb-h2-semibold">login으로 이동</h2>
+          </Link>
+
+          <Link href={"/share"}>
+            <h2 className="lb-h2-semibold">signup으로 이동</h2>
           </Link>
           <button
             type="button"
