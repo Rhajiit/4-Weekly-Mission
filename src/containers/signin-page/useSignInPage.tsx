@@ -14,7 +14,6 @@ export default function useSignInPage() {
   const passwordRef = useRef<HTMLInputElement>(null);
 
   const blurEvent = (type: string, ref: RefObject<HTMLInputElement>) => {
-    const errorInputType = INPUT_NAME[type];
     const userInput = ref.current!.value;
     let setFunction;
 
