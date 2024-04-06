@@ -15,6 +15,7 @@ export default function SignPageHeader({
     <S.SignPageHeadWrapper>
       <Link href={"/"}>
         <Image
+          className="inline-block"
           width={210}
           height={38}
           src={"/assets/images/svg/logo.svg"}
