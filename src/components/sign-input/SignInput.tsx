@@ -43,12 +43,12 @@ export default function SignInput({
     <div className="flex flex-col gap-[0.6rem]">
       <label
         htmlFor={inputType}
-        className="lb-body2-regular mb-[0.6rem] text-black"
+        className="lb-body2-regular text-black mb-[0.6rem]"
       >
         {INPUT_NAME[inputType]}
       </label>
       <label
-        className={`flex w-[100%] cursor-text items-center gap-[0.3rem] rounded-[0.8rem] border-[0.1rem] border-solid ${isError ? "border-[var(--lb-red)]" : "border-[var(--lb-gray20)]"} bg-white px-[1.5rem] py-[1.8rem] focus-within:border-[var(--lb-primary-color)]`}
+        className={`flex w-[100%] cursor-text items-center gap-[0.3rem] rounded-[0.8rem] border-[0.1rem] border-solid ${isError ? "border-[var(--lb-red)]" : "border-[var(--lb-gray20)]"} bg-white px-[1.5rem] py-[1.8rem] focus-within:border-primary`}
         htmlFor={inputType}
       >
         <input
@@ -61,7 +61,7 @@ export default function SignInput({
         />
         {isTypePassword && (
           <button
-            className="relative flex h-[1.6rem] w-[1.6rem] justify-center border-none bg-transparent"
+            className="relative flex h-[1.6rem] w-[1.6rem] justify-center border-none"
             type="button"
             onClick={() =>
               setCurrentInputType((prev) =>
