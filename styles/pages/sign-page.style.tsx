@@ -1,4 +1,4 @@
-import { PrimaryButton } from "@/src/components/layout/PrimaryButton/PrimaryButton";
+import { PrimaryButton } from "@/src/components/layout/primary-button/PrimaryButton";
 import styled from "styled-components";
 
 export const SignPageWrapper = styled.section`

@@ -3,8 +3,8 @@ import Link from "next/link";
 import * as S from "@/styles/pages/index.style";
 
 // Components
-import HeadNav from "@/src/components/layout/HeadNav/HeadNav";
-import Footer from "@/src/components/layout/Footer/Footer";
+import HeadNav from "@/src/components/layout/head-nav/HeadNav";
+import Footer from "@/src/components/Footer";
 import router from "next/router";
 
 export default function Home() {

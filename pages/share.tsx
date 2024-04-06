@@ -1,12 +1,12 @@
 import * as S from "@/styles/pages/share.style";
 
 // Components
-import HeadNav from "@/src/components/layout/HeadNav/HeadNav";
+import HeadNav from "@/src/components/layout/head-nav/HeadNav";
 import ShareFolderProfile from "@/src/containers/share-page/profile/SharePageProfile";
 import LinkSearchBar from "@/src/components/link-card/link-card-search-form/LinkSearchBar";
 import LinkCardListLayout from "@/src/components/link-card/link-card-layout/LinkCardListLayout";
 import SharePageContainer from "@/src/containers/share-page/SharePage";
-import Footer from "@/src/components/layout/Footer/Footer";
+import Footer from "@/src/components/Footer";
 
 export default function Share() {
   const { cardFilter, items, isEmptyResponse, setCardFilter } =

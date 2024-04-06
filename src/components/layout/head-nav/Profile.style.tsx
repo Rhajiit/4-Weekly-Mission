@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { PrimaryButton } from "../../PrimaryButton/PrimaryButton";
+import { PrimaryButton } from "../primary-button/PrimaryButton";
 
 export const NavLoginButton = styled(PrimaryButton)`
   width: 12.8rem;

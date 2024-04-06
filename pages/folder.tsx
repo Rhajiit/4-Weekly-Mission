@@ -7,9 +7,9 @@ import LinkSubFolderUtils from "@/src/containers/folder-page/sub-folder-util/Lin
 import LinkCardListLayout from "@/src/components/link-card/link-card-layout/LinkCardListLayout";
 import LinkSearchBar from "@/src/components/link-card/link-card-search-form/LinkSearchBar";
 import ModalLoader from "@/src/components/modal/modalLoader";
-import HeadNav from "@/src/components/layout/HeadNav/HeadNav";
+import HeadNav from "@/src/components/layout/head-nav/HeadNav";
 import LinkSubFolderList from "@/src/containers/folder-page/sub-folder-list/LinkSubFolderList";
-import Footer from "@/src/components/layout/Footer/Footer";
+import Footer from "@/src/components/Footer";
 
 export default function Folder() {
   const id = 1;
