@@ -4,8 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import * as S from "./Profile.style";
 import { acceptDataFromApi } from "@/src/utils/api";
-
-const USER = "users/1";
+import { USER } from "@/src/constant/TEMPORARY_USER_CONSTANT";
 
 export default function HeadNavProfile() {
   const userData = useCurrentUser();
