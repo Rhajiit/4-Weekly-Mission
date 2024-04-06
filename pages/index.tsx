@@ -4,7 +4,7 @@ import * as S from "@/styles/pages/index.style";
 
 // Components
 import HeadNav from "@/src/components/layout/head-nav/HeadNav";
-import Footer from "@/src/components/Footer";
+import Footer from "@/src/components/layout/footer/Footer";
 import router from "next/router";
 
 export default function Home() {

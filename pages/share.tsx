@@ -6,7 +6,7 @@ import ShareFolderProfile from "@/src/containers/share-page/profile/SharePagePro
 import LinkSearchBar from "@/src/components/link-card/link-card-search-form/LinkSearchBar";
 import LinkCardListLayout from "@/src/components/link-card/link-card-layout/LinkCardListLayout";
 import SharePageContainer from "@/src/containers/share-page/SharePage";
-import Footer from "@/src/components/Footer";
+import Footer from "@/src/components/layout/footer/Footer";
 
 export default function Share() {
   const { cardFilter, items, isEmptyResponse, setCardFilter } =
