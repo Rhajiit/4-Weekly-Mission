@@ -7,6 +7,10 @@ import axios from "axios";
 import router from "next/router";
 import { FormEvent, RefObject, useRef, useState } from "react";
 
+/**
+ * @description signupPage의 전반적인 로직이 담겨있습니다.
+ * @returns
+ */
 export default function useSignInPage() {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");

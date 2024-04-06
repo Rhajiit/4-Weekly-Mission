@@ -7,6 +7,11 @@ import emailBlur from "@/src/utils/sign-blur-error-message/input-blur-types/emai
 import passwordBlur from "@/src/utils/sign-blur-error-message/input-blur-types/passwordBlur";
 import passCheckBlur from "@/src/utils/sign-blur-error-message/input-blur-types/passCheckBlur";
 
+/**
+ * @description signupPage의 전반적인 로직이 담겨있습니다.
+ * @returns
+ */
+
 export default function useSignUpPage() {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
