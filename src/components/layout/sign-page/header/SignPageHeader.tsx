@@ -25,7 +25,7 @@ export default function SignPageHeader({
       <p className="lb-body1-regular">
         {text + " "}
         <Link href={linkTo}>
-          <span>{linkText}</span>
+          <span className="text-blue-600 underline">{linkText}</span>
         </Link>
       </p>
     </S.SignPageHeadWrapper>
