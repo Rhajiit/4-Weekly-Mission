@@ -42,7 +42,7 @@ export default function HeadNavProfile() {
 
   return (
     <>
-      {isLoggedIn && (
+      {isLoggedIn ? (
         <S.NavProfileSection>
           <Image
             width={28}
@@ -52,9 +52,7 @@ export default function HeadNavProfile() {
           />
           {accountEmail}
         </S.NavProfileSection>
-      )}
-
-      {!isLoggedIn && (
+      ) : (
         <Link href={"/signin"}>
           <S.NavLoginButton>로그인</S.NavLoginButton>
         </Link>
