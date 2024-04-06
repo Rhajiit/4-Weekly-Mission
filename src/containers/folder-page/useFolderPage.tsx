@@ -17,7 +17,7 @@ type handleCurrentFolderChangeType = (id: number, name: string) => void;
  * @description 폴더 페이지 컴포넌트
  * @returns
  */
-export default function FolderPageContainer(id: number) {
+export default function useFolderPage(id: number) {
   const [isCurrentFolderAll, setIsCurrentFolderAll] = useState(true);
   const [currentFolderName, setCurrentFolderName] = useState("전체");
   const [subFolderList, setSubFolderList] = useState<FolderListDataType[]>([]);
@@ -33,7 +33,8 @@ export default function FolderPageContainer(id: number) {
   const [isModalOpened, setIsModalOpened] = useState(false);
   const [currentModalType, setCurrentModalType] = useState("removeLink");
   const [modalData, setModalData] = useState<LinkCardFunctionDataType>();
-  const [cardFilter, setCardFilter] = useState<string>("");
+  const [cardFilterSearchValue, setCardFilterSearchValue] =
+    useState<string>("");
   const [isLinkAddBarHidden, setIsLinkAddBarHidden] = useState<boolean>(false);
   const [isFooterVisible, setIsFooterVisible] = useState<boolean>(false);
   const [isLinkAddBarVisible, setIsLinkAddBarVisible] =
@@ -110,20 +111,24 @@ export default function FolderPageContainer(id: number) {
   }, [id]);
 
   useEffect(() => {
-    if (cardFilter === "") {
+    if (cardFilterSearchValue === "") {
       setItems(originItems);
       return;
     }
     setItems(
       originItems.filter(
         (item) =>
-          item.title.toLowerCase().includes(cardFilter.toLowerCase()) ||
-          item.description.toLowerCase().includes(cardFilter.toLowerCase()) ||
-          item.url.toLowerCase().includes(cardFilter.toLowerCase())
+          item.title
+            .toLowerCase()
+            .includes(cardFilterSearchValue.toLowerCase()) ||
+          item.description
+            .toLowerCase()
+            .includes(cardFilterSearchValue.toLowerCase()) ||
+          item.url.toLowerCase().includes(cardFilterSearchValue.toLowerCase())
       )
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cardFilter]);
+  }, [cardFilterSearchValue]);
 
   // useEffect를 이용하여 IntersectionObserver을 등록
   useEffect(() => {
@@ -224,8 +229,8 @@ export default function FolderPageContainer(id: number) {
     currentFolderName,
     isCurrentFolderAll,
     setIsCurrentFolderAll,
-    cardFilter,
-    setCardFilter,
+    cardFilter: cardFilterSearchValue,
+    setCardFilter: setCardFilterSearchValue,
     isEmptyResponse,
     setIsEmptyResponse,
     isLoading,

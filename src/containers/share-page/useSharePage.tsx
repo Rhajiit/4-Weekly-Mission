@@ -10,7 +10,7 @@ import { UserLinkDataType } from "@/src/types/UserLinkDataType";
  * @description /share 페이지를 구현하는 컴포넌트.
  * @returns
  */
-export default function SharePageContainer() {
+export default function useSharePage() {
   const [originItems, setOriginItems] = useState<UserLinkDataType[]>([]);
   const [items, setItems] = useState<UserLinkDataType[]>([]);
   const [cardFilter, setCardFilter] = useState<string>("");

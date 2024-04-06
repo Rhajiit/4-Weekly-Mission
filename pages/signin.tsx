@@ -2,7 +2,7 @@ import router from "next/router";
 import * as S from "@/styles/pages/sign-page.style";
 
 // Components
-import SignUpPageContainer from "@/src/containers/signin-page/SignInPage";
+import SignUpPageContainer from "@/src/containers/signin-page/useSignInPage";
 import SignPageHeader from "@/src/components/layout/sign-page/header/SignPageHeader";
 import SignInput from "@/src/components/sign-input/SignInput";
 import SocialSign from "@/src/components/layout/sign-page/social/SocialSign";

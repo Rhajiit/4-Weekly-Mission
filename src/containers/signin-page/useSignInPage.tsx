@@ -7,7 +7,7 @@ import axios from "axios";
 import router from "next/router";
 import { FormEvent, RefObject, useRef, useState } from "react";
 
-export default function SignInPageContainer() {
+export default function useSignInPage() {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const emailRef = useRef<HTMLInputElement>(null);

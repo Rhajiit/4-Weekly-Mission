@@ -1,4 +1,4 @@
-import FolderPageContainer from "@/src/containers/folder-page/FolderPage";
+import useFolderPage from "@/src/containers/folder-page/useFolderPage";
 import * as S from "@/styles/pages/folder.style";
 
 // Components
@@ -33,7 +33,7 @@ export default function Folder() {
     kebabActions,
     footerObserveRef,
     subFolderAction,
-  } = FolderPageContainer(id);
+  } = useFolderPage(id);
 
   return (
     <>
