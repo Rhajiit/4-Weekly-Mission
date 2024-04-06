@@ -43,12 +43,14 @@ export default function SignInput({
     <div className="flex flex-col gap-[0.6rem]">
       <label
         htmlFor={inputType}
-        className="lb-body2-regular text-black mb-[0.6rem]"
+        className="lb-body2-regular mb-[0.6rem] text-black"
       >
         {INPUT_NAME[inputType]}
       </label>
       <label
-        className={`flex w-[100%] cursor-text items-center gap-[0.3rem] rounded-[0.8rem] border-[0.1rem] border-solid ${isError ? "border-[var(--lb-red)]" : "border-[var(--lb-gray20)]"} bg-white px-[1.5rem] py-[1.8rem] focus-within:border-primary`}
+        className={`flex w-[100%] cursor-text items-center gap-[0.3rem] rounded-[0.8rem] border-[0.1rem] 
+        border-solid ${isError ? "border-[var(--lb-red)]" : "border-[var(--lb-gray20)]"} 
+        bg-white px-[1.5rem] py-[1.8rem] focus-within:border-primary`}
         htmlFor={inputType}
       >
         <input
