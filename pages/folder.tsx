@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import useFolderPage from "@/src/containers/folder-page/useFolderPage";
+import router from "next/router";
 import * as S from "@/styles/pages/folder.style";
 
 // Components
@@ -34,6 +36,12 @@ export default function Folder() {
     footerObserveRef,
     subFolderAction,
   } = useFolderPage(id);
+
+  useEffect(() => {
+    if (!localStorage.getItem("accessToken")) {
+      router.push("/signin");
+    }
+  });
 
   return (
     <>
