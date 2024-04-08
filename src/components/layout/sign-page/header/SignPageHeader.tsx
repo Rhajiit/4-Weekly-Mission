@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import * as S from "./SignPageHeader.style";
 
 export default function SignPageHeader({
   text,
@@ -12,7 +11,7 @@ export default function SignPageHeader({
   linkTo: string;
 }) {
   return (
-    <S.SignPageHeadWrapper>
+    <header className=" text-center">
       <Link href={"/"}>
         <Image
           className="inline-block"
@@ -22,12 +21,12 @@ export default function SignPageHeader({
           alt="ToHomePage"
         />
       </Link>
-      <p className="lb-body1-regular">
+      <p className="lb-body1-regular mt-[1.6rem]">
         {text + " "}
         <Link href={linkTo}>
           <span className="text-blue-600 underline">{linkText}</span>
         </Link>
       </p>
-    </S.SignPageHeadWrapper>
+    </header>
   );
 }
