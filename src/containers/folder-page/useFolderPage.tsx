@@ -17,15 +17,15 @@ type handleCurrentFolderChangeType = (id: number, name: string) => void;
  * @description 폴더 페이지 컴포넌트
  * @returns
  */
-export default function useFolderPage(id: number) {
-  const [isCurrentFolderAll, setIsCurrentFolderAll] = useState(true);
+export default function useFolderPage(id: number, folderId: number) {
+  const [isCurrentFolderAll, setIsCurrentFolderAll] = useState(folderId === 0);
   const [currentFolderName, setCurrentFolderName] = useState("전체");
   const [subFolderList, setSubFolderList] = useState<FolderListDataType[]>([]);
   const [isEmptyResponse, setIsEmptyResponse] = useState(true);
   const [isLoading, error, acceptDataFromApiAsync] =
     useFetch(acceptDataFromApi);
   const [currentFolderQuery, setCurrentFolderQuery] = useState(
-    `users/${id}/links`
+    `users/${id}/links`,
   );
   const [currentFolderId, setCurrentFolderId] = useState(0);
   const [originItems, setOriginItems] = useState<UserLinkDataType[]>([]);
@@ -45,7 +45,7 @@ export default function useFolderPage(id: number) {
 
   const handleModalOpen = (
     modalType: string,
-    modalData: LinkCardFunctionDataType
+    modalData: LinkCardFunctionDataType,
   ) => {
     setModalData({});
     setCurrentModalType(modalType);
@@ -77,12 +77,12 @@ export default function useFolderPage(id: number) {
 
   const handleCurrentFolderChange: handleCurrentFolderChangeType = async (
     id,
-    name
+    name,
   ) => {
     setIsEmptyResponse(false);
     setCurrentFolderName(name);
     setCurrentFolderQuery(
-      `users/${id}/links${id !== 0 ? `?folderId=${id}` : ""}`
+      `users/${id}/links${id !== 0 ? `?folderId=${id}` : ""}`,
     );
     setCurrentFolderId(id);
 
@@ -102,6 +102,7 @@ export default function useFolderPage(id: number) {
   const acceptSubFolderList = async (requestQuery: string) => {
     const { data } = await acceptDataFromApi(requestQuery);
     setSubFolderList(data);
+    setCurrentFolderId(folderId);
   };
 
   useEffect(() => {
@@ -124,8 +125,8 @@ export default function useFolderPage(id: number) {
           item.description
             .toLowerCase()
             .includes(cardFilterSearchValue.toLowerCase()) ||
-          item.url.toLowerCase().includes(cardFilterSearchValue.toLowerCase())
-      )
+          item.url.toLowerCase().includes(cardFilterSearchValue.toLowerCase()),
+      ),
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cardFilterSearchValue]);

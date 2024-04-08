@@ -6,6 +6,7 @@ import FolderListDataType from "@/src/types/FolderListDataType";
 interface SubFolderListProp {
   subFolderData: FolderListDataType[];
   handleCurrentFolderChange: handleCurrentFolderChangeType;
+  currentFolderId: number;
 }
 type handleCurrentFolderChangeType = (id: number, name: string) => void;
 
@@ -18,9 +19,10 @@ type handleCurrentFolderChangeType = (id: number, name: string) => void;
 export default function LinkSubFolderList({
   subFolderData,
   handleCurrentFolderChange,
+  currentFolderId,
 }: SubFolderListProp) {
   const [subFolderList, setSubFolderList] = useState<FolderListDataType[]>([]);
-  const [selectedBtn, setSelectedBtn] = useState(0);
+  const [selectedBtn, setSelectedBtn] = useState(currentFolderId);
 
   const handleBtnStyleChange = async (id: number, name: string) => {
     setSelectedBtn(id);
@@ -29,6 +31,15 @@ export default function LinkSubFolderList({
 
   useEffect(() => {
     setSubFolderList(subFolderData);
+    const currentSubFolderArray = subFolderList.filter(
+      (item) => item.id === currentFolderId,
+    );
+    const currentSubFolder =
+      currentSubFolderArray.length !== 0
+        ? currentSubFolderArray[0]
+        : { id: 0, name: "전체" };
+
+    handleBtnStyleChange(currentSubFolder.id, currentSubFolder.name);
   }, [subFolderData]);
 
   return (

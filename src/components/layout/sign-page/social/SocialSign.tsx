@@ -5,7 +5,7 @@ import * as S from "./SocialSign.style";
 export default function SocialSign() {
   return (
     <S.SocialBox className="lb-body2-regular">
-      다른 방식으로 가입하기{" "}
+      다른 방식으로 가입하기
       <S.IconWrapper>
         <Link href={"https://www.google.com"}>
           <Image

@@ -13,7 +13,7 @@ import HeadNav from "@/src/components/layout/head-nav/HeadNav";
 import LinkSubFolderList from "@/src/containers/folder-page/sub-folder-list/LinkSubFolderList";
 import Footer from "@/src/components/layout/footer/Footer";
 
-export default function Folder() {
+export default function Folder({ folderId = 0 }) {
   const id = 1;
   const {
     isModalOpened,
@@ -35,7 +35,7 @@ export default function Folder() {
     kebabActions,
     footerObserveRef,
     subFolderAction,
-  } = useFolderPage(id);
+  } = useFolderPage(id, folderId);
 
   useEffect(() => {
     if (!localStorage.getItem("accessToken")) {
@@ -70,6 +70,7 @@ export default function Folder() {
             <LinkSubFolderList
               subFolderData={subFolderList}
               handleCurrentFolderChange={handleCurrentFolderChange}
+              currentFolderId={folderId}
             />
             <S.AddFolderButton
               className="add-sub-folder"
