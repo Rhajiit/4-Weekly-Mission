@@ -5,41 +5,66 @@ import { acceptDataFromApi } from "@/src/utils/api";
 import refineLinkData from "@/src/utils/refine-link-data/refineLinkData";
 import { UserLinkDataType } from "@/src/types/UserLinkDataType";
 import ShareUi from "@/src/containers/share-page/Share.presenter";
+import UserDataType from "@/src/types/UserDataType";
+
+export async function getServerSideProps() {
+  const shareUserRawData = await acceptDataFromApi("sample/user");
+  const shareUserData = {
+    id: 1,
+    created_at: "",
+    name: shareUserRawData.name,
+    image_source: shareUserRawData.profileImageSource,
+    email: shareUserRawData.email,
+    auth_id: 1,
+  };
+
+  const shareFolderRawData = await acceptDataFromApi("sample/folder");
+  const shareFolderData = refineLinkData(shareFolderRawData.folder.links);
+  const folderName = shareFolderRawData.folder.name;
+
+  return {
+    props: {
+      shareUserData,
+      shareFolderData,
+      folderName,
+    },
+  };
+}
 
 /**
  *
  * @description /share 페이지를 구현하는 컴포넌트.
  * @returns
  */
-export default function Share({ shareId = 0 }) {
-  const [originItems, setOriginItems] = useState<UserLinkDataType[]>([]);
-  const [items, setItems] = useState<UserLinkDataType[]>([]);
+export default function Share({
+  shareUserData,
+  shareFolderData,
+  folderName,
+}: {
+  shareUserData: UserDataType;
+  shareFolderData: UserLinkDataType[];
+  folderName: string;
+}) {
+  const [items, setItems] = useState<UserLinkDataType[]>(shareFolderData);
   const [cardFilterSearchValue, setCardFilterSearchValue] =
     useState<string>("");
   const [isEmptyResponse, setIsEmptyResponse] = useState(false);
 
-  const handleShareLoad = async () => {
-    const {
-      folder: { links },
-    } = await acceptDataFromApi("sample/folder");
-    setOriginItems(refineLinkData(links));
-    setItems(refineLinkData(links));
-    if (links.length === 0) {
-      setIsEmptyResponse(true);
-    }
-  };
-
   useEffect(() => {
-    handleShareLoad();
-  }, []);
+    if (items.length === 0) {
+      setIsEmptyResponse(true);
+    } else {
+      setIsEmptyResponse(false);
+    }
+  }, [items]);
 
   useEffect(() => {
     if (cardFilterSearchValue === "") {
-      setItems(originItems);
+      setItems(shareFolderData);
       return;
     }
     setItems(
-      originItems.filter(
+      shareFolderData.filter(
         (item: UserLinkDataType) =>
           item.title.includes(cardFilterSearchValue) ||
           item.description.includes(cardFilterSearchValue) ||
@@ -53,7 +78,9 @@ export default function Share({ shareId = 0 }) {
     items,
     cardFilterSearchValue,
     setCardFilterSearchValue,
+    shareUserData,
     isEmptyResponse,
+    folderName,
   };
 
   return <ShareUi props={props} />;

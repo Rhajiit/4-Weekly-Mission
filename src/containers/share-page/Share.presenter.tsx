@@ -9,11 +9,14 @@ import Share from "@/pages/share";
 import Footer from "@/src/components/layout/footer/Footer";
 import { LinkCardFunctionObjectType } from "@/src/types/ModalFunctionDataTypes";
 import { UserLinkDataType } from "@/src/types/UserLinkDataType";
+import UserDataType from "@/src/types/UserDataType";
 
 interface PropsType {
   cardFilterSearchValue: string;
   setCardFilterSearchValue: (searchValue: string) => void;
+  shareUserData: UserDataType;
   items: UserLinkDataType[];
+  folderName: string;
   isEmptyResponse: boolean;
 }
 
@@ -22,13 +25,18 @@ export default function ShareUi({ props }: { props: PropsType }) {
     cardFilterSearchValue,
     setCardFilterSearchValue,
     items,
+    shareUserData,
     isEmptyResponse,
+    folderName,
   } = props;
 
   return (
     <>
       <HeadNav />
-      <ShareFolderProfile />
+      <ShareFolderProfile
+        shareUserData={shareUserData}
+        folderName={folderName}
+      />
       <S.MainWrapper>
         <S.SharePageSection>
           <LinkSearchBar
