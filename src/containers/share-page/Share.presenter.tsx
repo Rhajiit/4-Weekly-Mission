@@ -5,11 +5,20 @@ import HeadNav from "@/src/components/layout/head-nav/HeadNav";
 import ShareFolderProfile from "@/src/containers/share-page/profile/SharePageProfile";
 import LinkSearchBar from "@/src/components/link-card/link-card-search-form/LinkSearchBar";
 import LinkCardListLayout from "@/src/components/link-card/link-card-layout/LinkCardListLayout";
-import useSharePage from "@/src/containers/share-page/useSharePage";
+import useSharePage from "@/pages/share";
 import Footer from "@/src/components/layout/footer/Footer";
+import { LinkCardFunctionObjectType } from "@/src/types/ModalFunctionDataTypes";
+import { UserLinkDataType } from "@/src/types/UserLinkDataType";
 
-export default function Share() {
-  const { cardFilter, items, isEmptyResponse, setCardFilter } = useSharePage();
+interface PropsType {
+  cardFilter: string;
+  setCardFilter: (searchValue: string) => void;
+  items: UserLinkDataType[];
+  isEmptyResponse: boolean;
+}
+
+export default function ShareUi({ props }: { props: PropsType }) {
+  const { cardFilter, setCardFilter, items, isEmptyResponse } = props;
 
   return (
     <>
