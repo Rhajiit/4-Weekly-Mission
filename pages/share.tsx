@@ -18,8 +18,8 @@ export default function Share() {
       <S.MainWrapper>
         <S.SharePageSection>
           <LinkSearchBar
-            cardFilter={cardFilter}
-            setCardFilter={setCardFilter}
+            cardFilterSearchValue={cardFilter}
+            setCardFilterSearchValue={setCardFilter}
           />
           <LinkCardListLayout items={items} isEmptyResponse={isEmptyResponse} />
         </S.SharePageSection>

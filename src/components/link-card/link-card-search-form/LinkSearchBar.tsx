@@ -4,8 +4,8 @@ import Image from "next/image";
 
 // Type
 interface LinkSearchBarPropType {
-  cardFilter: string;
-  setCardFilter: (filter: string) => void;
+  cardFilterSearchValue: string;
+  setCardFilterSearchValue: (filter: string) => void;
 }
 
 /**
@@ -15,8 +15,8 @@ interface LinkSearchBarPropType {
  * @returns 사용자에게서 input을 받아 해당 속성에 맞는 card를 필터링하기 위한 컴포넌트입니다.
  */
 export default function LinkSearchBar({
-  cardFilter,
-  setCardFilter,
+  cardFilterSearchValue: cardFilter,
+  setCardFilterSearchValue: setCardFilter,
 }: LinkSearchBarPropType) {
   const linkFilterRef = useRef<HTMLInputElement>(null);
 
