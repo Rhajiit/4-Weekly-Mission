@@ -5,20 +5,25 @@ import HeadNav from "@/src/components/layout/head-nav/HeadNav";
 import ShareFolderProfile from "@/src/containers/share-page/profile/SharePageProfile";
 import LinkSearchBar from "@/src/components/link-card/link-card-search-form/LinkSearchBar";
 import LinkCardListLayout from "@/src/components/link-card/link-card-layout/LinkCardListLayout";
-import useSharePage from "@/pages/share";
+import Share from "@/pages/share";
 import Footer from "@/src/components/layout/footer/Footer";
 import { LinkCardFunctionObjectType } from "@/src/types/ModalFunctionDataTypes";
 import { UserLinkDataType } from "@/src/types/UserLinkDataType";
 
 interface PropsType {
-  cardFilter: string;
-  setCardFilter: (searchValue: string) => void;
+  cardFilterSearchValue: string;
+  setCardFilterSearchValue: (searchValue: string) => void;
   items: UserLinkDataType[];
   isEmptyResponse: boolean;
 }
 
 export default function ShareUi({ props }: { props: PropsType }) {
-  const { cardFilter, setCardFilter, items, isEmptyResponse } = props;
+  const {
+    cardFilterSearchValue,
+    setCardFilterSearchValue,
+    items,
+    isEmptyResponse,
+  } = props;
 
   return (
     <>
@@ -27,8 +32,8 @@ export default function ShareUi({ props }: { props: PropsType }) {
       <S.MainWrapper>
         <S.SharePageSection>
           <LinkSearchBar
-            cardFilterSearchValue={cardFilter}
-            setCardFilterSearchValue={setCardFilter}
+            cardFilterSearchValue={cardFilterSearchValue}
+            setCardFilterSearchValue={setCardFilterSearchValue}
           />
           <LinkCardListLayout items={items} isEmptyResponse={isEmptyResponse} />
         </S.SharePageSection>

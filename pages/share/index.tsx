@@ -11,10 +11,11 @@ import ShareUi from "@/src/containers/share-page/Share.presenter";
  * @description /share 페이지를 구현하는 컴포넌트.
  * @returns
  */
-export default function useSharePage() {
+export default function Share({ shareId = 0 }) {
   const [originItems, setOriginItems] = useState<UserLinkDataType[]>([]);
   const [items, setItems] = useState<UserLinkDataType[]>([]);
-  const [cardFilter, setCardFilter] = useState<string>("");
+  const [cardFilterSearchValue, setCardFilterSearchValue] =
+    useState<string>("");
   const [isEmptyResponse, setIsEmptyResponse] = useState(false);
 
   const handleShareLoad = async () => {
@@ -33,25 +34,25 @@ export default function useSharePage() {
   }, []);
 
   useEffect(() => {
-    if (cardFilter === "") {
+    if (cardFilterSearchValue === "") {
       setItems(originItems);
       return;
     }
     setItems(
       originItems.filter(
         (item: UserLinkDataType) =>
-          item.title.includes(cardFilter) ||
-          item.description.includes(cardFilter) ||
-          item.url.includes(cardFilter),
+          item.title.includes(cardFilterSearchValue) ||
+          item.description.includes(cardFilterSearchValue) ||
+          item.url.includes(cardFilterSearchValue),
       ),
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cardFilter]);
+  }, [cardFilterSearchValue]);
 
   const props = {
     items,
-    cardFilter,
-    setCardFilter,
+    cardFilterSearchValue,
+    setCardFilterSearchValue,
     isEmptyResponse,
   };
 
