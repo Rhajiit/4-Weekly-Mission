@@ -229,7 +229,6 @@ export default function useFolderPage(id: number, folderId: number) {
     handleCurrentFolderChange,
     currentFolderName,
     isCurrentFolderAll,
-    setIsCurrentFolderAll,
     cardFilter: cardFilterSearchValue,
     setCardFilter: setCardFilterSearchValue,
     isEmptyResponse,

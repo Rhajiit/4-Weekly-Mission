@@ -31,9 +31,11 @@ export default function LinkSubFolderList({
 
   useEffect(() => {
     setSubFolderList(subFolderData);
+
     const currentSubFolderArray = subFolderList.filter(
       (item) => item.id === currentFolderId,
     );
+
     const currentSubFolder =
       currentSubFolderArray.length !== 0
         ? currentSubFolderArray[0]
