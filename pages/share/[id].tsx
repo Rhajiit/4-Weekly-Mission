@@ -4,6 +4,7 @@ import { acceptDataFromApi } from "@/src/utils/api";
 import UserDataType from "@/src/types/UserDataType";
 import { UserLinkDataType } from "@/src/types/UserLinkDataType";
 import refineLinkData from "@/src/utils/refine-link-data/refineLinkData";
+import router from "next/router";
 
 export async function getServerSideProps(context: Context) {
   const { id } = context.params;
@@ -28,10 +29,9 @@ export async function getServerSideProps(context: Context) {
   }
 
   return {
-    props: {
-      shareUserData: null,
-      shareFolderData: null,
-      folderName: null,
+    redirect: {
+      destination: "/",
+      permanent: false,
     },
   };
 }
