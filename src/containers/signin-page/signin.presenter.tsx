@@ -1,5 +1,4 @@
 import router from "next/router";
-import * as S from "@/styles/pages/sign-page.style";
 
 // Components
 import SignPageHeader from "@/src/components/layout/sign-page/header/SignPageHeader";
@@ -34,13 +33,17 @@ export default function SignInPresenter({ props }: { props: PropsType }) {
 
   return (
     <>
-      <S.SignPageWrapper>
+      <section className="mx-auto my-[23.8rem] flex w-full max-w-[40rem] flex-col gap-[3rem]">
         <SignPageHeader
           text="회원이 아니신가요?"
           linkText="회원 가입하기"
           linkTo="/signup"
         />
-        <S.SignFormWrapper id="sign" onSubmit={(e) => submitEvent(e)}>
+        <form
+          className="flex flex-col gap-[2.4rem]"
+          id="sign"
+          onSubmit={(e) => submitEvent(e)}
+        >
           <SignInput
             inputRef={emailRef}
             inputType="email"
@@ -53,10 +56,12 @@ export default function SignInPresenter({ props }: { props: PropsType }) {
             errorMessage={passwordError}
             blurEvent={() => blurEvent("password-login", passwordRef)}
           />
-        </S.SignFormWrapper>
-        <S.SignSubmitButton form="sign">로그인</S.SignSubmitButton>
+        </form>
+        <button className="default-btn" form="sign">
+          로그인
+        </button>
         <SocialSign />
-      </S.SignPageWrapper>
+      </section>
     </>
   );
 }
