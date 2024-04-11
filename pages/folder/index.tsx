@@ -60,19 +60,23 @@ export default function Folder({ folderId = 0 }) {
 
   const handleShareLoad = async (query: string) => {
     setIsEmptyResponse(false);
-    const { data } = await acceptDataFromApiAsync(query, {
-      method: "GET",
-      headers: {
-        Authorization: localStorage.getItem("accessToken"),
-      },
-    });
+    try {
+      const { data } = await acceptDataFromApiAsync(query, {
+        method: "GET",
+        headers: {
+          Authorization: localStorage.getItem("accessToken"),
+        },
+      });
 
-    if (data.folder.length === 0) {
+      if (data.folder.length === 0) {
+        setIsEmptyResponse(true);
+      }
+
+      setOriginItems(refineLinkData(data.folder));
+      setItems(refineLinkData(data.folder));
+    } catch {
       setIsEmptyResponse(true);
     }
-
-    setOriginItems(refineLinkData(data.folder));
-    setItems(refineLinkData(data.folder));
   };
 
   const emptyResponseRecognize = (items: UserLinkDataType[]) => {
@@ -108,15 +112,19 @@ export default function Folder({ folderId = 0 }) {
   }, [items]);
 
   const acceptSubFolderList = async (requestQuery: string) => {
-    const { data } = await acceptDataFromApiAsync(requestQuery, {
-      method: "GET",
-      headers: {
-        Authorization: localStorage.getItem("accessToken"),
-      },
-    });
+    try {
+      const { data } = await acceptDataFromApiAsync(requestQuery, {
+        method: "GET",
+        headers: {
+          Authorization: localStorage.getItem("accessToken"),
+        },
+      });
 
-    setSubFolderList(data.folder);
-    setCurrentFolderId(folderId);
+      setSubFolderList(data.folder);
+      setCurrentFolderId(folderId);
+    } catch {
+      setIsEmptyResponse(true);
+    }
   };
 
   useEffect(() => {
