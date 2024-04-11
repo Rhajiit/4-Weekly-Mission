@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import useFetch from "@/src/hooks/useFetch";
+import router from "next/router";
 import FolderUI from "@/src/containers/folder-page/Folder.presenter";
 
 // Function
@@ -21,17 +22,12 @@ type handleCurrentFolderChangeType = (id: number, name: string) => void;
  * @returns
  */
 export default function Folder({ folderId = 0 }) {
-  const id = 1;
-
   const [isCurrentFolderAll, setIsCurrentFolderAll] = useState(folderId === 0);
   const [currentFolderName, setCurrentFolderName] = useState("전체");
   const [subFolderList, setSubFolderList] = useState<FolderListDataType[]>([]);
   const [isEmptyResponse, setIsEmptyResponse] = useState(true);
   const [isLoading, error, acceptDataFromApiAsync] =
     useFetch(acceptDataFromApi);
-  const [currentFolderQuery, setCurrentFolderQuery] = useState(
-    `users/${id}/links`,
-  );
   const [currentFolderId, setCurrentFolderId] = useState(0);
   const [originItems, setOriginItems] = useState<UserLinkDataType[]>([]);
   const [items, setItems] = useState<UserLinkDataType[]>([]);
@@ -95,10 +91,8 @@ export default function Folder({ folderId = 0 }) {
   ) => {
     setIsEmptyResponse(false);
     setCurrentFolderName(name);
-    setCurrentFolderQuery(
-      `users/${id}/links${id !== 0 ? `?folderId=${id}` : ""}`,
-    );
     setCurrentFolderId(id);
+    router.push(`/folder/${id}`, undefined, { shallow: true });
 
     if (id === 0) {
       setIsCurrentFolderAll(true);
@@ -133,7 +127,7 @@ export default function Folder({ folderId = 0 }) {
     acceptSubFolderList(`folders`);
     handleShareLoad(`links`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id]);
+  }, []);
 
   useEffect(() => {
     if (cardFilterSearchValue === "") {
