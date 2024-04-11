@@ -14,6 +14,7 @@ export default function SignPageHeader({
     <header className=" text-center">
       <Link href={"/"}>
         <Image
+          priority
           className="inline-block"
           width={210}
           height={38}
