@@ -1,5 +1,5 @@
 import signBlurError from "@/src/utils/sign-blur-error-message/signBlurError";
-import { FormEvent, RefObject, useRef, useState } from "react";
+import { FormEvent, RefObject, useEffect, useRef, useState } from "react";
 import router from "next/router";
 import axios from "axios";
 import { SIGN_INPUT_ERROR_MESSAGES } from "@/src/constant/SIGN_INPUT_TEXTS";
@@ -7,6 +7,9 @@ import emailBlur from "@/src/utils/sign-blur-error-message/input-blur-types/emai
 import passwordBlur from "@/src/utils/sign-blur-error-message/input-blur-types/passwordBlur";
 import passCheckBlur from "@/src/utils/sign-blur-error-message/input-blur-types/passCheckBlur";
 import SignUpPresenter from "@/src/containers/signup-page/signup.presenter";
+import { useSetCurrentUser } from "@/src/context/UserContext";
+import { USER } from "@/src/constant/TEMPORARY_USER_CONSTANT";
+import { acceptDataFromApi } from "@/src/utils/api";
 
 /**
  * @description signupPage의 전반적인 로직이 담겨있습니다.
@@ -20,6 +23,7 @@ export default function SignUp() {
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const passCheckRef = useRef<HTMLInputElement>(null);
+  const setCurrentUser = useSetCurrentUser();
 
   const blurEvent = (type: string, ref: RefObject<HTMLInputElement>) => {
     const userInput = ref.current!.value;
@@ -69,12 +73,24 @@ export default function SignUp() {
         throw new Error("유효하지 않은 회원가입 시도");
       }
 
-      const { data }: { data: { accessToken: string; refreshToken: string } } =
+      const {
+        data,
+      }: { data: { data: { accessToken: string; refreshToken: string } } } =
         await axios.post("https://bootcamp-api.codeit.kr/api/sign-up", {
           email: emailInput,
           password: passwordInput,
         });
-      localStorage.setItem("accessToken", data.accessToken);
+
+      localStorage.setItem("accessToken", data.data.accessToken);
+      localStorage.setItem("refreshToken", data.data.refreshToken);
+
+      const accessToken = localStorage.getItem("accessToken");
+      const receivedData = await acceptDataFromApi(USER, {
+        method: "GET",
+        headers: { Authorization: accessToken },
+      });
+      setCurrentUser(...receivedData.data);
+
       router.push("/folder");
     } catch (e: any) {
       setEmailError(SIGN_INPUT_ERROR_MESSAGES.NOT_CORRECT_EMAIL);
@@ -88,6 +104,12 @@ export default function SignUp() {
       }
     }
   };
+
+  useEffect(() => {
+    if (localStorage.getItem("accessToken")) {
+      router.push("/folder");
+    }
+  });
 
   const props = {
     emailError,

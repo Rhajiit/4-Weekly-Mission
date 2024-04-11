@@ -30,12 +30,6 @@ export default function SignUpPresenter({ props }: { props: PropsType }) {
     submitEvent,
   } = props;
 
-  useEffect(() => {
-    if (localStorage.getItem("accessToken")) {
-      router.push("/folder");
-    }
-  });
-
   return (
     <>
       <S.SignPageWrapper>
