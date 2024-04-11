@@ -10,7 +10,7 @@ export default function Footer() {
   return (
     <footer
       className="relative -z-[1] grid h-[16rem] w-full grid-cols-2 items-baseline 
-    justify-between gap-y-[6rem] bg-[var(--lb-black)] p-[3.2rem] md:flex md:px-[10.4rem] md:pb-[6.4rem]"
+    justify-between gap-y-[6rem] bg-black p-[3.2rem] md:flex md:px-[10.4rem] md:pb-[6.4rem]"
     >
       <p className="font-acme row-start-2 text-left text-[1.6rem] font-normal text-[#676767]">
         ©codeIt - 2023

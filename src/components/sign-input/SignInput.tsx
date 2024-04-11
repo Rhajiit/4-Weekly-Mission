@@ -49,7 +49,7 @@ export default function SignInput({
       </label>
       <label
         className={`flex w-[100%] cursor-text items-center gap-[0.3rem] rounded-[0.8rem] border-[0.1rem] 
-        border-solid ${isError ? "border-[var(--lb-red)]" : "border-[var(--lb-gray20)]"} 
+        border-solid ${isError ? "border-red" : "border-gray20"} 
         bg-white px-[1.5rem] py-[1.8rem] focus-within:border-primary`}
         htmlFor={inputType}
       >
@@ -82,7 +82,7 @@ export default function SignInput({
         )}
       </label>
 
-      <a className="lb-body2-regular [color:var(--lb-red)]">{errorMessage}</a>
+      <a className="lb-body2-regular text-red">{errorMessage}</a>
     </div>
   );
 }
