@@ -13,15 +13,20 @@ export default function HeadNavProfile() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [accountEmail, setAccountEmail] = useState("");
   const [profileImg, setProfileImg] = useState(
-    "/assets/icons/svg/nav-profile-default.svg"
+    "/assets/icons/svg/nav-profile-default.svg",
   );
 
   const accountVerification = async (user: string) => {
-    const receivedData = await acceptDataFromApi(user);
-    if (!receivedData) return;
-
-    const { data } = receivedData;
-    setCurrentUser(...data);
+    const accessToken = localStorage.getItem("accessToken");
+    if (accessToken !== null) {
+      const receivedData = await acceptDataFromApi(user, {
+        method: "GET",
+        headers: { Authorization: accessToken },
+      });
+      if (!receivedData) return;
+      const { data } = receivedData;
+      setCurrentUser(...data);
+    }
   };
 
   useEffect(() => {
