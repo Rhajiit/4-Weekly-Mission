@@ -63,7 +63,7 @@ export default function HeadNavProfile() {
             onClick={() => {
               localStorage.removeItem("accessToken");
               localStorage.removeItem("refreshToken");
-              router.reload();
+              router.push("/");
             }}
             className="size-5 h-[2.8rem] w-20 p-0 "
           >
