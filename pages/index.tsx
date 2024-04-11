@@ -5,7 +5,6 @@ import * as S from "@/styles/pages/index.style";
 // Components
 import HeadNav from "@/src/components/layout/head-nav/HeadNav";
 import Footer from "@/src/components/layout/footer/Footer";
-import router from "next/router";
 
 export default function Home() {
   return (
@@ -20,7 +19,7 @@ export default function Home() {
         <HeadNav />
         {/* 여기서부터 레거시 코드입니다.*/}
 
-        <S.Header>
+        <S.Header className="items-center">
           <h1>
             <span className="purplePinkGradation">세상의 모든 정보</span>를
             <br />
@@ -33,22 +32,9 @@ export default function Home() {
             <h2 className="lb-h2-semibold">SharePage로 이동</h2>
           </Link>
 
-          <Link href={"/signin"}>
-            <h2 className="lb-h2-semibold">login으로 이동</h2>
-          </Link>
-
           <Link href={"/signup"}>
-            <h2 className="lb-h2-semibold">signup으로 이동</h2>
+            <h2 className="default-btn w-[40rem]">링크 추가해보기</h2>
           </Link>
-          <button
-            type="button"
-            onClick={() => {
-              localStorage.removeItem("accessToken");
-              router.reload();
-            }}
-          >
-            로그 아웃
-          </button>
         </S.Header>
 
         <S.SectionWrapper>

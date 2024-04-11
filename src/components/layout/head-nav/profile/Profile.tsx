@@ -5,6 +5,7 @@ import Image from "next/image";
 import * as S from "./Profile.style";
 import { acceptDataFromApi } from "@/src/utils/api";
 import { USER } from "@/src/constant/TEMPORARY_USER_CONSTANT";
+import router from "next/router";
 
 export default function HeadNavProfile() {
   const userData = useCurrentUser();
@@ -56,6 +57,18 @@ export default function HeadNavProfile() {
             alt="loggedInProfileImg"
           />
           {accountEmail}
+          <div className="h-[2.8rem] w-1 bg-primary" />
+          <button
+            type="button"
+            onClick={() => {
+              localStorage.removeItem("accessToken");
+              localStorage.removeItem("refreshToken");
+              router.reload();
+            }}
+            className="size-5 h-[2.8rem] w-20 p-0 "
+          >
+            로그아웃
+          </button>
         </S.NavProfileSection>
       ) : (
         <Link href={"/signin"}>
