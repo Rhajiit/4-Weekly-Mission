@@ -1,12 +1,11 @@
-import {
-  INPUT_NAME,
-  SIGN_INPUT_ERROR_MESSAGES,
-} from "@/src/constant/SIGN_INPUT_TEXTS";
-import SignInPresenter from "@/src/containers/signin-page/signin.presenter";
-import signBlurError from "@/src/utils/sign-blur-error-message/signBlurError";
 import axios from "axios";
 import router from "next/router";
 import { FormEvent, RefObject, useRef, useState } from "react";
+import { SIGN_INPUT_ERROR_MESSAGES } from "@/src/constant/SIGN_INPUT_TEXTS";
+
+// Components
+import SignInPresenter from "@/src/containers/signin-page/signin.presenter";
+import signBlurError from "@/src/utils/sign-blur-error-message/signBlurError";
 
 /**
  * @description signupPage의 전반적인 로직이 담겨있습니다.

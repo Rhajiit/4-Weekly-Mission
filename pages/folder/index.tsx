@@ -1,6 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import useFetch from "@/src/hooks/useFetch";
+import FolderUI from "@/src/containers/folder-page/Folder.presenter";
+
+// Function
 import { acceptDataFromApi } from "@/src/utils/api";
+import refineLinkData from "@/src/utils/refine-link-data/refineLinkData";
 
 // Types
 import { UserLinkDataType } from "@/src/types/UserLinkDataType";
@@ -10,8 +14,6 @@ import {
   LinkFolderFunctionObjectType,
 } from "@/src/types/ModalFunctionDataTypes";
 import FolderListDataType from "@/src/types/FolderListDataType";
-import refineLinkData from "@/src/utils/refine-link-data/refineLinkData";
-import FolderUI from "@/src/containers/folder-page/Folder.presenter";
 type handleCurrentFolderChangeType = (id: number, name: string) => void;
 
 /**

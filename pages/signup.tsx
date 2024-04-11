@@ -1,15 +1,17 @@
-import signBlurError from "@/src/utils/sign-blur-error-message/signBlurError";
 import { FormEvent, RefObject, useEffect, useRef, useState } from "react";
 import router from "next/router";
 import axios, { AxiosError } from "axios";
 import { SIGN_INPUT_ERROR_MESSAGES } from "@/src/constant/SIGN_INPUT_TEXTS";
+import { useSetCurrentUser } from "@/src/context/UserContext";
+import { USER } from "@/src/constant/TEMPORARY_USER_CONSTANT";
+
+// Function
+import { acceptDataFromApi } from "@/src/utils/api";
+import signBlurError from "@/src/utils/sign-blur-error-message/signBlurError";
 import emailBlur from "@/src/utils/sign-blur-error-message/input-blur-types/emailBlur";
 import passwordBlur from "@/src/utils/sign-blur-error-message/input-blur-types/passwordBlur";
 import passCheckBlur from "@/src/utils/sign-blur-error-message/input-blur-types/passCheckBlur";
 import SignUpPresenter from "@/src/containers/signup-page/signup.presenter";
-import { useSetCurrentUser } from "@/src/context/UserContext";
-import { USER } from "@/src/constant/TEMPORARY_USER_CONSTANT";
-import { acceptDataFromApi } from "@/src/utils/api";
 
 /**
  * @description signupPage의 전반적인 로직이 담겨있습니다.

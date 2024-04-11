@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import ShareUi from "@/src/containers/share-page/Share.presenter";
+
+// Function
 import { acceptDataFromApi } from "@/src/utils/api";
 
 // Types
 import refineLinkData from "@/src/utils/refine-link-data/refineLinkData";
 import { UserLinkDataType } from "@/src/types/UserLinkDataType";
-import ShareUi from "@/src/containers/share-page/Share.presenter";
 import UserDataType from "@/src/types/UserDataType";
 
 export async function getServerSideProps() {

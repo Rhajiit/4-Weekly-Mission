@@ -1,9 +1,13 @@
 import { Context } from "vm";
 import Share from ".";
+
+// Function
+import refineLinkData from "@/src/utils/refine-link-data/refineLinkData";
 import { acceptDataFromApi } from "@/src/utils/api";
+
+// Types
 import UserDataType from "@/src/types/UserDataType";
 import { UserLinkDataType } from "@/src/types/UserLinkDataType";
-import refineLinkData from "@/src/utils/refine-link-data/refineLinkData";
 
 export async function getServerSideProps(context: Context) {
   const { id } = context.params;
