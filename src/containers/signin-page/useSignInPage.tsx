@@ -43,12 +43,15 @@ export default function useSignInPage() {
     const passwordInput = passwordRef.current!.value;
 
     try {
-      const { data }: { data: { accessToken: string; refreshToken: string } } =
+      const {
+        data,
+      }: { data: { data: { accessToken: string; refreshToken: string } } } =
         await axios.post("https://bootcamp-api.codeit.kr/api/sign-in", {
           email: emailInput,
           password: passwordInput,
         });
-      localStorage.setItem("accessToken", data.accessToken);
+      localStorage.setItem("accessToken", data.data.accessToken);
+      localStorage.setItem("refreshToken", data.data.refreshToken);
       router.push("/folder");
     } catch {
       signBlurError(emailInput, "email", setEmailError);

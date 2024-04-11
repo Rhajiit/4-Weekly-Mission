@@ -82,7 +82,7 @@ export default function useSignUpPage() {
       signBlurError(emailInput, "email", setEmailError);
       signBlurError(passwordInput, "password-sign-up", setPasswordError);
       signBlurError(passCheckInput, "password-check", setPassCheckError);
-      if (e.response?.status === 409) {
+      if (e.response.status === 409) {
         setEmailError(SIGN_INPUT_ERROR_MESSAGES.DUPLICATE_EMAIL);
       }
     }

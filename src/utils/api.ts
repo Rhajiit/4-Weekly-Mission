@@ -10,7 +10,7 @@ const BASE_API_URL = "https://bootcamp-api.codeit.kr/api/";
  */
 const acceptDataFromApi = async function (
   query: string,
-  requestMethod?: RequestInit
+  requestMethod?: RequestInit,
 ) {
   try {
     const response = await fetch(BASE_API_URL + query, requestMethod);

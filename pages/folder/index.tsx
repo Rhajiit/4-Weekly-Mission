@@ -60,14 +60,19 @@ export default function Folder({ folderId = 0 }) {
 
   const handleShareLoad = async (query: string) => {
     setIsEmptyResponse(false);
-    const { data } = await acceptDataFromApiAsync(query);
+    const { data } = await acceptDataFromApiAsync(query, {
+      method: "GET",
+      headers: {
+        Authorization: localStorage.getItem("accessToken"),
+      },
+    });
 
-    if (data.length === 0) {
+    if (data.folder.length === 0) {
       setIsEmptyResponse(true);
     }
 
-    setOriginItems(refineLinkData(data));
-    setItems(refineLinkData(data));
+    setOriginItems(refineLinkData(data.folder));
+    setItems(refineLinkData(data.folder));
   };
 
   const emptyResponseRecognize = (items: UserLinkDataType[]) => {
@@ -103,14 +108,20 @@ export default function Folder({ folderId = 0 }) {
   }, [items]);
 
   const acceptSubFolderList = async (requestQuery: string) => {
-    const { data } = await acceptDataFromApi(requestQuery);
-    setSubFolderList(data);
+    const { data } = await acceptDataFromApiAsync(requestQuery, {
+      method: "GET",
+      headers: {
+        Authorization: localStorage.getItem("accessToken"),
+      },
+    });
+
+    setSubFolderList(data.folder);
     setCurrentFolderId(folderId);
   };
 
   useEffect(() => {
-    acceptSubFolderList(`users/${id}/folders`);
-    handleShareLoad(`users/${id}/links`);
+    acceptSubFolderList(`folders`);
+    handleShareLoad(`links`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
