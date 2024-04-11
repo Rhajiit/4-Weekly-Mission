@@ -20,6 +20,9 @@ module.exports = {
       colors: {
         primary: "#6d6afe",
       },
+      fontFamily: {
+        acme: "acme",
+      },
     },
   },
   plugins: [],
