@@ -1,7 +1,7 @@
 import signBlurError from "@/src/utils/sign-blur-error-message/signBlurError";
 import { FormEvent, RefObject, useEffect, useRef, useState } from "react";
 import router from "next/router";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { SIGN_INPUT_ERROR_MESSAGES } from "@/src/constant/SIGN_INPUT_TEXTS";
 import emailBlur from "@/src/utils/sign-blur-error-message/input-blur-types/emailBlur";
 import passwordBlur from "@/src/utils/sign-blur-error-message/input-blur-types/passwordBlur";
@@ -87,20 +87,24 @@ export default function SignUp() {
       const accessToken = localStorage.getItem("accessToken");
       const receivedData = await acceptDataFromApi(USER, {
         method: "GET",
-        headers: { Authorization: accessToken },
+        headers: { Authorization: accessToken! },
       });
       setCurrentUser(...receivedData.data);
 
       router.push("/folder");
-    } catch (e: any) {
+    } catch (e: unknown) {
       setEmailError(SIGN_INPUT_ERROR_MESSAGES.NOT_CORRECT_EMAIL);
       setPasswordError(SIGN_INPUT_ERROR_MESSAGES.NOT_CORRECT_PASSWORD);
 
       signBlurError(emailInput, "email", setEmailError);
       signBlurError(passwordInput, "password-sign-up", setPasswordError);
       signBlurError(passCheckInput, "password-check", setPassCheckError);
-      if (e.response.status === 409) {
-        setEmailError(SIGN_INPUT_ERROR_MESSAGES.DUPLICATE_EMAIL);
+      if (e instanceof AxiosError) {
+        if (e.response?.status === 409) {
+          setEmailError(SIGN_INPUT_ERROR_MESSAGES.DUPLICATE_EMAIL);
+        }
+      } else {
+        console.error(e);
       }
     }
   };
