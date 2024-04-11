@@ -1,15 +1,15 @@
 import * as S from "@/styles/pages/share.style";
 
 // Components
-import HeadNav from "@/src/components/layout/HeadNav/HeadNav";
+import HeadNav from "@/src/components/layout/head-nav/HeadNav";
 import ShareFolderProfile from "@/src/containers/share-page/profile/SharePageProfile";
 import LinkSearchBar from "@/src/components/link-card/link-card-search-form/LinkSearchBar";
 import LinkCardListLayout from "@/src/components/link-card/link-card-layout/LinkCardListLayout";
-import SharePageContainer from "@/src/containers/share-page/SharePage";
+import useSharePage from "@/src/containers/share-page/useSharePage";
+import Footer from "@/src/components/layout/footer/Footer";
 
 export default function Share() {
-  const { cardFilter, items, isEmptyResponse, setCardFilter } =
-    SharePageContainer();
+  const { cardFilter, items, isEmptyResponse, setCardFilter } = useSharePage();
 
   return (
     <>
@@ -24,6 +24,7 @@ export default function Share() {
           <LinkCardListLayout items={items} isEmptyResponse={isEmptyResponse} />
         </S.SharePageSection>
       </S.MainWrapper>
+      <Footer />
     </>
   );
 }

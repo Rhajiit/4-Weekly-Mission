@@ -4,7 +4,8 @@ import * as S from "@/src/components/sign-input/SignInput.style";
 import {
   INPUT_TYPE,
   INPUT_PLACEHOLDER,
-} from "@/src/constant/SIGN_INPUT_TYPE_TRANSLATOR";
+  INPUT_NAME,
+} from "@/src/constant/SIGN_INPUT_TEXTS";
 
 /**
  * @description 로그인 등에서 사용할 입력 컴포넌트입니다.
@@ -14,7 +15,7 @@ import {
  * @param {BlurFunction} blurEvent 이 input컴포넌트에서 blur가 일어났을 때, 작동할 function을 받는 인자입니다.
  * @returns
  */
-export default function Input({
+export default function SignInput({
   inputRef,
   inputType,
   errorMessage,
@@ -41,12 +42,15 @@ export default function Input({
 
   return (
     <S.InputSectionWrapper>
+      <S.InputTitleLabel htmlFor={inputType} className="lb-body2-regular">
+        {INPUT_NAME[inputType]}
+      </S.InputTitleLabel>
       <S.InputSelectLabel htmlFor={inputType} $isError={isError}>
         <S.Input
           id={inputType}
           type={currentInputType}
-          placeholder={`${INPUT_PLACEHOLDER[inputType]}을 입력해주세요.`}
-          onBlur={blurEvent}
+          placeholder={`${INPUT_PLACEHOLDER[inputType]}`}
+          onBlur={() => blurEvent()}
           ref={inputRef}
         />
         {isTypePassword && (

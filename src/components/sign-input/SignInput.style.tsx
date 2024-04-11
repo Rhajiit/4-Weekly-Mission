@@ -6,6 +6,11 @@ export const InputSectionWrapper = styled.div`
   gap: 0.6rem;
 `;
 
+export const InputTitleLabel = styled.label`
+  color: var(--lb-black);
+  margin-bottom: 0.6rem;
+`;
+
 export const InputSelectLabel = styled.label<{ $isError: boolean }>`
   width: 100%;
   display: flex;

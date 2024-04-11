@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Footer = styled.footer`
   display: flex;
+  position: relative;
   align-items: baseline;
   justify-content: space-between;
   background-color: var(--lb-black);
@@ -9,6 +10,7 @@ export const Footer = styled.footer`
   margin: 0;
   padding: 3.2rem 10.4rem 6.4rem;
   height: 160px;
+  z-index: -1;
 
   @media (max-width: 767px) {
     display: grid;

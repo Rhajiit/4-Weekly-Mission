@@ -1,4 +1,4 @@
-import FolderPageContainer from "@/src/containers/folder-page/FolderPage";
+import useFolderPage from "@/src/containers/folder-page/useFolderPage";
 import * as S from "@/styles/pages/folder.style";
 
 // Components
@@ -7,8 +7,9 @@ import LinkSubFolderUtils from "@/src/containers/folder-page/sub-folder-util/Lin
 import LinkCardListLayout from "@/src/components/link-card/link-card-layout/LinkCardListLayout";
 import LinkSearchBar from "@/src/components/link-card/link-card-search-form/LinkSearchBar";
 import ModalLoader from "@/src/components/modal/modalLoader";
-import HeadNav from "@/src/components/layout/HeadNav/HeadNav";
+import HeadNav from "@/src/components/layout/head-nav/HeadNav";
 import LinkSubFolderList from "@/src/containers/folder-page/sub-folder-list/LinkSubFolderList";
+import Footer from "@/src/components/layout/footer/Footer";
 
 export default function Folder() {
   const id = 1;
@@ -32,7 +33,7 @@ export default function Folder() {
     kebabActions,
     footerObserveRef,
     subFolderAction,
-  } = FolderPageContainer(id);
+  } = useFolderPage(id);
 
   return (
     <>
@@ -95,6 +96,7 @@ export default function Folder() {
         </S.FolderPageSection>
       </S.MainWrapper>
       <S.FooterStartPoint ref={footerObserveRef} />
+      <Footer />
     </>
   );
 }
