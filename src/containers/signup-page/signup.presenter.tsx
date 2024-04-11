@@ -29,7 +29,7 @@ export default function SignUpPresenter({ props }: { props: PropsType }) {
 
   return (
     <>
-      <section className="mx-auto my-[23.8rem] flex w-full max-w-[40rem] flex-col gap-[3rem]">
+      <section className="mx-auto mt-[12rem] flex w-full max-w-[46.4rem] flex-col gap-[3rem] px-[3.2rem] md:mt-[20rem] xl:mt-[23.8rem]">
         <SignPageHeader
           text="이미 회원이신가요?"
           linkText="로그인 하기"
