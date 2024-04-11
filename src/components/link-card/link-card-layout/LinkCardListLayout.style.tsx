@@ -6,7 +6,7 @@ export const CardGridLayout = styled.section`
   justify-items: center;
   gap: 2.5rem 2rem;
 
-  @media (max-width: 1124px) {
+  @media (max-width: 1199px) {
     grid-template-columns: repeat(2, 1fr);
   }
 
