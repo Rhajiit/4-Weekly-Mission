@@ -1,4 +1,5 @@
-import useFolderPage from "@/src/containers/folder-page/useFolderPage";
+import { HTMLAttributes, RefObject, useEffect } from "react";
+import router from "next/router";
 import * as S from "@/styles/pages/folder.style";
 
 // Components
@@ -10,9 +11,41 @@ import ModalLoader from "@/src/components/modal/modalLoader";
 import HeadNav from "@/src/components/layout/head-nav/HeadNav";
 import LinkSubFolderList from "@/src/containers/folder-page/sub-folder-list/LinkSubFolderList";
 import Footer from "@/src/components/layout/footer/Footer";
+import {
+  LinkCardFunctionDataType,
+  LinkCardFunctionObjectType,
+  LinkFolderFunctionObjectType,
+} from "@/src/types/ModalFunctionDataTypes";
+import FolderListDataType from "@/src/types/FolderListDataType";
+import { UserLinkDataType } from "@/src/types/UserLinkDataType";
 
-export default function Folder() {
-  const id = 1;
+interface PropsType {
+  isModalOpened: boolean;
+  currentModalType: string;
+  modalData?: LinkCardFunctionDataType;
+  setIsModalOpened: (state: boolean) => void;
+  handleModalOpen: (
+    modalType: string,
+    modalData: LinkCardFunctionDataType,
+  ) => void;
+  subFolderList: FolderListDataType[];
+  isLinkAddBarHidden: boolean;
+  addLinkBarObserveRef: RefObject<HTMLDivElement>;
+  handleCurrentFolderChange: (id: number, name: string) => void;
+  currentFolderName: string;
+  isCurrentFolderAll: boolean;
+  cardFilterSearchValue: string;
+  setCardFilterSearchValue: (filterValue: string) => void;
+  isEmptyResponse: boolean;
+  isLoading: boolean;
+  items: UserLinkDataType[];
+  kebabActions: LinkCardFunctionObjectType[];
+  footerObserveRef: RefObject<HTMLDivElement>;
+  subFolderAction: LinkFolderFunctionObjectType[];
+  folderId: number;
+}
+
+export default function FolderUI({ props }: { props: PropsType }) {
   const {
     isModalOpened,
     currentModalType,
@@ -25,15 +58,22 @@ export default function Folder() {
     handleCurrentFolderChange,
     currentFolderName,
     isCurrentFolderAll,
-    cardFilter,
-    setCardFilter,
+    cardFilterSearchValue,
+    setCardFilterSearchValue,
     isEmptyResponse,
     isLoading,
     items,
     kebabActions,
     footerObserveRef,
     subFolderAction,
-  } = useFolderPage(id);
+    folderId,
+  } = props;
+
+  useEffect(() => {
+    if (!localStorage.getItem("accessToken")) {
+      router.push("/signin");
+    }
+  });
 
   return (
     <>
@@ -62,6 +102,7 @@ export default function Folder() {
             <LinkSubFolderList
               subFolderData={subFolderList}
               handleCurrentFolderChange={handleCurrentFolderChange}
+              currentFolderId={folderId}
             />
             <S.AddFolderButton
               className="add-sub-folder"
@@ -79,8 +120,8 @@ export default function Folder() {
             )}
           </S.SubFolderUtil>
           <LinkSearchBar
-            cardFilter={cardFilter}
-            setCardFilter={setCardFilter}
+            cardFilterSearchValue={cardFilterSearchValue}
+            setCardFilterSearchValue={setCardFilterSearchValue}
           />
           {
             <>

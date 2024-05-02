@@ -59,7 +59,7 @@ const ModalLoader = ({
   };
 
   return (
-    <S.ModalBackground>
+    <S.ModalBackground onClick={() => setIsOpened()}>
       <S.ModalWrapper>
         <S.ModalCloseButton type="button" onClick={() => setIsOpened()}>
           <Image

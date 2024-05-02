@@ -1,6 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import useFetch from "@/src/hooks/useFetch";
+import router from "next/router";
+import FolderUI from "@/src/containers/folder-page/Folder.presenter";
+
+// Function
 import { acceptDataFromApi } from "@/src/utils/api";
+import refineLinkData from "@/src/utils/refine-link-data/refineLinkData";
 
 // Types
 import { UserLinkDataType } from "@/src/types/UserLinkDataType";
@@ -10,23 +15,19 @@ import {
   LinkFolderFunctionObjectType,
 } from "@/src/types/ModalFunctionDataTypes";
 import FolderListDataType from "@/src/types/FolderListDataType";
-import refineLinkData from "@/src/utils/refine-link-data/refineLinkData";
 type handleCurrentFolderChangeType = (id: number, name: string) => void;
 
 /**
  * @description 폴더 페이지 컴포넌트
  * @returns
  */
-export default function useFolderPage(id: number) {
-  const [isCurrentFolderAll, setIsCurrentFolderAll] = useState(true);
+export default function Folder({ folderId = 0 }) {
+  const [isCurrentFolderAll, setIsCurrentFolderAll] = useState(folderId === 0);
   const [currentFolderName, setCurrentFolderName] = useState("전체");
   const [subFolderList, setSubFolderList] = useState<FolderListDataType[]>([]);
   const [isEmptyResponse, setIsEmptyResponse] = useState(true);
   const [isLoading, error, acceptDataFromApiAsync] =
     useFetch(acceptDataFromApi);
-  const [currentFolderQuery, setCurrentFolderQuery] = useState(
-    `users/${id}/links`
-  );
   const [currentFolderId, setCurrentFolderId] = useState(0);
   const [originItems, setOriginItems] = useState<UserLinkDataType[]>([]);
   const [items, setItems] = useState<UserLinkDataType[]>([]);
@@ -45,7 +46,7 @@ export default function useFolderPage(id: number) {
 
   const handleModalOpen = (
     modalType: string,
-    modalData: LinkCardFunctionDataType
+    modalData: LinkCardFunctionDataType,
   ) => {
     setModalData({});
     setCurrentModalType(modalType);
@@ -57,14 +58,23 @@ export default function useFolderPage(id: number) {
 
   const handleShareLoad = async (query: string) => {
     setIsEmptyResponse(false);
-    const { data } = await acceptDataFromApiAsync(query);
+    try {
+      const { data } = await acceptDataFromApiAsync(query, {
+        method: "GET",
+        headers: {
+          Authorization: localStorage.getItem("accessToken"),
+        },
+      });
 
-    if (data.length === 0) {
+      if (data.folder.length === 0) {
+        setIsEmptyResponse(true);
+      }
+
+      setOriginItems(refineLinkData(data.folder));
+      setItems(refineLinkData(data.folder));
+    } catch {
       setIsEmptyResponse(true);
     }
-
-    setOriginItems(refineLinkData(data));
-    setItems(refineLinkData(data));
   };
 
   const emptyResponseRecognize = (items: UserLinkDataType[]) => {
@@ -77,14 +87,12 @@ export default function useFolderPage(id: number) {
 
   const handleCurrentFolderChange: handleCurrentFolderChangeType = async (
     id,
-    name
+    name,
   ) => {
     setIsEmptyResponse(false);
     setCurrentFolderName(name);
-    setCurrentFolderQuery(
-      `users/${id}/links${id !== 0 ? `?folderId=${id}` : ""}`
-    );
     setCurrentFolderId(id);
+    router.push(`/folder/${id}`, undefined, { shallow: true });
 
     if (id === 0) {
       setIsCurrentFolderAll(true);
@@ -100,15 +108,26 @@ export default function useFolderPage(id: number) {
   }, [items]);
 
   const acceptSubFolderList = async (requestQuery: string) => {
-    const { data } = await acceptDataFromApi(requestQuery);
-    setSubFolderList(data);
+    try {
+      const { data } = await acceptDataFromApiAsync(requestQuery, {
+        method: "GET",
+        headers: {
+          Authorization: localStorage.getItem("accessToken"),
+        },
+      });
+
+      setSubFolderList(data.folder);
+      setCurrentFolderId(folderId);
+    } catch {
+      setIsEmptyResponse(true);
+    }
   };
 
   useEffect(() => {
-    acceptSubFolderList(`users/${id}/folders`);
-    handleShareLoad(`users/${id}/links`);
+    acceptSubFolderList(`folders`);
+    handleShareLoad(`links`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id]);
+  }, []);
 
   useEffect(() => {
     if (cardFilterSearchValue === "") {
@@ -124,8 +143,8 @@ export default function useFolderPage(id: number) {
           item.description
             .toLowerCase()
             .includes(cardFilterSearchValue.toLowerCase()) ||
-          item.url.toLowerCase().includes(cardFilterSearchValue.toLowerCase())
-      )
+          item.url.toLowerCase().includes(cardFilterSearchValue.toLowerCase()),
+      ),
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cardFilterSearchValue]);
@@ -216,7 +235,7 @@ export default function useFolderPage(id: number) {
     },
   ];
 
-  return {
+  const props = {
     isModalOpened,
     currentModalType,
     modalData,
@@ -228,15 +247,16 @@ export default function useFolderPage(id: number) {
     handleCurrentFolderChange,
     currentFolderName,
     isCurrentFolderAll,
-    setIsCurrentFolderAll,
-    cardFilter: cardFilterSearchValue,
-    setCardFilter: setCardFilterSearchValue,
+    cardFilterSearchValue,
+    setCardFilterSearchValue,
     isEmptyResponse,
-    setIsEmptyResponse,
     isLoading,
     items,
     kebabActions,
     footerObserveRef,
     subFolderAction,
+    folderId,
   };
+
+  return <FolderUI props={props} />;
 }

@@ -1,6 +1,5 @@
 import { RefObject, useEffect, useState } from "react";
 import Image from "next/image";
-import * as S from "@/src/components/sign-input/SignInput.style";
 import {
   INPUT_TYPE,
   INPUT_PLACEHOLDER,
@@ -27,7 +26,7 @@ export default function SignInput({
   blurEvent: () => void;
 }) {
   const [currentInputType, setCurrentInputType] = useState(
-    INPUT_TYPE[inputType]
+    INPUT_TYPE[inputType],
   );
   const [isError, setIsError] = useState(false);
   const isTypePassword = INPUT_TYPE[inputType] === "password";
@@ -41,12 +40,21 @@ export default function SignInput({
   }, [errorMessage]);
 
   return (
-    <S.InputSectionWrapper>
-      <S.InputTitleLabel htmlFor={inputType} className="lb-body2-regular">
+    <div className="flex flex-col gap-[0.6rem]">
+      <label
+        htmlFor={inputType}
+        className="lb-body2-regular mb-[0.6rem] text-black"
+      >
         {INPUT_NAME[inputType]}
-      </S.InputTitleLabel>
-      <S.InputSelectLabel htmlFor={inputType} $isError={isError}>
-        <S.Input
+      </label>
+      <label
+        className={`flex w-[100%] cursor-text items-center gap-[0.3rem] rounded-[0.8rem] border-[0.1rem] 
+        border-solid ${isError ? "border-red" : "border-gray20"} 
+        bg-white px-[1.5rem] py-[1.8rem] focus-within:border-primary`}
+        htmlFor={inputType}
+      >
+        <input
+          className="lb-body1-regular w-[100%] border-none focus-visible:outline-none"
           id={inputType}
           type={currentInputType}
           placeholder={`${INPUT_PLACEHOLDER[inputType]}`}
@@ -54,11 +62,12 @@ export default function SignInput({
           ref={inputRef}
         />
         {isTypePassword && (
-          <S.HiddenButton
+          <button
+            className="relative flex h-[1.6rem] w-[1.6rem] justify-center border-none"
             type="button"
             onClick={() =>
               setCurrentInputType((prev) =>
-                prev !== "password" ? "password" : "text"
+                prev !== "password" ? "password" : "text",
               )
             }
           >
@@ -69,13 +78,11 @@ export default function SignInput({
               }.svg`}
               alt="togglePasswordHidden"
             />
-          </S.HiddenButton>
+          </button>
         )}
-      </S.InputSelectLabel>
+      </label>
 
-      <S.ErrorMessage className="lb-body2-regular">
-        {errorMessage}
-      </S.ErrorMessage>
-    </S.InputSectionWrapper>
+      <a className="lb-body2-regular text-red">{errorMessage}</a>
+    </div>
   );
 }

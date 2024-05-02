@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Image from "next/image";
-import * as S from "./KebabMenu.style";
 
 // Types
 import { LinkCardFunctionObjectType } from "@/src/types/ModalFunctionDataTypes";
@@ -23,26 +22,33 @@ export default function KebabMenu({ items }: KebabMenuPropType) {
   };
 
   return (
-    <S.KebabMenuOriginPosition>
-      <S.KebabToggleButton type="button" onClick={handleKebabToggle}>
+    <div className="absolute right-8 top-[21.5rem] flex">
+      <button
+        className="relative h-[1.7rem] w-[2.1rem] border-none bg-transparent p-0"
+        type="button"
+        onClick={handleKebabToggle}
+      >
         <Image fill src="/assets/icons/svg/kebab.svg" alt="kebabButton" />
-      </S.KebabToggleButton>
+      </button>
       {kebabMenuPop && (
         <>
-          <S.KebabDiv>
+          <div className="gat-[0.4rem] absolute top-[1.6rem] z-[1] flex-col items-start shadow-[0_0.2rem_0.8rem_0_rgba(51,50,54,0.1)]">
             {items.map((item) => (
-              <S.KebabMenuButton
-                className="lb-body2-regular"
+              <button
+                className="lb-body2-regular px-1.2rem] w-40 bg-white py-[0.7rem] text-center text-gray100 hover:bg-gray10 hover:text-primary"
                 key={item.buttonName}
                 onClick={() => item.modalHandle(item.type, item.data)}
               >
                 {item.buttonName}
-              </S.KebabMenuButton>
+              </button>
             ))}
-          </S.KebabDiv>
-          <S.KebabCancel onClick={handleKebabToggle} />
+          </div>
+          <div
+            className="fixed left-0 top-0 h-screen w-screen bg-transparent"
+            onClick={handleKebabToggle}
+          />
         </>
       )}
-    </S.KebabMenuOriginPosition>
+    </div>
   );
 }

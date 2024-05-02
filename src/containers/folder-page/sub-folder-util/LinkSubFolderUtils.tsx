@@ -16,7 +16,7 @@ export default function LinkSubFolderUtils({
   subFolderUtils,
 }: HandleCurrentSubFolderPropType) {
   return (
-    <S.SubFolderUtilList>
+    <div className="flex gap-[1.2rem]">
       {subFolderUtils.map((item) => (
         <S.Button
           className="lb-body2-semibold"
@@ -24,10 +24,12 @@ export default function LinkSubFolderUtils({
           type="button"
           onClick={() => item.modalHandle(item.type, item.data)}
         >
-          <Image width={18} height={18} src={item.imgUrl} alt={item.imgAlt} />
+          <div className=" relative h-[18px] w-[18px]">
+            <Image fill src={item.imgUrl} alt={item.imgAlt} />
+          </div>
           {item.buttonName}
         </S.Button>
       ))}
-    </S.SubFolderUtilList>
+    </div>
   );
 }

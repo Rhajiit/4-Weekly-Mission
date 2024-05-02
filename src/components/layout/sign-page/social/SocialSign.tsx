@@ -1,12 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import * as S from "./SocialSign.style";
 
 export default function SocialSign() {
   return (
-    <S.SocialBox className="lb-body2-regular">
-      다른 방식으로 가입하기{" "}
-      <S.IconWrapper>
+    <div className="lb-body2-regular mt-[0.2rem] flex w-full items-center justify-between rounded-lg border-[1px] border-solid border-[var(--lb-gray20)] bg-[var(--lb-gray10)] px-[2.4rem] py-[1.2rem] text-[var(--lb-gray100)]">
+      다른 방식으로 가입하기
+      <div className="flex gap-[1.6rem]">
         <Link href={"https://www.google.com"}>
           <Image
             width={42}
@@ -24,7 +23,7 @@ export default function SocialSign() {
             alt=""
           />
         </Link>
-      </S.IconWrapper>
-    </S.SocialBox>
+      </div>
+    </div>
   );
 }

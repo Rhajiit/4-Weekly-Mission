@@ -14,6 +14,7 @@ export default function HeadNav({ isSticky = true }) {
             height={24}
             src="/assets/images/svg/logo.svg"
             alt="Linkbrary Logo"
+            priority
           />
         </Link>
         <HeadNavProfile />
