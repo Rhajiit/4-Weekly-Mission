@@ -59,12 +59,7 @@ export default function Folder({ folderId = 0 }) {
   const handleShareLoad = async (query: string) => {
     setIsEmptyResponse(false);
     try {
-      const { data } = await acceptDataFromApiAsync(query, {
-        method: "GET",
-        headers: {
-          Authorization: localStorage.getItem("accessToken"),
-        },
-      });
+      const { data } = await acceptDataFromApiAsync(query);
 
       if (data.folder.length === 0) {
         setIsEmptyResponse(true);
@@ -109,12 +104,7 @@ export default function Folder({ folderId = 0 }) {
 
   const acceptSubFolderList = async (requestQuery: string) => {
     try {
-      const { data } = await acceptDataFromApiAsync(requestQuery, {
-        method: "GET",
-        headers: {
-          Authorization: localStorage.getItem("accessToken"),
-        },
-      });
+      const { data } = await acceptDataFromApiAsync(requestQuery);
 
       setSubFolderList(data.folder);
       setCurrentFolderId(folderId);

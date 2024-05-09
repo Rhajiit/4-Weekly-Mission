@@ -20,10 +20,7 @@ export default function HeadNavProfile() {
   const accountVerification = async (user: string) => {
     const accessToken = localStorage.getItem("accessToken");
     if (accessToken !== null) {
-      const receivedData = await acceptDataFromApi(user, {
-        method: "GET",
-        headers: { Authorization: accessToken },
-      });
+      const receivedData = await acceptDataFromApi(user);
       if (!receivedData) return;
       const { data } = receivedData;
       setCurrentUser(...data);

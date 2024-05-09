@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-import { acceptDataFromApi } from "@/src/utils/api";
 import * as S from "./SharePageProfile.style";
 import UserDataType from "@/src/types/UserDataType";
 

@@ -12,8 +12,14 @@ const acceptDataFromApi = async function (
   query: string,
   requestMethod?: RequestInit,
 ) {
+  const accessToken = localStorage.getItem("accessToken");
+  const method = requestMethod || { method: "GET" };
+  const authorizationMethod = Object.assign(method, {
+    headers: { Authorization: accessToken },
+  });
+
   try {
-    const response = await fetch(BASE_API_URL + query, requestMethod);
+    const response = await fetch(BASE_API_URL + query, authorizationMethod);
     if (!response.ok) {
       throw new Error("정보를 받아오는데 실패하였습니다.");
     }
