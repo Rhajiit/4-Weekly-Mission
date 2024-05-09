@@ -10,19 +10,19 @@ import { UserLinkDataType } from "@/src/types/UserLinkDataType";
 import UserDataType from "@/src/types/UserDataType";
 
 export async function getServerSideProps() {
-  const shareUserRawData = await acceptDataFromApi("sample/user");
+  const shareUserRawData = await acceptDataFromApi("sample/users/2");
   const shareUserData = {
-    id: 1,
-    created_at: "",
-    name: shareUserRawData.name,
-    image_source: shareUserRawData.profileImageSource,
-    email: shareUserRawData.email,
+    id: shareUserRawData[0].id,
+    name: shareUserRawData[0].name,
+    image_source: shareUserRawData[0]["image_source"],
+    email: shareUserRawData[0].email,
     auth_id: 1,
   };
 
-  const shareFolderRawData = await acceptDataFromApi("sample/folder");
-  const shareFolderData = refineLinkData(shareFolderRawData.folder.links);
-  const folderName = shareFolderRawData.folder.name;
+  const shareFolderRawData = await acceptDataFromApi("sample/folders/1");
+  const shareFolderLinkRawData = await acceptDataFromApi("sample/links");
+  const shareFolderData = refineLinkData(shareFolderLinkRawData);
+  const folderName = shareFolderRawData[0].name;
 
   return {
     props: {

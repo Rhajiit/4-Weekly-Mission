@@ -11,21 +11,19 @@ import { UserLinkDataType } from "@/src/types/UserLinkDataType";
 
 export async function getServerSideProps(context: Context) {
   const { id } = context.params;
-  const { data } = await acceptDataFromApi(`folders/${id}`);
+  const data = await acceptDataFromApi(`folders/${id}`);
 
   const isNotFolder = data.length === 0;
 
   if (!isNotFolder) {
     const userId = data[0]["user_id"];
     const shareUserData = await acceptDataFromApi(`users/${userId}`);
-    const shareFolderLinkData = await acceptDataFromApi(
-      `users/${userId}/links?folderId=${id}`,
-    );
+    const shareFolderLinkData = await acceptDataFromApi(`folders/${id}/links`);
 
     return {
       props: {
-        shareUserData: shareUserData["data"][0],
-        shareFolderLinkData: refineLinkData(shareFolderLinkData.data),
+        shareUserData: shareUserData[0],
+        shareFolderLinkData: refineLinkData(shareFolderLinkData),
         folderName: data[0]["name"],
       },
     };

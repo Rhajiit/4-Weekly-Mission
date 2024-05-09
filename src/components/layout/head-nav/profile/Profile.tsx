@@ -22,8 +22,8 @@ export default function HeadNavProfile() {
     if (accessToken !== null) {
       const receivedData = await acceptDataFromApi(user);
       if (!receivedData) return;
-      const { data } = receivedData;
-      setCurrentUser(...data);
+      const data = receivedData[0];
+      setCurrentUser(data);
     }
   };
 

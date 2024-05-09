@@ -91,7 +91,7 @@ export default function SignUp() {
         method: "GET",
         headers: { Authorization: accessToken! },
       });
-      setCurrentUser(...receivedData.data);
+      setCurrentUser(receivedData[0]);
 
       router.push("/folder");
     } catch (e: unknown) {

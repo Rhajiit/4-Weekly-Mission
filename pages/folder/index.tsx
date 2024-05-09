@@ -59,14 +59,14 @@ export default function Folder({ folderId = 0 }) {
   const handleShareLoad = async (query: string) => {
     setIsEmptyResponse(false);
     try {
-      const { data } = await acceptDataFromApiAsync(query);
+      const data = await acceptDataFromApiAsync(query);
 
-      if (data.folder.length === 0) {
+      if (data === 0) {
         setIsEmptyResponse(true);
       }
 
-      setOriginItems(refineLinkData(data.folder));
-      setItems(refineLinkData(data.folder));
+      setOriginItems(refineLinkData(data));
+      setItems(refineLinkData(data));
     } catch {
       setIsEmptyResponse(true);
     }
@@ -104,9 +104,9 @@ export default function Folder({ folderId = 0 }) {
 
   const acceptSubFolderList = async (requestQuery: string) => {
     try {
-      const { data } = await acceptDataFromApiAsync(requestQuery);
+      const data = await acceptDataFromApiAsync(requestQuery);
 
-      setSubFolderList(data.folder);
+      setSubFolderList(data);
       setCurrentFolderId(folderId);
     } catch {
       setIsEmptyResponse(true);
