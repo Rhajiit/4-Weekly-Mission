@@ -26,7 +26,6 @@ export default function LinkCard({
   kebab,
 }: LinkCardDataPropType) {
   const { id, createdAt, description, imageSource, url } = contents;
-  if (kebab) kebab.map((item) => (item.data!.target = url));
 
   const cardImage = imageSource;
   const timeConversion = new Date(createdAt); // sampleApi와 userApi의 양식이 달라 호환시키기 위함
@@ -54,7 +53,9 @@ export default function LinkCard({
           </S.TextSection>
         </Link>
       </S.CardWrapper>
-      {kebab && <KebabMenu items={kebab} data={url} />}
+      {kebab && (
+        <KebabMenu items={kebab} data={{ target: url, targetId: id }} />
+      )}
       {favorite && (
         <S.FavorStarButton type="button">
           <Image

@@ -182,7 +182,6 @@ export default function Folder({ folderId = 0 }) {
     {
       buttonName: "삭제하기",
       type: "removeLink",
-      data: { target: "" },
       modalHandle: handleModalOpen,
       modalButtonAction: handleKebabAction,
     },
