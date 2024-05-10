@@ -13,7 +13,7 @@ export async function getServerSideProps(context: Context) {
   const { id } = context.params;
   const data = await acceptDataFromApi(`folders/${id}`);
 
-  const isNotFolder = data.length === 0;
+  const isNotFolder = data === undefined;
 
   if (!isNotFolder) {
     const userId = data[0]["user_id"];

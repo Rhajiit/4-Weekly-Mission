@@ -77,15 +77,18 @@ export default function SignUp() {
       }
 
       const { data }: { data: { accessToken: string; refreshToken: string } } =
-        await axios.post("https://bootcamp-api.codeit.kr/api/sign-up", {
-          email: emailInput,
-          password: passwordInput,
-        });
+        await axios.post(
+          "https://bootcamp-api.codeit.kr/api/linkbrary/v1/auth/sign-up",
+          {
+            email: emailInput,
+            password: passwordInput,
+          },
+        );
 
       setCookie("accessToken", data.accessToken);
       setCookie("refreshToken", data.refreshToken);
 
-      const accessToken = getCookie("accessToken");
+      const accessToken = data.accessToken;
       const receivedData = await acceptDataFromApi(USER, {
         method: "GET",
         headers: { Authorization: accessToken! },
