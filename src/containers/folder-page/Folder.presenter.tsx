@@ -82,9 +82,7 @@ export default function FolderUI({ props }: { props: PropsType }) {
         <ModalLoader
           modalType={currentModalType}
           modalData={modalData}
-          setIsOpened={() => {
-            setIsModalOpened(false);
-          }}
+          setIsOpened={setIsModalOpened}
         />
       )}
       <HeadNav isSticky={false} />

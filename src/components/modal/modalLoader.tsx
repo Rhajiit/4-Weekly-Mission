@@ -16,7 +16,7 @@ interface ModalLoaderPropType {
   modalType: string;
   modalFunc?: () => void;
   modalData?: LinkCardFunctionDataType;
-  setIsOpened: () => void;
+  setIsOpened: (state: boolean) => void;
 }
 
 /**
@@ -59,20 +59,22 @@ const ModalLoader = ({
   };
 
   return (
-    <S.ModalBackground onClick={() => setIsOpened()}>
-      <S.ModalWrapper>
-        <S.ModalCloseButton type="button" onClick={() => setIsOpened()}>
-          <Image
-            width={24}
-            height={24}
-            src="/assets/icons/svg/close.svg"
-            alt="closeModal"
-          />
-        </S.ModalCloseButton>
-        {renderModal()}
-      </S.ModalWrapper>
-      ;
-    </S.ModalBackground>
+    <>
+      <S.ModalBackground>
+        <S.ModalWrapper>
+          <S.ModalCloseButton type="button" onClick={() => setIsOpened(false)}>
+            <Image
+              width={24}
+              height={24}
+              src="/assets/icons/svg/close.svg"
+              alt="closeModal"
+            />
+          </S.ModalCloseButton>
+          {renderModal()}
+        </S.ModalWrapper>
+        ;
+      </S.ModalBackground>
+    </>
   );
 };
 
