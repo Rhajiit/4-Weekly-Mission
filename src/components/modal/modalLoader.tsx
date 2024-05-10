@@ -36,7 +36,7 @@ const ModalLoader = ({
   const renderModal = () => {
     switch (modalType) {
       case "nameChange":
-        return <ModalChangeSubFolderName />;
+        return <ModalChangeSubFolderName modalData={modalData!} />;
 
       case "addSubFolder":
         return <ModalAddSubFolder />;
