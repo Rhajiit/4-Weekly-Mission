@@ -5,6 +5,8 @@ import * as SS from "./AddLinkToSubFolder.style";
 // Type
 import Image from "next/image";
 import { LinkCardFunctionDataType } from "@/src/types/ModalFunctionDataTypes";
+import { acceptDataFromApi } from "@/src/utils/api";
+import { useRouter } from "next/router";
 
 /**
  *
@@ -17,10 +19,16 @@ export default function ModalAddLinkToSubFolder({
   modalData: LinkCardFunctionDataType;
 }) {
   const { target, subfolderList } = modalData;
-  const [SelectedFolder, setSelectedFolder] = useState("");
+  const [selectedFolder, setSelectedFolder] = useState<number>();
+  const router = useRouter();
 
-  const handleSelectFolder = (key: string) => {
-    setSelectedFolder(key);
+  const handleLinkAdd = async () => {
+    await acceptDataFromApi("links", {
+      method: "POST",
+      body: JSON.stringify({ url: target, folderId: selectedFolder }),
+    });
+
+    router.reload();
   };
 
   return (
@@ -34,17 +42,17 @@ export default function ModalAddLinkToSubFolder({
           .filter((item) => item.favorite !== true)
           .map((item) => (
             <SS.SubFolderDesireToAddLinkButton
-              onClick={() => handleSelectFolder(item.name)}
-              $state={item.name === SelectedFolder}
-              key={item.name}
+              onClick={() => setSelectedFolder(item.id)}
+              $state={item.id === selectedFolder}
+              key={item.id}
             >
               <h2 className="lb-body1-regular">
                 {item.name}
                 <span className="lb-body2-regular">{`${
-                  item.link.count || 0
+                  item.link_count || 0
                 }개 링크`}</span>
               </h2>
-              {item.name === SelectedFolder && (
+              {item.id === selectedFolder && (
                 <Image
                   width={14}
                   height={14}
@@ -55,7 +63,7 @@ export default function ModalAddLinkToSubFolder({
             </SS.SubFolderDesireToAddLinkButton>
           ))}
       </S.ShareButtonLayout>
-      <S.ModalButton>추가하기</S.ModalButton>
+      <S.ModalButton onClick={() => handleLinkAdd()}>추가하기</S.ModalButton>
     </>
   );
 }

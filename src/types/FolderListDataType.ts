@@ -4,7 +4,7 @@ interface FolderListDataType {
   name: string;
   user_id: number;
   favorite: boolean;
-  link: { count: number };
+  link_count: number;
 }
 
 export default FolderListDataType;
