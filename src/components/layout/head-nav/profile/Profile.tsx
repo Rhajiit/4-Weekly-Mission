@@ -4,8 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import * as S from "./Profile.style";
 import { acceptDataFromApi } from "@/src/utils/api";
-import { USER } from "@/src/constant/TEMPORARY_USER_CONSTANT";
 import router from "next/router";
+import { deleteCookie, getCookie, setCookie } from "cookies-next";
 
 export default function HeadNavProfile() {
   const userData = useCurrentUser();
@@ -17,10 +17,10 @@ export default function HeadNavProfile() {
     "/assets/icons/svg/nav-profile-default.svg",
   );
 
-  const accountVerification = async (user: string) => {
-    const accessToken = localStorage.getItem("accessToken");
+  const accountVerification = async () => {
+    const accessToken = getCookie("accessToken");
     if (accessToken !== null) {
-      const receivedData = await acceptDataFromApi(user);
+      const receivedData = await acceptDataFromApi("users");
       if (!receivedData) return;
       const data = receivedData[0];
       setCurrentUser(data);
@@ -37,9 +37,9 @@ export default function HeadNavProfile() {
   }, [userData]);
 
   useEffect(() => {
-    const hasAccessToken = Boolean(localStorage.getItem("accessToken"));
+    const hasAccessToken = Boolean(getCookie("accessToken"));
     if (hasAccessToken) {
-      accountVerification(USER);
+      accountVerification();
     }
   }, []);
 
@@ -58,9 +58,9 @@ export default function HeadNavProfile() {
           <button
             type="button"
             onClick={() => {
-              localStorage.removeItem("accessToken");
-              localStorage.removeItem("refreshToken");
-              router.push("/");
+              deleteCookie("accessToken");
+              deleteCookie("refreshToken");
+              router.reload();
             }}
             className="size-5 h-[2.8rem] w-20 p-0 "
           >

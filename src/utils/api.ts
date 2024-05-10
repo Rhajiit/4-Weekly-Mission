@@ -1,6 +1,7 @@
+import { getCookie } from "cookies-next";
 import { RequestInit } from "next/dist/server/web/spec-extension/request";
 
-const BASE_API_URL = "https://bootcamp-api.codeit.kr/api/";
+const BASE_API_URL = "https://bootcamp-api.codeit.kr/api/linkbrary/v1/";
 
 /**
  * @param query baseURL 에서 추가로 요청할 정보의 경로를 적습니다.
@@ -12,7 +13,7 @@ const acceptDataFromApi = async function (
   query: string,
   requestMethod?: RequestInit,
 ) {
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = getCookie("accessToken");
   const method = requestMethod || { method: "GET" };
   const authorizationMethod = Object.assign(method, {
     headers: { Authorization: accessToken },

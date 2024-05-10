@@ -1,11 +1,12 @@
 import axios from "axios";
-import router from "next/router";
-import { FormEvent, RefObject, useRef, useState } from "react";
+import router, { useRouter } from "next/router";
+import { FormEvent, RefObject, useEffect, useRef, useState } from "react";
 import { SIGN_INPUT_ERROR_MESSAGES } from "@/src/constant/SIGN_INPUT_TEXTS";
 
 // Components
 import SignInPresenter from "@/src/containers/signin-page/signin.presenter";
 import signBlurError from "@/src/utils/sign-blur-error-message/signBlurError";
+import { getCookie, setCookie } from "cookies-next";
 
 /**
  * @description signupPage의 전반적인 로직이 담겨있습니다.
@@ -16,6 +17,7 @@ export default function SignIn() {
   const [passwordError, setPasswordError] = useState("");
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
 
   const blurEvent = (type: string, ref: RefObject<HTMLInputElement>) => {
     const userInput = ref.current!.value;
@@ -37,21 +39,29 @@ export default function SignIn() {
     signBlurError(userInput, type, setFunction);
   };
 
+  useEffect(() => {
+    if (getCookie("accessToken")) {
+      router.push("/folder");
+    }
+  });
+
   const submitEvent = async (e: FormEvent) => {
     e.preventDefault();
     const emailInput = emailRef.current!.value;
     const passwordInput = passwordRef.current!.value;
 
     try {
-      const {
-        data,
-      }: { data: { data: { accessToken: string; refreshToken: string } } } =
-        await axios.post("https://bootcamp-api.codeit.kr/api/sign-in", {
-          email: emailInput,
-          password: passwordInput,
-        });
-      localStorage.setItem("accessToken", data.data.accessToken);
-      localStorage.setItem("refreshToken", data.data.refreshToken);
+      const { data }: { data: { accessToken: string; refreshToken: string } } =
+        await axios.post(
+          "https://bootcamp-api.codeit.kr/api/linkbrary/v1/auth/sign-in",
+          {
+            email: emailInput,
+            password: passwordInput,
+          },
+        );
+      setCookie("accessToken", data.accessToken);
+      setCookie("refreshToken", data.refreshToken);
+
       router.push("/folder");
     } catch {
       signBlurError(emailInput, "email", setEmailError);

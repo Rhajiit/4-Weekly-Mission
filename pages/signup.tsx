@@ -12,6 +12,7 @@ import emailBlur from "@/src/utils/sign-blur-error-message/input-blur-types/emai
 import passwordBlur from "@/src/utils/sign-blur-error-message/input-blur-types/passwordBlur";
 import passCheckBlur from "@/src/utils/sign-blur-error-message/input-blur-types/passCheckBlur";
 import SignUpPresenter from "@/src/containers/signup-page/signup.presenter";
+import { getCookie, setCookie } from "cookies-next";
 
 /**
  * @description signupPage의 전반적인 로직이 담겨있습니다.
@@ -75,18 +76,16 @@ export default function SignUp() {
         throw new Error("유효하지 않은 회원가입 시도");
       }
 
-      const {
-        data,
-      }: { data: { data: { accessToken: string; refreshToken: string } } } =
+      const { data }: { data: { accessToken: string; refreshToken: string } } =
         await axios.post("https://bootcamp-api.codeit.kr/api/sign-up", {
           email: emailInput,
           password: passwordInput,
         });
 
-      localStorage.setItem("accessToken", data.data.accessToken);
-      localStorage.setItem("refreshToken", data.data.refreshToken);
+      setCookie("accessToken", data.accessToken);
+      setCookie("refreshToken", data.refreshToken);
 
-      const accessToken = localStorage.getItem("accessToken");
+      const accessToken = getCookie("accessToken");
       const receivedData = await acceptDataFromApi(USER, {
         method: "GET",
         headers: { Authorization: accessToken! },
@@ -112,7 +111,7 @@ export default function SignUp() {
   };
 
   useEffect(() => {
-    if (localStorage.getItem("accessToken")) {
+    if (getCookie("accessToken")) {
       router.push("/folder");
     }
   });

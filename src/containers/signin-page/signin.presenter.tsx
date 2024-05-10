@@ -5,6 +5,7 @@ import SignPageHeader from "@/src/components/layout/sign-page/header/SignPageHea
 import SignInput from "@/src/components/sign-input/SignInput";
 import SocialSign from "@/src/components/layout/sign-page/social/SocialSign";
 import { FormEvent, RefObject, useEffect } from "react";
+import { getCookie } from "cookies-next";
 
 interface PropsType {
   emailError: string;
@@ -26,7 +27,7 @@ export default function SignInPresenter({ props }: { props: PropsType }) {
   } = props;
 
   useEffect(() => {
-    if (localStorage.getItem("accessToken")) {
+    if (getCookie("accessToken")) {
       router.push("/folder");
     }
   });

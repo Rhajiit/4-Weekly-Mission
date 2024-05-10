@@ -18,6 +18,7 @@ import {
 } from "@/src/types/ModalFunctionDataTypes";
 import FolderListDataType from "@/src/types/FolderListDataType";
 import { UserLinkDataType } from "@/src/types/UserLinkDataType";
+import { getCookie } from "cookies-next";
 
 interface PropsType {
   isModalOpened: boolean;
@@ -70,7 +71,7 @@ export default function FolderUI({ props }: { props: PropsType }) {
   } = props;
 
   useEffect(() => {
-    if (!localStorage.getItem("accessToken")) {
+    if (!getCookie("accessToken")) {
       router.push("/signin");
     }
   });
