@@ -56,20 +56,14 @@ export default function Folder({ folderId = 0 }) {
     setIsModalOpened(!isModalOpened);
   };
 
-  const handleShareLoad = async (query: string) => {
-    setIsEmptyResponse(false);
-    try {
-      const data = await acceptDataFromApiAsync(query);
-
-      if (data === 0) {
-        setIsEmptyResponse(true);
-      }
-
-      setOriginItems(refineLinkData(data));
-      setItems(refineLinkData(data));
-    } catch {
-      setIsEmptyResponse(true);
+  const handleShareLoad = async () => {
+    const data = await acceptDataFromApiAsync("folders");
+    const filterData = data.filter((item: any) => item.id === folderId);
+    if (filterData.length === 0) {
+      handleCurrentFolderChange(0, "전체");
+      return;
     }
+    handleCurrentFolderChange(folderId, filterData[0].name);
   };
 
   const emptyResponseRecognize = (items: UserLinkDataType[]) => {
@@ -90,21 +84,24 @@ export default function Folder({ folderId = 0 }) {
     router.push(`/folder/${id}`, undefined, { shallow: true });
 
     if (id === 0) {
+      const rawData = await acceptDataFromApiAsync("links");
+      const data = refineLinkData(rawData);
       setIsCurrentFolderAll(true);
-      setItems(originItems);
+      setOriginItems(data);
+      setItems(data);
       return;
     }
-    setItems(originItems.filter((link) => link.id === id));
+    const rawData = await acceptDataFromApiAsync(`folders/${id}/links`);
+    const data = refineLinkData(rawData);
+    setOriginItems(data);
+    setItems(data);
     setIsCurrentFolderAll(false);
   };
-
-  useEffect(() => {
-    emptyResponseRecognize(items);
-  }, [items]);
 
   const acceptSubFolderList = async (requestQuery: string) => {
     try {
       const data = await acceptDataFromApiAsync(requestQuery);
+      console.log(data);
 
       setSubFolderList(data);
       setCurrentFolderId(folderId);
@@ -114,8 +111,12 @@ export default function Folder({ folderId = 0 }) {
   };
 
   useEffect(() => {
+    emptyResponseRecognize(items);
+  }, [items]);
+
+  useEffect(() => {
     acceptSubFolderList(`folders`);
-    handleShareLoad(`links`);
+    handleShareLoad();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

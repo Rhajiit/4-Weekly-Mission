@@ -34,16 +34,18 @@ export default function LinkCardListLayout({
           {isLoading ? "불러오는 중입니다..." : "저장된 링크가 없습니다."}
         </S.EmptySpace>
       )}
-      <S.CardGridLayout>
-        {items.map((item) => (
-          <LinkCard
-            key={item.id}
-            contents={item}
-            favorite={favorite}
-            kebab={kebab}
-          />
-        ))}
-      </S.CardGridLayout>
+      {!isEmptyResponse && !isLoading && (
+        <S.CardGridLayout>
+          {items.map((item) => (
+            <LinkCard
+              key={item.id}
+              contents={item}
+              favorite={favorite}
+              kebab={kebab}
+            />
+          ))}
+        </S.CardGridLayout>
+      )}
     </>
   );
 }
