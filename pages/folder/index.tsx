@@ -56,16 +56,6 @@ export default function Folder({ folderId = 0 }) {
     setIsModalOpened(!isModalOpened);
   };
 
-  const handleShareLoad = async () => {
-    const data = await acceptDataFromApiAsync("folders");
-    const filterData = data.filter((item: any) => item.id === folderId);
-    if (filterData.length === 0) {
-      handleCurrentFolderChange(0, "전체");
-      return;
-    }
-    handleCurrentFolderChange(folderId, filterData[0].name);
-  };
-
   const emptyResponseRecognize = (items: UserLinkDataType[]) => {
     if (items.length === 0) {
       setIsEmptyResponse(true);
@@ -89,6 +79,7 @@ export default function Folder({ folderId = 0 }) {
       setIsCurrentFolderAll(true);
       setOriginItems(data);
       setItems(data);
+      emptyResponseRecognize(data);
       return;
     }
     const rawData = await acceptDataFromApiAsync(`folders/${id}/links`);
@@ -96,6 +87,17 @@ export default function Folder({ folderId = 0 }) {
     setOriginItems(data);
     setItems(data);
     setIsCurrentFolderAll(false);
+    emptyResponseRecognize(data);
+  };
+
+  const handleShareLoad = async () => {
+    const data = await acceptDataFromApiAsync("folders");
+    const filterData = data.filter((item: any) => item.id === folderId);
+    if (filterData.length === 0) {
+      handleCurrentFolderChange(0, "전체");
+      return;
+    }
+    handleCurrentFolderChange(folderId, filterData[0].name);
   };
 
   const acceptSubFolderList = async (requestQuery: string) => {
@@ -109,16 +111,6 @@ export default function Folder({ folderId = 0 }) {
       setIsEmptyResponse(true);
     }
   };
-
-  useEffect(() => {
-    emptyResponseRecognize(items);
-  }, [items]);
-
-  useEffect(() => {
-    acceptSubFolderList(`folders`);
-    handleShareLoad();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   useEffect(() => {
     if (cardFilterSearchValue === "") {
@@ -140,8 +132,13 @@ export default function Folder({ folderId = 0 }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cardFilterSearchValue]);
 
-  // useEffect를 이용하여 IntersectionObserver을 등록
+  // useEffect를 이용하여 IntersectionObserver을 등록 및 현재 선택 폴더 초기화
   useEffect(() => {
+    // 선택폴더 초기화
+    acceptSubFolderList(`folders`);
+    handleShareLoad();
+
+    // intersectionObserver 등록
     const addLinkBarObserver = new IntersectionObserver((entries) => {
       entries.map((entry) => {
         if (entry.target === addLinkBarObserveRef.current) {

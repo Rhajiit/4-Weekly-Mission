@@ -114,7 +114,7 @@ export default function FolderUI({ props }: { props: PropsType }) {
             <S.CurrentSubFolder className="lb-h3-semibold">
               {currentFolderName}
             </S.CurrentSubFolder>
-            {!isCurrentFolderAll && (
+            {!isCurrentFolderAll && !isLoading && (
               <LinkSubFolderUtils subFolderUtils={subFolderAction} />
             )}
           </S.SubFolderUtil>
