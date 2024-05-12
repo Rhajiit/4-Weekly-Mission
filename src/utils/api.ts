@@ -1,5 +1,4 @@
 import { getCookie } from "cookies-next";
-import { RequestInit } from "next/dist/server/web/spec-extension/request";
 
 const BASE_API_URL = "https://bootcamp-api.codeit.kr/api/linkbrary/v1/";
 
@@ -20,7 +19,6 @@ const acceptDataFromApi = async function (
   });
 
   try {
-    console.log(authorizationMethod);
     const response = await fetch(BASE_API_URL + endPoint, authorizationMethod);
     if (!response.ok) {
       throw new Error("정보를 받아오는데 실패하였습니다.");
