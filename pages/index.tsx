@@ -42,12 +42,6 @@ export default function Home() {
             <br />
             쉽게 저장하고 관리해 보세요
           </h1>
-          <Link href={"/folder"}>
-            <h2 className="lb-h2-semibold">FolderPage로 이동</h2>
-          </Link>
-          <Link href={"/share"}>
-            <h2 className="lb-h2-semibold">SharePage로 이동</h2>
-          </Link>
 
           <Link href={"/signup"}>
             <h2 className="default-btn w-[40rem]">링크 추가해보기</h2>
